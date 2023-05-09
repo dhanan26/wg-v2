@@ -63,7 +63,8 @@ export const theme = createTheme({
     },
     fontFamily: {
         primary: "AquawaxMedium",
-        secondary: "Poppins"
+        secondary: "Poppins",
+        Rubik:"Rubik"
     }
 })
 

@@ -1,0 +1,23 @@
+.header_icon {
+    height: 15px;
+    width: 15.37px;
+}
+
+@media (max-width: 600px) {
+    .header_icon {
+        height: 15px;
+        width: 15.37px;
+    }
+}
+
+.wellness_garden_icon{
+    width:auto;
+    height: 45px;
+}
+
+@media (max-width: 600px) {
+    .wellness_garden_icon{
+        width:auto;
+        height:35px;
+    }
+}
