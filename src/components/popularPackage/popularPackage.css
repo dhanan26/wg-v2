@@ -1,0 +1,21 @@
+.swiper-button-prev {
+    margin-left: -60px;
+}
+
+.swiper-button-next {
+    margin-right: -50px;
+}
+
+.swiper-slide {
+   
+}
+
+@media (max-width: 600px) {
+    .swiper-button-prev {
+        margin-left: 0px;
+    }
+    .swiper-button-next {
+        margin-right: 0px;
+    }
+    
+}

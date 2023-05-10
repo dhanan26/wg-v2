@@ -15,7 +15,7 @@ const StyledPopularPackageCard = styled(Card)(({ theme,active }) => ({
     cursor:"pointer",
     '@media(max-width:600px)': {
         height:270,
-        width:32
+        width:232
     }
 
 }))

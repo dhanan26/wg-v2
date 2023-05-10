@@ -5,7 +5,7 @@ import { Stack, styled, Box, useMediaQuery,Typography ,useTheme} from "@mui/mate
 import { NavigationContainer } from "../../common/containers/containers";
 import { PrimarySubText } from "../../common/typographies/typographies";
 import { SecondaryButton } from "../../common/buttons/button"
-import { Banner } from "../../widgets/banner"
+import { Banner } from "../../banner"
 import banner2Imag from '../../../assets/images/home_carousel_2.png.jpg'
 
 //icons

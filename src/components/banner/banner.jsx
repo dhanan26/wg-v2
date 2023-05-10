@@ -1,13 +1,15 @@
 
 
-import { StyledMainContainer } from "../../common/box/box"
+import { StyledMainContainer } from "../common/box/box"
 import { Stack, styled, Box, useMediaQuery } from "@mui/material";
-import { PrimarySubText, PrimaryText } from "../../common/typographies/typographies";
-import { TextCenterBox } from "../../common/containers/containers";
-import { PrimaryButton, SecondaryButton } from "../../common/buttons/button";
-import { ButtonDropdown } from "../../common/dropdowns/dropdowns";
-import HeadPhoneIcon from "../../../assets/icons/HeadPhoneIcon.svg"
-import { Icon } from "../../common/icon/icon"
+import { PrimarySubText, PrimaryText } from "../common/typographies/typographies";
+import { TextCenterBox } from "../common/containers/containers";
+import { PrimaryButton, SecondaryButton } from "../common/buttons/button";
+import { ButtonDropdown } from "../common/dropdowns/dropdowns";
+
+//icons
+import HeadPhoneIcon from "../../assets/icons/HeadPhoneIcon.svg"
+import { Icon } from "../common/icon/icon"
 
 import { useRef, useState, useEffect } from 'react';
 
