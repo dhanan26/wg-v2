@@ -23,12 +23,17 @@ export const NavigationContainer = styled(Box)(({ theme }) => ({
         paddingRight:80,
     },
     [theme.breakpoints.down('md')]:{
-        paddingLeft:70,
-        paddingRight:70,
+        paddingLeft:60,
+        paddingRight:60,
     },
     [theme.breakpoints.down('sm')]:{
         paddingLeft:10,
         paddingRight:16,
     }
+}))
+
+export const TextCenterBox = styled((Box))(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
 }))
 

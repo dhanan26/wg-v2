@@ -6,13 +6,13 @@ const StyledDropDown = styled(Select)(({ theme }) => ({
     borderRadius: 2,
     textTransform: "none",
     boxShadow: 'none',
-    backgroundColor: theme.palette.textSecondary.main,
+    backgroundColor: theme.palette.painColor.main,
     ".MuiSelect-icon": {
-        color: theme.palette.buttonSecondary.main,
+        color: theme.palette.textSecondary.main,
         fontSize: 30,
     },
     ".MuiSelect-select": {
-        color: theme.palette.buttonSecondary.main,
+        color: theme.palette.textSecondary.main,
         paddingTop: "15px",
         paddingRight: "40px",
         fontFamily: theme.fontFamily.primary,
@@ -21,9 +21,11 @@ const StyledDropDown = styled(Select)(({ theme }) => ({
     {
         border: 0,
     },
-    '@media(max-width:600px)': {
-        fontSize: 14
-    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize:14,
+        width:126
+
+    }
 }));
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
@@ -39,11 +41,11 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
 }));
 
 
-export const ButtonDropdown = ({ items, icon, defaultValue }) => {
+
+
+export const ButtonDropdown = ({ items, defaultValue }) => {
     return (
         <FormControl>
-            <Stack direction={"row"}>
-                {icon}
                 <StyledDropDown
                     MenuProps={{
                         PaperProps: {
@@ -61,7 +63,6 @@ export const ButtonDropdown = ({ items, icon, defaultValue }) => {
                         ))
                     }
                 </StyledDropDown>
-            </Stack>
         </FormControl>
     )
 }

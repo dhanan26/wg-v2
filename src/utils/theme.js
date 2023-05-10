@@ -24,10 +24,12 @@ export const theme = createTheme({
             main: "#5E8BFF" //naplesYellow
         },
         headerButtonSecondary: {
-            main: "#EBECF0" //Bright Gray 
+            main: "#EBECF0",//Bright Gray ,
+            contrastText: '#333333',
         },
         headerButtonMain: {
-            main: "#FFD25E"
+            main: "#FFD25E",
+            contrastText: '#333333',
         },
         textPrimary: {
             main: "#333333" //Black
@@ -35,8 +37,12 @@ export const theme = createTheme({
         textSecondary: {
             main: "#FFFFFF" //White
         },
-        cardActive:{
-            main:"#E3EDFC"
+        cardActive: {
+            main: "#E3EDFC"
+        },
+        painColor:{
+            main: "#0187A4",
+            contrastText: '#FFFFFF',
         }
     },
     typography: {
@@ -64,7 +70,16 @@ export const theme = createTheme({
     fontFamily: {
         primary: "AquawaxMedium",
         secondary: "Poppins",
-        Rubik:"Rubik"
-    }
+        Rubik: "Rubik"
+    },
+    breakpoints: {
+        values: {
+            xs: 390,
+            sm: 600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
 })
 
