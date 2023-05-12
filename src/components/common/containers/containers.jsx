@@ -35,5 +35,6 @@ export const NavigationContainer = styled(Box)(({ theme }) => ({
 export const TextCenterBox = styled((Box))(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
 }))
 

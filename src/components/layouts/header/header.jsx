@@ -4,7 +4,7 @@ import { Icon } from "../../common/icon/icon"
 import { Stack, styled, Box, useMediaQuery,Typography ,useTheme} from "@mui/material";
 import { NavigationContainer } from "../../common/containers/containers";
 import { PrimarySubText } from "../../common/typographies/typographies";
-import { SecondaryButton } from "../../common/buttons/button"
+import { GetInTouchButton, SecondaryButton } from "../../common/buttons/button"
 import { Banner } from "../../banner"
 import banner2Imag from '../../../assets/images/home_carousel_2.png.jpg'
 
@@ -45,14 +45,10 @@ const TopNavigationContainer = styled(NavigationContainer)(({ theme, position })
 
 }));
 
-const GetInTouchButton = styled(SecondaryButton)(({ theme, position }) => ({
-    fontSize: 15,
+const GetInTouchButtonHeader = styled(GetInTouchButton)(({ theme, position }) => ({
+  
     height: 54,
     width: 160,
-    ".MuiButton-startIcon": {
-        marginLeft: 10,
-        marginBottom: 1
-    }
 }));
 
 
@@ -115,7 +111,7 @@ const MainHeaderItems = () => {
                 <MainHeaderText >Wellness Program</MainHeaderText>
                 <MainHeaderText >Blog</MainHeaderText>
                 <MainHeaderText >Our Story</MainHeaderText>
-                <GetInTouchButton variant="contained" color="buttonPrimary" startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />} >Get in touch </GetInTouchButton>
+                <GetInTouchButtonHeader variant="contained" color="buttonPrimary" startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />} >Get in touch </GetInTouchButtonHeader>
             </Stack>
             }
         </MainNavigationContainer>

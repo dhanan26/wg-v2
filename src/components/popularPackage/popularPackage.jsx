@@ -20,7 +20,10 @@ import { width } from "@mui/system";
 
 
 const PopularPackageBox = styled(Box)(({ theme }) => ({
-    height: 498
+    height: 498,
+    [theme.breakpoints.down('mlg')]: {
+        height: 426,
+    },
 }));
 
 const PopularPackageTitleBox = styled(TextCenterBox)(({ theme }) => ({
@@ -29,7 +32,6 @@ const PopularPackageTitleBox = styled(TextCenterBox)(({ theme }) => ({
         height: 115,
     },
     flexDirection: "column",
-    alignItems: "center",
     textAlign: "center",
     gap: 18
 }));

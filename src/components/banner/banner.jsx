@@ -1,7 +1,7 @@
 
 
 import { StyledMainContainer } from "../common/box/box"
-import { Stack, styled, Box, useMediaQuery } from "@mui/material";
+import { Stack, styled, Box, useMediaQuery} from "@mui/material";
 import { PrimarySubText, PrimaryText } from "../common/typographies/typographies";
 import { TextCenterBox } from "../common/containers/containers";
 import { PrimaryButton, SecondaryButton } from "../common/buttons/button";
@@ -110,6 +110,10 @@ const RecommendationBox = styled((SecondaryButton))(({ theme }) => ({
 
 
 const subPrograms = ["Upper Back", "Lower Back", "Lower Back", "Lower Back", "Lower Back"]
+
+
+
+
 
 export const Banner = ({ bannerData }) => {
     const isSmallScreen = useMediaQuery('(max-width:1300px)');

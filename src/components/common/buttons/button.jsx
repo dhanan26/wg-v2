@@ -35,3 +35,11 @@ export const SecondaryButton = styled(PrimaryButton)(({ theme, color }) => ({
         borderBottom:"none",
     },
 }));
+
+export const GetInTouchButton = styled(SecondaryButton)(({ theme, position }) => ({
+    fontSize: 15,
+    ".MuiButton-startIcon": {
+        marginLeft: 10,
+        marginBottom: 1
+    }
+}));
