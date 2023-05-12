@@ -13,11 +13,10 @@ const StyledPopularPackageCard = styled(Card)(({ theme,active }) => ({
     boxShadow: 'none',
     backgroundColor:active?theme.palette.cardActive.main:"none",
     cursor:"pointer",
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         height:270,
         width:232
-    }
-
+    },
 }))
 
 
@@ -26,16 +25,16 @@ const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         height:194,
-    }
+    },
 }))
 
 const StyledCardContent = styled(CardContent)(({ theme }) => ({
     height: 100,
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         height:76,
-    }
+    },
 }))
 
 const name = "Instant Back Pain Release"
@@ -43,17 +42,17 @@ const name = "Instant Back Pain Release"
 const CardTitle = styled(PrimaryText)(({ theme }) => ({
     fontSize: 25,
     textAlign: "left",
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         fontSize: 20,
-    }
+    },
 }))
 
 const CardSubText = styled(PrimarySubText)(({ theme }) => ({
     fontSize: 14,
     textAlign: "left",
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         fontSize: 10,
-    }
+    },
 }))
 
 const StyledTitleBox = styled(Box)(({ theme }) => ({
@@ -63,19 +62,20 @@ const StyledTitleBox = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     gap: 4,
     marginBottom: 20,
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         flexDirection: "row",
         marginBottom: 20
-    }
+    },
+
 
 }))
 
 const CardMediaSubText = styled(PrimarySubText)(({ theme }) => ({
     fontSize: 10,
     textAlign: "left",
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         fontSize: 8,
-    }
+    },
 }))
 
 
@@ -83,10 +83,10 @@ const CardMediaButton = styled(SecondaryButton)(({ theme }) => ({
     width: 63,
     height: 28,
     fontSize: 12,
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         width: 55,
         height: 25,
-    }
+    },
 }))
 
 const StyledStack = styled(Box)(({ theme }) => ({
@@ -97,9 +97,9 @@ const StyledStack = styled(Box)(({ theme }) => ({
     marginRight:5,
     alignItems: "center",
     justifyContent:"space-between",
-    '@media(max-width:600px)': {
+    [theme.breakpoints.down('mlg')]: {
         marginBottom: 40,
-    }
+    },
 }))
 
 

@@ -59,9 +59,10 @@ const SwiperContainer = styled(Box)(({ theme }) => ({
     position: "relative",
     width:"100%",
     [theme.breakpoints.down('sm')]: {
-        width: "95%",
+        width: "90%",
+        marginLeft:20
     },
-    width: "95%",
+    // width: "95%",
     marginLeft: "auto",
     marginRight: "auto"
 }));
@@ -93,20 +94,25 @@ const SwiperCards = () => {
     const breakpoints = {
         // when window width is >= 640px
         300: {
-            slidesPerView: 1,
+            slidesPerView: 1.5,
+            // spaceBetween: 30
         },
         520: {
             slidesPerView: 2,
+            // spaceBetween: 30
         },
-        600: {
-            slidesPerView: 2 ,
+        800: {
+            slidesPerView:3,
         },
         // when window width is >= 768px
-        800: {
+        1120:{
+            slidesPerView: 4,
+        },
+        1400:{
             slidesPerView: 4,
         },
         // when window width is >= 1024px
-        1500: {
+        1800: {
             slidesPerView: 5,
         }
     };
