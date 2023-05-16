@@ -1,5 +1,5 @@
 import { Card, styled, CardContent, CardMedia, Box, Stack } from "@mui/material"
-import cardImage from "../../../assets/images/cardImage.jpeg"
+import cardImage from "../../../assets/images/popularPackage3.jpeg"
 import { SecondaryButton } from "../../common/buttons/button"
 import { PrimaryText,PrimarySubText } from "../../common/typographies/typographies"
 

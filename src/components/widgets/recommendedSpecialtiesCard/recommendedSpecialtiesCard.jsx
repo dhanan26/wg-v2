@@ -2,9 +2,10 @@
 import { styled, Box, } from "@mui/material";
 import { TextCenterBox } from "../../common/containers/containers";
 import { PrimarySubText, PrimaryText } from "../../common/typographies/typographies";
-import bannerImg from "../../../assets/images/banner.jpg"
+import RecommendedSpecialtiesImg from "../../../assets/images/recommended_specialties.jpg"
 import { Icon } from "../../common/icon/icon";
 import TimeIcon from "../../../assets/icons/TimeIcon.svg"
+import AyurvedaIcon from "../../../assets/icons/ayurveda.svg"
 
 
 const StyledSpecialtiesCard = styled(Box)(({ theme }) => ({
@@ -20,7 +21,10 @@ const StyledSpecialtiesCard = styled(Box)(({ theme }) => ({
 const SpecialtiesImage = styled(TextCenterBox)(({ theme, image }) => ({
     height: 103,
     width: 81,
-    backgroundImage: `url(${bannerImg})`,
+    backgroundImage: `url(${RecommendedSpecialtiesImg})`,
+    backgroundSize: "cover",
+    backgroundPosition: 'center',
+    backgroundRepeat: "no-repeat",
 }));
 
 const SpecialtiesContent = styled(Box)(({ theme }) => ({
@@ -78,7 +82,7 @@ export const RecommendedSpecialtiesCard = () => {
     return (
         <StyledSpecialtiesCard>
             <SpecialtiesImage>
-                <h6>Font</h6>
+                <Icon src={AyurvedaIcon} className="recommended_specialties_icon" />
             </SpecialtiesImage>
             <SpecialtiesContent>
                 <SpecialtiesTextBox>

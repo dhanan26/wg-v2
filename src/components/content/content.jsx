@@ -3,7 +3,9 @@ import { Stack, styled, Box, useMediaQuery, FormControlLabel, Grid } from "@mui/
 import { borderLeft } from "@mui/system";
 import { StyledSwitch } from "../common/switch";
 import { PrimarySubText } from "../common/typographies/typographies"
+import { Filter } from "../filters";
 import { RecommendedSpecialties } from "../recommendedSpecialties";
+
 
 const MainContentContainer = styled((props) => (
     <Grid container {...props} />
@@ -19,18 +21,23 @@ const MainContentContainer = styled((props) => (
 
 
 const FilterContainer = styled((props) => (
-    <Grid item {...props} md={2.5}  />
+    <Grid item {...props} md={2.5} sm={0} />
 ))(({ theme }) => ({
+    paddingRight: 24,
+    [theme.breakpoints.down('md')]: {
+        paddingLeft: 10
+    },
 }));
 
 const PartnerContainer = styled((props) => (
-    <Grid item {...props} md={9.5}  sm={12} xs={12} />
+    <Grid item {...props} md={9.5} sm={12} xs={12} />
 ))(({ theme }) => ({
+    backgroundColor: "red"
 }));
 
 
 const SortByContainer = styled(Box)(({ theme }) => ({
-    height:20,
+    height: 20,
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-end",
@@ -59,11 +66,15 @@ const SortByText = styled(PrimarySubText)(({ theme }) => ({
 
 
 export const Content = () => {
+    const isSmallScreen = useMediaQuery('(max-width:900px)');
     return (
         <MainContentContainer>
-            <FilterContainer>
+            {
+                !isSmallScreen && <FilterContainer>
+                    <Filter />
+                </FilterContainer>
+            }
 
-            </FilterContainer>
             <PartnerContainer>
                 <SortByContainer>
                     <SortByText variant="secondaryTitle" color={"textPrimary"} >Sort By</SortByText>
@@ -72,7 +83,7 @@ export const Content = () => {
                     <StyledSwitch defaultChecked />
                     <SortByText variant="secondaryTitle" color={"primary"} >Duration</SortByText>
                 </SortByContainer>
-                <RecommendedSpecialties/>
+                <RecommendedSpecialties />
             </PartnerContainer>
 
         </MainContentContainer>

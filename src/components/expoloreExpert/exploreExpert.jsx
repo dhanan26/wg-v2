@@ -129,7 +129,6 @@ export const ExploreExpert = () => {
                 <GetInTouchButtonExplore variant="contained" color="buttonPrimary" startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />}  >Get in touch</GetInTouchButtonExplore>
             </ButtonContainer>
             </MainContainer>
-
         </ExploreExpertBox>
     )
 }

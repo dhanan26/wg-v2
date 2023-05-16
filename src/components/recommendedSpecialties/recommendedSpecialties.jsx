@@ -10,7 +10,8 @@ SwiperCore.use([Navigation]);
 
 
 const RecommendedSpecialtiesContainer = styled(Box)(({ theme }) => ({
-marginTop:10
+marginTop:10,
+marginLeft:10
 }));
 
 
@@ -27,7 +28,7 @@ const LinearGradientBox = styled(Box)(({ theme }) => ({
     width: "95%",
     position: "relative",
     marginTop: "-90px",
-    marginLeft: "-20px",
+    marginLeft: "-10px",
 }));
 
 
@@ -40,8 +41,7 @@ const LinearGradientBox = styled(Box)(({ theme }) => ({
 export const RecommendedSpecialties = () => {
     return (
         <>
-
-            <RecommendedSpecialtiesTitle variant="PrimaryText" color="textPrimary" >Recommended Specialties</RecommendedSpecialtiesTitle>
+            <RecommendedSpecialtiesTitle variant="primaryTitle" color="textPrimary" >Recommended Specialties</RecommendedSpecialtiesTitle>
             <RecommendedSpecialtiesContainer>
                 <SwiperCards />
                 <LinearGradientBox />
@@ -55,6 +55,9 @@ const specialties = ["one", "two", "three", "four", "five", "six", "seven", "eig
 
 
 const SwiperCards = () => {
+    const SwiperContainer = styled(Box)(({ theme }) => ({
+        marginLeft:5
+    }));
     const breakpoints = {
         // when window width is >= 640px
         300: {
@@ -81,14 +84,10 @@ const SwiperCards = () => {
         }
     };
     return (
-        <>
+        <SwiperContainer>
             <Swiper
                 breakpoints={breakpoints}
                 loop={true}
-                navigation={{
-                    prevEl: '.swiper-button-next',
-                    nextEl: '.swiper-button-prev',
-                }}
             >
                 {
                     specialties?.map((each, index) => (
@@ -99,7 +98,7 @@ const SwiperCards = () => {
                 }
                 {/* Previous and next arrow buttons */}
             </Swiper>
-        </>
+        </SwiperContainer>
     )
 }
 

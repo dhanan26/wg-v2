@@ -70,7 +70,8 @@ export const theme = createTheme({
     fontFamily: {
         primary: "AquawaxMedium",
         secondary: "Poppins",
-        Rubik: "Rubik"
+        Rubik: "Rubik",
+        Inter:"Inter"
     },
     breakpoints: {
         values: {
