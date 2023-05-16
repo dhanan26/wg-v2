@@ -1,0 +1,1 @@
+export {RecommendedSpecialtiesCard} from "./recommendedSpecialtiesCard"
