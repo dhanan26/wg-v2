@@ -35,8 +35,8 @@ export const TextCenterBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
 }));
 
+// grid mui box
+
 export const GridBox = styled(Box)(({ theme }) => ({
   display: "grid",
-//   gridTemplateColumns: "repeat(3, 1fr)",
-//   gap: 6,
 }));
