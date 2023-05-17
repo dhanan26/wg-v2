@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Container = styled(Box)(() => ({
   background: "#eaf0fc",
-  paddingBottom: 100,
+  paddingBottom: "2rem",
   fontFamily: "'Aquawax', Courier, monospace;",
 }));
 
