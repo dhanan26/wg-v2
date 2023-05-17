@@ -1,6 +1,7 @@
 import { Content } from "../../components/content";
 import { ExploreExpert } from "../../components/expoloreExpert";
 import { FaqSection } from "../../components/faqSection";
+import { Footer } from "../../components/footer";
 import { PopularPackage } from "../../components/popularPackage";
 
 export const Home = () => {
@@ -10,6 +11,7 @@ export const Home = () => {
       <ExploreExpert />
       <Content />
       <FaqSection />
+      <Footer />
     </>
   );
 };
