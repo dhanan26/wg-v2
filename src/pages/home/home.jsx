@@ -1,13 +1,15 @@
-import { Content } from "../../components/content"
-import { ExploreExpert } from "../../components/expoloreExpert"
-import { PopularPackage } from "../../components/popularPackage"
+import { Content } from "../../components/content";
+import { ExploreExpert } from "../../components/expoloreExpert";
+import { FaqSection } from "../../components/faqSection";
+import { PopularPackage } from "../../components/popularPackage";
 
 export const Home = () => {
-    return (
-        <>
-        <PopularPackage/>
-        <ExploreExpert/>
-        <Content/>
-        </>
-    )
-}
+  return (
+    <>
+      <PopularPackage />
+      <ExploreExpert />
+      <Content />
+      <FaqSection />
+    </>
+  );
+};

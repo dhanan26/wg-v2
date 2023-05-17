@@ -1,19 +1,22 @@
 @font-face {
-    font-family: 'AquawaxBold';
-    src: url('../src/assets/fonts/AquawaxBold.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'Aquawax';
+    src: url(../src/assets/fonts/AquawaxBold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'AquawaxMedium';
-    src: url('../src/assets/fonts/AquawaxMedium.ttf') format('truetype');
+    font-family: 'Aquawax';
+    src: url(../src/assets/fonts/AquawaxMedium.ttf) format('truetype');
     font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'AquawaxLight';
-    src: url('../src/assets/fonts/AquawaxLight.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'Aquawax';
+    src: url(../src/assets/fonts/AquawaxLight.ttf) format('truetype');
+    font-weight: lighter;
+    font-style: normal;
 }
 
 @font-face {
