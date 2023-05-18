@@ -81,8 +81,7 @@ const HappyCommunityFooterBox = styled(GridBox)(({ theme }) => ({
 }));
 
 const FooterStyledBox = styled(Box)(({ theme }) => ({
-  // margin: "0px 20px 20px 0px",
-  // marginTop: 0
+
 }));
 
 const FooterContainer = (props) => {
