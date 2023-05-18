@@ -34,6 +34,8 @@ const InnerFooter = styled(Box)(() => ({
   justifyContent: "center",
   alignItems: "center",
   padding: "0 1rem 0 1rem",
+  gap: "0.5rem",
+  flexWrap: "wrap",
 }));
 
 const Logo = styled(Box)(() => ({}));
@@ -52,6 +54,9 @@ const SocialLink = styled(Link)(() => ({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  color: "white",
+  textDecoration: "none",
+  cursor: "pointer",
 }));
 
 export const Footer = () => {
@@ -62,22 +67,25 @@ export const Footer = () => {
           <img src={LogoImage} style={{ maxHeight: "100%", maxWidth: "100%" }} />
         </Logo>
         <SocialContainer>
-          <SocialLink href="https://www.facebook.com/PainRelief2022" target="_blank">
+          <SocialLink id="footer-fb-link" href="https://www.facebook.com/PainRelief2022" target="_blank">
             <img src={facebook} height={24} />
           </SocialLink>
-          <SocialLink href="https://www.youtube.com/@wellnessgarden8294" target="_blank">
+          <SocialLink id="footer-yt-link" href="https://www.youtube.com/@wellnessgarden8294" target="_blank">
             <img src={youtube} height={24} />
           </SocialLink>
-          <SocialLink href="" target="_blank">
+          <SocialLink id="footer-tw-link" href="" target="_blank">
             <img src={twitter} height={24} />
           </SocialLink>
-          <SocialLink href="https://www.instagram.com/thewellness_garden" target="_blank">
+          <SocialLink id="footer-insta-link" href="https://www.instagram.com/thewellness_garden" target="_blank">
             <img src={instagram} height={24} />
           </SocialLink>
         </SocialContainer>
       </Container>
       <InnerFooter>
-        2023. The Wellness Garden | All Rights Reserved | Privacy Policy | Terms of use | Sitemap
+        2023. The Wellness Garden | <SocialLink id="footer-rights-links"> All Rights Reserved </SocialLink> |
+        <SocialLink id="footer-privacy-link">Privacy Policy</SocialLink> |{" "}
+        <SocialLink id="footer-tnc-link">Terms of use</SocialLink> |
+        <SocialLink id="footer-sitemap-link">Sitemap</SocialLink>
       </InnerFooter>
     </>
   );
