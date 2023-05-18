@@ -76,7 +76,7 @@ const CustomExpandIcon = styled(ExpandMoreIcon)(({ theme }) => ({
 
 export const AccordionFilter = ({ filterOptions = [], filterTitle, props }) => {
     return (
-        <Box  sx={{ marginBottom: '16px' }} >
+        <Box>
             <StyledAccordion  >
                 <StyledAccordionSummary
                     expandIcon={<CustomExpandIcon />}
