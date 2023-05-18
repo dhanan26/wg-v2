@@ -3,6 +3,7 @@ import { ExploreExpert } from "../../components/expoloreExpert";
 import { FaqSection } from "../../components/faqSection";
 import { Footer } from "../../components/footer";
 import { PopularPackage } from "../../components/popularPackage";
+import { SuccessStories } from "../../components/successStories/successStories";
 
 export const Home = () => {
   return (
@@ -10,6 +11,7 @@ export const Home = () => {
       <PopularPackage />
       <ExploreExpert />
       <Content />
+      <SuccessStories />
       <FaqSection />
       <Footer />
     </>
