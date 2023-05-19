@@ -11,6 +11,7 @@ export const theme = createTheme({
         },
         secondary: {
             main: "#00256D", //Cool Black 
+            darker: "rgba(0, 37, 109, 1)"
         },
         buttonPrimary: {
             main: "#F67D6D", //Salmon 
@@ -43,6 +44,10 @@ export const theme = createTheme({
         painColor:{
             main: "#0187A4",
             contrastText: '#FFFFFF',
+        },
+        faqSection: {
+            background: '#eaf0fc',
+            answerColor: "#9695b2"
         }
     },
     typography: {
