@@ -12,18 +12,18 @@ const Container = styled(Box)(() => ({
   margin: "2rem 0 2rem 0",
 }));
 
-const Header = styled(Typography)(() => ({
+const Header = styled(Typography)(({ theme }) => ({
   fontFamily: "'Aquawax', Courier, monospace;",
   fontSize: "2.5rem",
-  color: "#00256D",
+  color: theme.palette.secondary.main,
   fontWeight: 500,
   textAlign: "center",
 }));
 
-const SubHeader = styled(Typography)(() => ({
+const SubHeader = styled(Typography)(({ theme }) => ({
   fontFamily: "'Rubik', Courier, monospace;",
   fontSize: "1rem",
-  color: "#333333",
+  color: theme.palette.textPrimary.main,
   fontWeight: 400,
   textAlign: "center",
   padding: "0 1rem 0 1rem",
@@ -115,7 +115,7 @@ const CardContainer = styled(Box)(({ theme }) => ({
   width: "calc(100% - 2rem)",
   display: "flex",
   flexDirection: "column",
-  background: "#E3EDFC",
+  background: theme.palette.cardActive.main,
   padding: "0 1rem 0 1rem",
   [theme.breakpoints.down("xs")]: {
     padding: "0 0.2rem 0 0.2rem",
@@ -163,7 +163,7 @@ const CardHeroInfo = styled(Box)(() => ({
   flexDirection: "column",
 }));
 
-const CardInfoTitle = styled(Box)(() => ({
+const CardInfoTitle = styled(Box)(({ theme }) => ({
   fontFamily: "'Aquawax', Courier, monospace;",
   height: "calc(100% - 1rem)",
   width: "calc(100% - 1rem)",
@@ -173,7 +173,7 @@ const CardInfoTitle = styled(Box)(() => ({
   alignItems: "center",
   "& span": {
     fontSize: "1rem",
-    color: "#00256D",
+    color: theme.palette.secondary.main,
   },
   "& img": {
     height: 57,
@@ -182,7 +182,7 @@ const CardInfoTitle = styled(Box)(() => ({
   },
   "& span:last-child": {
     fontSize: "0.875rem",
-    color: "rgba(0, 37, 109, 0.8)",
+    color: theme.palette.secondary.darker,
   },
 }));
 
@@ -204,7 +204,7 @@ const CardInfoTypes = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "0.5rem",
-    color: "rgba(0, 37, 109, 1)",
+    color: theme.palette.secondary.darker,
     fontSize: "0.75rem",
     "& img": {
       height: 24,
@@ -231,7 +231,7 @@ const CardInfoTypesMobile = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
     gap: "0.5rem",
-    color: "rgba(0, 37, 109, 1)",
+    color: theme.palette.secondary.darker,
     fontSize: "0.75rem",
     "& img": {
       height: 24,
@@ -249,7 +249,7 @@ const CardBody = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   flexDirection: "column",
-  color: "rgba(0, 37, 109, 1)",
+  color: theme.palette.secondary.darker,
   "& span": {
     lineHeight: "2rem",
     [theme.breakpoints.down(980)]: {
