@@ -1,0 +1,1 @@
+export { ApprovedTreatment } from "./approvedTreatment";
