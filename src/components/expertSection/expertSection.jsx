@@ -4,19 +4,23 @@ import { TextCenterBox } from "../common/containers/containers";
 import expertImage from "../../assets/images/expertsection.jpg";
 
 const ExpertSectionMainBox = styled(TextCenterBox)(({ theme }) => ({
-  height: 390,
+  height: "auto",
   width: "auto",
   backgroundColor: theme.palette.expertColor.main,
   flexDirection: "column",
+  paddingBottom: 40,
   [theme.breakpoints.down("sm")]: {
-    height: 262,
+    height: "auto",
     width: "auto",
   },
+  justifyContent: "unset",
 }));
 
 const Title = styled(PrimaryText)(({ theme }) => ({
   fontSize: 40,
   fontWeight: 500,
+  paddingTop: 40,
+
   [theme.breakpoints.down("sm")]: {
     fontSize: 20,
   },
@@ -24,7 +28,7 @@ const Title = styled(PrimaryText)(({ theme }) => ({
 const SubTitle = styled(PrimarySubText)(({ theme }) => ({
   paddingBottom: 20,
   textAlign: "center",
-
+  paddingTop: 10,
   [theme.breakpoints.down("sm")]: {
     fontSize: 12,
     padding: "0px 31.5px 20px 31.5px",
@@ -91,16 +95,22 @@ const SubContainerBoxText = styled(PrimarySubText)(({ theme }) => ({
 export const ExpertSection = () => {
   return (
     <ExpertSectionMainBox>
-      <Title color={"secondary"}> Is this the best solution for me?</Title>
+      <Title variant="primaryTitle" color={"secondary"}>
+        Is this the best solution for me?
+      </Title>
       <SubTitle variant="secondaryText" color={"textPrimary"}>
         Take our expert doctor's assessment to find out if this is the right solution for
       </SubTitle>
       <ContentBox>
         <ImageBox />
         <ContentSubBox>
-          <ContentBoxTitle color={"secondary"}>Talk to our experts</ContentBoxTitle>
+          <ContentBoxTitle variant="primaryTitle" color={"secondary"}>
+            Talk to our experts
+          </ContentBoxTitle>
           <SubContainerBox>
-            <SubContainerBoxText color={"primary"}>Take Quick Assessment</SubContainerBoxText>
+            <SubContainerBoxText variant="secondaryText" color={"primary"}>
+              Take Quick Assessment
+            </SubContainerBoxText>
           </SubContainerBox>
         </ContentSubBox>
       </ContentBox>
