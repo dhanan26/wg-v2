@@ -22,13 +22,13 @@ const Container = styled(Box)(() => ({
   gap: "2.5rem",
 }));
 
-const InnerFooter = styled(Box)(() => ({
+const InnerFooter = styled(Box)(({ theme }) => ({
   minHeight: 30,
   fontFamily: "Rubik",
-  background: "#69C6AC",
+  background: theme.palette.primary.main,
   width: "auto",
   textAlign: "center",
-  color: "#FFFFFF",
+  color: theme.palette.buttonPrimary.contrastText,
   fontSize: "1rem",
   display: "flex",
   justifyContent: "center",
