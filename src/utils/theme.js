@@ -47,7 +47,10 @@ export const theme = createTheme({
         faqSection: {
             background: '#eaf0fc',
             answerColor: "#9695b2"
-        }
+        },
+        expertColor: {
+            main: "#ACE6CF",
+          },
     },
     typography: {
         primaryTitle: {
