@@ -1,7 +1,6 @@
-import "../index.css"
+import "../index.css";
 
 import { createTheme } from "@mui/material";
-
 
 export const theme = createTheme({
     palette: {
@@ -90,4 +89,3 @@ export const theme = createTheme({
         },
     },
 })
-
