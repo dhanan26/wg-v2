@@ -11,7 +11,10 @@ import image1 from "../../assets/images/Why Us/Why_Us-1.png";
 import image2 from "../../assets/images/Why Us/Why_Us-2.png";
 import image3 from "../../assets/images/Why Us/Why_Us-3.png";
 
-const WhyUsBox = styled(TextCenterBox)(({ theme }) => ({}));
+const WhyUsBox = styled(TextCenterBox)(({ theme }) => ({
+  height:209,
+  backgroundColor:"red"
+}));
 
 const WhyUsTitleBox = styled(TextCenterBox)(({ theme }) => ({
   flexDirection: "column",
