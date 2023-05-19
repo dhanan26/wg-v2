@@ -7,8 +7,8 @@ import { Box, Collapse, Typography, styled } from "@mui/material";
 import { PrimaryText, PrimarySubText, AnchorText } from "../common/typographies/typographies";
 import { useState } from "react";
 
-const Container = styled(Box)(() => ({
-  background: "#eaf0fc",
+const Container = styled(Box)(({ theme }) => ({
+  background: theme.palette.faqSection.background,
   paddingBottom: "2rem",
   fontFamily: "'Aquawax', Courier, monospace;",
 }));
@@ -44,8 +44,8 @@ const FaqContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-const ReadMore = styled(Typography)(() => ({
-  color: "#F67D6D",
+const ReadMore = styled(Typography)(({ theme }) => ({
+  color: theme.palette.buttonPrimary,
   marginTop: "1rem",
   display: "flex",
   gap: "0.2rem",
@@ -103,16 +103,16 @@ const QuestionTitleContainer = styled(Box)(() => ({
   justifyContent: "space-between",
   cursor: "pointer",
 }));
-const QuestionTitle = styled(Box)(() => ({
+const QuestionTitle = styled(Box)(({ theme }) => ({
   fontSize: "1rem",
   fontWeight: 300,
-  color: "#333333",
+  color: theme.palette.textPrimary.main,
 }));
-const QuestionAnswer = styled(Box)(() => ({
+const QuestionAnswer = styled(Box)(({ theme }) => ({
   paddingTop: "1rem",
   fontSize: "1rem",
   fontWeight: 300,
-  color: "#9695b2",
+  color: theme.palette.faqSection.answerColor,
 }));
 
 const FaqQuestion = ({ qna, id }) => {
