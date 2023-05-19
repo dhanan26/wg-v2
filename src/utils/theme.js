@@ -54,7 +54,7 @@ export const theme = createTheme({
     },
     typography: {
         primaryTitle: {
-            fontFamily: "AquawaxMedium",
+            fontFamily: "Aquawax",
             fontWeight: 500,
             fontSize: 40,
         },
@@ -75,7 +75,7 @@ export const theme = createTheme({
         }
     },
     fontFamily: {
-        primary: "AquawaxMedium",
+        primary: "Aquawax",
         secondary: "Poppins",
         Rubik: "Rubik",
         Inter:"Inter"
