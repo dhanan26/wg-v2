@@ -5,6 +5,7 @@ import { StyledSwitch } from "../common/switch";
 import { PrimarySubText } from "../common/typographies/typographies"
 import { Filter } from "../filters";
 import { RecommendedSpecialties } from "../recommendedSpecialties";
+import { EnquiryForm } from "../enquiryForm";
 
 
 const MainContentContainer = styled((props) => (
@@ -84,6 +85,8 @@ export const Content = () => {
                     <SortByText variant="secondaryTitle" color={"primary"} >Duration</SortByText>
                 </SortByContainer>
                 <RecommendedSpecialties />
+                <EnquiryForm name="Hotel whatever from ShivajiNagar"/>
+
             </PartnerContainer>
 
         </MainContentContainer>
