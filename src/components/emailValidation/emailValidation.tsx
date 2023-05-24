@@ -76,9 +76,10 @@ export const ContainerBox = ({ handleClose }) => {
 };
 export const EmailValidation = () => {
   const [email, setEmail] = useState("");
-  const [valid, setValid] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);
+  const [disable, setDisable] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -86,23 +87,21 @@ export const EmailValidation = () => {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const validateEmail = (input) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = emailRegex.test(input);
-    setValid(isValid);
-    if (isValid === false) {
-      setError("invalid email");
-    } else {
-      setError("valid email");
-    }
+  const submit = () => {
+    console.log(email);
   };
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
-    validateEmail(inputValue);
+    const emailRegex = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{3}$/;
+    const isValidEmail = emailRegex.test(inputValue);
+    console.log(isValidEmail, "isValidEmail");
 
-    if (!inputValue) {
-      setError("Field is empty");
+    setValidEmail(isValidEmail);
+    if (isValidEmail === false) {
+      setDisable(true);
+    } else if (isValidEmail === true) {
+      setDisable(false);
     }
   };
 
@@ -115,12 +114,19 @@ export const EmailValidation = () => {
         <StyleedDialogContent>
           <ContainerBox handleClose={handleClose} />
           <ContentBox>
-            <StyledTextField label="Email" variant="outlined" value={email} name="email" onChange={handleInputChange} />
-            <StyledButton variant="contained" color="buttonPrimary" onClick={validateEmail}>
+            <StyledTextField
+              error={error}
+              placeholder="Email"
+              variant="outlined"
+              value={email}
+              name="email"
+              // helperText={error}
+              onChange={handleInputChange}
+            />
+            <StyledButton variant="contained" color="buttonPrimary" onClick={submit} disabled={disable}>
               Send
             </StyledButton>
           </ContentBox>
-          {error}
         </StyleedDialogContent>
       </Dialog>
     </>
