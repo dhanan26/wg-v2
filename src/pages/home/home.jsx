@@ -1,4 +1,4 @@
-// import { Content } from "../../components/content";
+import { Content } from "../../components/content";
 import { ExploreExpert } from "../../components/expoloreExpert";
 import { FaqSection } from "../../components/faqSection";
 import { Footer } from "../../components/footer";

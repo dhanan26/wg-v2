@@ -82,9 +82,9 @@ export const AccordionFilter = ({ filterOptions = [], filterTitle, props }) => {
           <FilterTitle color="textPrimary">{filterTitle}</FilterTitle>
         </StyledAccordionSummary>
         <StyledAccordionDetails>
-          {filterOptions?.map((filterOption, index) => {
+          {filterOptions?.map((filterOption) => {
             return (
-              <FilterOptionBox key={index}>
+              <FilterOptionBox>
                 <CustomFormControlLabel
                   labelPlacement="start"
                   label={<FilterOptionText color={"textPrimary"}>{filterOption}</FilterOptionText>}

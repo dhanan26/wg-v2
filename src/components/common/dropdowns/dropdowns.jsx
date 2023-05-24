@@ -3,6 +3,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const StyledDropDown = styled(Select)(({ theme, style }) => ({
     height: 39,
     width: 137,
+
     borderRadius: 2,
     textTransform: "none",
     boxShadow: 'none',
@@ -10,12 +11,18 @@ const StyledDropDown = styled(Select)(({ theme, style }) => ({
     ".MuiSelect-icon": {
         color: theme.palette.textSecondary.main,
         fontSize: 30,
+        [theme.breakpoints.down("sm")]: {
+            fontSize: 10,
+          },
     },
     ".MuiSelect-select": {
         color: theme.palette.textSecondary.main,
         paddingTop: "15px",
         paddingRight: "40px",
         fontFamily: theme.fontFamily.primary,
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 12,
+          },
     },
     "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
     {
@@ -24,7 +31,11 @@ const StyledDropDown = styled(Select)(({ theme, style }) => ({
     [theme.breakpoints.down('sm')]: {
         fontSize: 14,
         width: 126
-    }
+    },
+    [theme.breakpoints.down("xs")]: {
+        width: 100,
+
+      },
 }));
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
@@ -36,6 +47,7 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
         backgroundColor: theme.palette.buttonSecondary.main,
         color: theme.palette.textSecondary.main,
     },
+
 
 }));
 
