@@ -46,3 +46,15 @@
   margin-top: 50px;
   margin-left: 80%;
 }
+
+.arrow-right_filled {
+  width: 12px;
+  height: 6px;
+}
+.how-it-works {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  right: 5%;
+  /* padding-top: 6px; */
+}
