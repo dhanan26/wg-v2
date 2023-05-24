@@ -76,7 +76,7 @@ const CustomImageBox = styled(Box)(({ theme }) => ({
 }));
 
 export const WhyUS = () => {
-  const isSmallScreen = useMediaQuery("(max-width:800px)");
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
   return (
     <WhyUsBox>
       <WhyUsTitleBox>

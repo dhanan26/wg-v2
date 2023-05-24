@@ -18,14 +18,14 @@ const Container = styled(Box)(({ theme }) => ({
   },
 }));
 
-const FormContainer = styled(Box)(({theme}) => ({
+const FormContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: "2rem",
   flexWrap: "wrap",
   marginBottom: "1rem",
   [theme.breakpoints.down("xs")]: {
     flexDirection: "column",
-  }
+  },
 }));
 
 const FormButton = styled(Button)(({ theme }) => ({
@@ -50,8 +50,7 @@ export const EnquiryForm = ({ name }) => {
 
   const handleSubmit = () => {
     // handle submit
-    console.log(form);
-  }
+  };
 
   return (
     <Container>
@@ -94,7 +93,13 @@ export const EnquiryForm = ({ name }) => {
           }}
         />
       </form>
-      <FormButton disableRipple disableElevation variant="contained" fullWidth onClick={handleSubmit}>
+      <FormButton
+        disableRipple
+        disableElevation
+        variant="contained"
+        fullWidth
+        onClick={handleSubmit}
+      >
         Submit
       </FormButton>
     </Container>
@@ -114,7 +119,13 @@ const FormTextInput = styled(TextField)(() => ({
   "& MuiFormControl-root:": {},
 }));
 
-const FormInput = ({ label, placeholder, multiline = false, value, onChange }) => {
+const FormInput = ({
+  label,
+  placeholder,
+  multiline = false,
+  value,
+  onChange,
+}) => {
   return (
     <FormInputBox>
       <span>{label}</span>

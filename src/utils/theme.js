@@ -51,6 +51,9 @@ export const theme = createTheme({
         expertColor: {
             main: "#ACE6CF",
           },
+          tabSection:{
+            background: '#F2F2F2',
+          }
     },
     typography: {
         primaryTitle: {
