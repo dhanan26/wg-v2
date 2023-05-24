@@ -35,7 +35,8 @@ export const theme = createTheme({
             main: "#333333" //Black
         },
         textSecondary: {
-            main: "#FFFFFF" //White
+            main: "#FFFFFF", //White
+            contrast: "#757D8A",
         },
         cardActive: {
             main: "#E3EDFC"
@@ -50,7 +51,15 @@ export const theme = createTheme({
         },
         expertColor: {
             main: "#ACE6CF",
-          },
+        },
+        avatar: {
+            borderColor: '#16BE48',
+        },
+        packageCard: {
+            exp: "#4A4A4A",
+            line: "#999999",
+            button: "#00256D"
+        }
     },
     typography: {
         primaryTitle: {
