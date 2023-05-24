@@ -5,11 +5,11 @@ export const PhotoTab = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const images = [
-    "https://picsum.photos/id/15/800/300",
-    "https://picsum.photos/id/25/500/300",
-    "https://picsum.photos/id/41/500/200",
-    "https://picsum.photos/id/40/300/200",
-    "https://picsum.photos/id/58/300/200",
+    "https://picsum.photos/id/15/400/200",
+    "https://picsum.photos/id/25/400/200",
+    "https://picsum.photos/id/40/200/200",
+    "https://picsum.photos/id/58/200/200",
+    "https://picsum.photos/id/41/400/200",
     "https://picsum.photos/id/61/500/200",
     "https://picsum.photos/id/77/200/200",
     "https://picsum.photos/id/91/500/500",
@@ -35,7 +35,7 @@ export const PhotoTab = () => {
           src={src}
           onClick={() => openImageViewer(index)}
           key={index}
-          style={{ margin: "5px" }}
+          style={{ margin: "2.5px 5px 2.5px 5px", cursor: "pointer" }}
           alt={`image ${index}`}
         />
       ))}

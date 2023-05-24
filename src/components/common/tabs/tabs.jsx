@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { Box, Typography, useTheme } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
@@ -44,31 +45,37 @@ export const TabsComponent = ({ tabs }) => {
     setValue(newValue);
   };
 
-  const theme = useTheme();
-  //   console.log("🚀 ~ file: tabs.jsx:48 ~ TabsComponent ~ theme:", theme)
+  const CustomTab = styled(Tab)(({ theme, index }) => ({
+    backgroundColor: "#F2F2F2",
+    fontFamily: theme.fontFamily.Inter,
+    textTransform: "capitalize",
+    padding: "5px 20px 5px 20px",
+    ...(index === 0 ? { marginRight: "50px" } : { marginRight: "1px" }),
+    fontSize: "14px",
+    fontWeight: 400,
+  }));
+
+  const CustomTabs = styled(Tabs)(({ theme, index }) => ({
+    padding: "15px 15px 0px 15px",
+  }));
 
   return (
     <>
-      <Tabs
+      <CustomTabs
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
       >
         {tabs.map((tab, index) => (
-          <Tab
-          disableRipple
-            sx={{
-              backgroundColor: "#F2F2F2",
-              padding: "5px 20px 5px 20px",
-              ...(index === 0 ? { marginRight: "50px" } : { marginRight: "2px" }),
-              fontSize: 14,
-            }}
+          <CustomTab
+            index={index}
+            disableRipple
             label={tab.label}
             {...a11yProps(index)}
-            key={index} 
+            key={index}
           />
         ))}
-      </Tabs>
+      </CustomTabs>
       {tabs.map((tab, index) => (
         <TabPanel value={value} index={index} key={index}>
           {tab.content}
