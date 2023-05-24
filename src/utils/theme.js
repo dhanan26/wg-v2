@@ -10,6 +10,7 @@ export const theme = createTheme({
     },
     secondary: {
       main: "#00256D", //Cool Black
+      darker: "rgba(0, 37, 109, 1)",
     },
     buttonPrimary: {
       main: "#F67D6D", //Salmon
@@ -43,13 +44,26 @@ export const theme = createTheme({
       main: "#0187A4",
       contrastText: "#FFFFFF",
     },
+    faqSection: {
+      background: "#eaf0fc",
+      answerColor: "#9695b2",
+    },
     expertColor: {
       main: "#ACE6CF",
+    },
+    menuItem: {
+      main: "#55595C",
+    },
+    slider: {
+      main: "#D9D9D9",
+      pointer: "#627AA2",
+      labelBackground: "#E9E9E9",
+      labelText: "#112211",
     },
   },
   typography: {
     primaryTitle: {
-      fontFamily: "AquawaxMedium",
+      fontFamily: "Aquawax",
       fontWeight: 500,
       fontSize: 40,
     },
@@ -70,7 +84,7 @@ export const theme = createTheme({
     },
   },
   fontFamily: {
-    primary: "AquawaxMedium",
+    primary: "Aquawax",
     secondary: "Poppins",
     Rubik: "Rubik",
     Inter: "Inter",
