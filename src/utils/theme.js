@@ -59,11 +59,10 @@ export const theme = createTheme({
             exp: "#4A4A4A",
             line: "#999999",
             button: "#00256D"
-        }
-          },
-          tabSection:{
+        },
+        tabSection: {
             background: '#F2F2F2',
-          }
+        }
     },
     typography: {
         primaryTitle: {

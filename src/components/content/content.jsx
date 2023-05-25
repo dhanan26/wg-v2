@@ -1,13 +1,10 @@
 
 import {
-  Stack,
   styled,
   Box,
   useMediaQuery,
-  FormControlLabel,
   Grid,
 } from "@mui/material";
-import { borderLeft } from "@mui/system";
 
 import { StyledSwitch } from "../common/switch";
 import { PrimarySubText } from "../common/typographies/typographies";
@@ -27,21 +24,6 @@ const MainContentContainer = styled((props) => <Grid container {...props} />)(({
   paddingRight: 36,
 }));
 
-const FilterContainer = styled((props) => <Grid item {...props} md={2.5} sm={0} />)(({ theme }) => ({
-
-
-
-const MainContentContainer = styled((props) => <Grid container {...props} />)(
-  ({ theme }) => ({
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: 16,
-      paddingRight: 16,
-    },
-    height: "1500px",
-    paddingLeft: 80,
-    paddingRight: 36,
-  })
-);
 
 const FilterContainer = styled((props) => (
   <Grid item {...props} md={2.5} sm={0} />
@@ -51,13 +33,6 @@ const FilterContainer = styled((props) => (
     paddingLeft: 10,
   },
 }));
-
-
-const PartnerContainer = styled((props) => <Grid item {...props} md={9.5} sm={12} xs={12} />)(() => ({
-  // backgroundColor: "red"
-}));
-
-const SortByContainer = styled(Box)(() => ({
 
 const PartnerContainer = styled((props) => (
   <Grid item {...props} md={9.5} sm={12} xs={12} />
