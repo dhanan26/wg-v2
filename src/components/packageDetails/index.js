@@ -1,0 +1,1 @@
+export {PackageDetails} from "./packageDetails"

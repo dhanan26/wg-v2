@@ -99,7 +99,6 @@ const TopHeaderItems = () => {
 const MainHeaderItems = () => {
     const isSmallScreen = useMediaQuery('(max-width:1200px)');
     const theme = useTheme()
-    console.log(theme,"theme")
     return (
         <MainNavigationContainer >
             <Icon src={wellnessLogo} className="wellness_garden_icon" />

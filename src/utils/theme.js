@@ -60,6 +60,10 @@ export const theme = createTheme({
             line: "#999999",
             button: "#00256D"
         }
+          },
+          tabSection:{
+            background: '#F2F2F2',
+          }
     },
     typography: {
         primaryTitle: {
