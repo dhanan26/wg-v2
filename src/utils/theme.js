@@ -62,6 +62,9 @@ export const theme = createTheme({
         },
         tabSection: {
             background: '#F2F2F2',
+        },
+        packageInfo: {
+            chipColor: "#16BE48"
         }
     },
     typography: {
