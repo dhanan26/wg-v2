@@ -1,3 +1,4 @@
+
 import {
   Stack,
   styled,
@@ -7,12 +8,28 @@ import {
   Grid,
 } from "@mui/material";
 import { borderLeft } from "@mui/system";
+
 import { StyledSwitch } from "../common/switch";
 import { PrimarySubText } from "../common/typographies/typographies";
 import { Filter } from "../filters";
 import { RecommendedSpecialties } from "../recommendedSpecialties";
 import { EnquiryForm } from "../enquiryForm";
+import { PackageCard } from "../widgets/packageCard";
 import { PackageDetails } from "../packageDetails";
+
+const MainContentContainer = styled((props) => <Grid container {...props} />)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+  height: "100vh",
+  paddingLeft: 80,
+  paddingRight: 36,
+}));
+
+const FilterContainer = styled((props) => <Grid item {...props} md={2.5} sm={0} />)(({ theme }) => ({
+
+
 
 const MainContentContainer = styled((props) => <Grid container {...props} />)(
   ({ theme }) => ({
@@ -34,6 +51,13 @@ const FilterContainer = styled((props) => (
     paddingLeft: 10,
   },
 }));
+
+
+const PartnerContainer = styled((props) => <Grid item {...props} md={9.5} sm={12} xs={12} />)(() => ({
+  // backgroundColor: "red"
+}));
+
+const SortByContainer = styled(Box)(() => ({
 
 const PartnerContainer = styled((props) => (
   <Grid item {...props} md={9.5} sm={12} xs={12} />
@@ -84,6 +108,48 @@ export const Content = () => {
           </SortByText>
         </SortByContainer>
         <RecommendedSpecialties />
+        {/* remove this, added for testing */}
+        <div style={{ display: "flex" }}>
+          <PackageCard
+            packageData={{
+              imgUrl: "https://picsum.photos/300",
+              logoUrl: "https://picsum.photos/200",
+              awards: ["https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200"],
+              name: "Taj Jiva Spa",
+              description: "Hath yoga package",
+            }}
+            type={"Back pain"}
+            cost={{
+              basePrice: 10000,
+              price: 1000,
+              discount: undefined,
+            }}
+            details={{
+              sessions: 20,
+              days: 9,
+            }}
+          />
+          <PackageCard
+            isIndividual
+            individualData={{
+              imgUrl: "https://picsum.photos/200",
+              isVerified: true,
+              name: "Dr Ramses",
+              exp: 27,
+              description: "BDS MDS - Naturopathy Ayurveda Hath yoga package",
+            }}
+            type="Back Pain"
+            cost={{
+              basePrice: 10000,
+              price: 7000,
+              discount: 30,
+            }}
+            details={{
+              sessions: 10,
+              days: 1,
+            }}
+          />
+        </div>
         <EnquiryForm name="Hotel whatever from ShivajiNagar" />
         <PackageDetails />
       </PartnerContainer>
