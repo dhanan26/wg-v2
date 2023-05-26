@@ -19,7 +19,7 @@ export const Home = () => {
     <>
       <PopularPackage />
       <ExploreExpert />
-      {/* <Content /> */}
+      <Content />
       <HappyCommunity />
       <SuccessStories />
       <ExpertSection />

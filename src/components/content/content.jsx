@@ -29,7 +29,7 @@ const FilterContainer = styled((props) => <Grid item {...props} md={2.5} sm={0} 
 }));
 
 const PartnerContainer = styled((props) => <Grid item {...props} md={9.5} sm={12} xs={12} />)(() => ({
-  backgroundColor: "red",
+  // backgroundColor: "red",
 }));
 
 const SortByContainer = styled(Box)(() => ({
