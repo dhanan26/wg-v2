@@ -27,7 +27,6 @@ export const Home = () => {
       <WhatToExpect />
       <ApprovedTreatment />
       <FaqSection />
-      <Footer />
 
       <SliderContainer />
       <EmailValidation />
