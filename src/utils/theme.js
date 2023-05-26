@@ -60,6 +60,20 @@ export const theme = createTheme({
       labelBackground: "#E9E9E9",
       labelText: "#112211",
     },
+    avatar: {
+      borderColor: "#16BE48",
+    },
+    packageCard: {
+      exp: "#4A4A4A",
+      line: "#999999",
+      button: "#00256D",
+    },
+    tabSection: {
+      background: "#F2F2F2",
+    },
+    packageInfo: {
+      chipColor: "#16BE48",
+    },
   },
   typography: {
     primaryTitle: {
@@ -101,4 +115,3 @@ export const theme = createTheme({
     },
   },
 });
-
