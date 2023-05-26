@@ -1,5 +1,7 @@
-import { Box, Button, TextField, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { useState } from "react";
+import { FormInput } from "../../widgets/formInput";
+import { FormButton } from "../../widgets/formButton";
 
 const Container = styled(Box)(({ theme }) => ({
   background: `linear-gradient(${theme.palette.primary.main}, ${theme.palette.primary.main}80)`,
@@ -25,18 +27,6 @@ const FormContainer = styled(Box)(({ theme }) => ({
   marginBottom: "1rem",
   [theme.breakpoints.down("xs")]: {
     flexDirection: "column",
-  },
-}));
-
-const FormButton = styled(Button)(({ theme }) => ({
-  background: theme.palette.buttonPrimary.main,
-  marginTop: "0.875rem",
-  borderRadius: "0",
-  height: "2.5rem",
-  fontWeight: 900,
-  fontSize: "1.125rem",
-  ":hover": {
-    background: theme.palette.buttonPrimary.main,
   },
 }));
 
@@ -93,56 +83,7 @@ export const EnquiryForm = ({ name }) => {
           }}
         />
       </form>
-      <FormButton
-        disableRipple
-        disableElevation
-        variant="contained"
-        fullWidth
-        onClick={handleSubmit}
-      >
-        Submit
-      </FormButton>
+      <FormButton handleSubmit={handleSubmit} />
     </Container>
-  );
-};
-
-const FormInputBox = styled(Box)(() => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.8rem",
-  flex: 1,
-}));
-
-const FormTextInput = styled(TextField)(() => ({
-  background: "white",
-  border: "none",
-  "& MuiFormControl-root:": {},
-}));
-
-const FormInput = ({
-  label,
-  placeholder,
-  multiline = false,
-  value,
-  onChange,
-}) => {
-  return (
-    <FormInputBox>
-      <span>{label}</span>
-      <FormTextInput
-        value={value}
-        onChange={onChange}
-        InputProps={{
-          disableUnderline: true,
-        }}
-        sx={{ border: "none", "& fieldset": { border: "none" } }}
-        hiddenLabel
-        multiline={multiline}
-        minRows={4}
-        fullWidth
-        size="small"
-        placeholder={placeholder}
-      />
-    </FormInputBox>
   );
 };

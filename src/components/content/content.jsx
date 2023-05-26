@@ -1,18 +1,15 @@
-
-import {
-  styled,
-  Box,
-  useMediaQuery,
-  Grid,
-} from "@mui/material";
+import { styled, Box, useMediaQuery, Grid } from "@mui/material";
 
 import { StyledSwitch } from "../common/switch";
 import { PrimarySubText } from "../common/typographies/typographies";
 import { Filter } from "../filters";
 import { RecommendedSpecialties } from "../recommendedSpecialties";
-import { EnquiryForm } from "../enquiryForm";
+import { EnquiryForm as WebEnquiryForm } from "../enquiryForm/web/";
+import { EnquiryForm as MobileEnquiryForm } from "../enquiryForm/mobile/";
+
 import { PackageCard } from "../widgets/packageCard";
 import { PackageDetails } from "../packageDetails";
+import { useState } from "react";
 
 const MainContentContainer = styled((props) => <Grid container {...props} />)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
@@ -24,23 +21,18 @@ const MainContentContainer = styled((props) => <Grid container {...props} />)(({
   paddingRight: 36,
 }));
 
-
-const FilterContainer = styled((props) => (
-  <Grid item {...props} md={2.5} sm={0} />
-))(({ theme }) => ({
+const FilterContainer = styled((props) => <Grid item {...props} md={2.5} sm={0} />)(({ theme }) => ({
   paddingRight: 24,
   [theme.breakpoints.down("md")]: {
     paddingLeft: 10,
   },
 }));
 
-const PartnerContainer = styled((props) => (
-  <Grid item {...props} md={9.5} sm={12} xs={12} />
-))(({ theme }) => ({
+const PartnerContainer = styled((props) => <Grid item {...props} md={9.5} sm={12} xs={12} />)(() => ({
   backgroundColor: "red",
 }));
 
-const SortByContainer = styled(Box)(({ theme }) => ({
+const SortByContainer = styled(Box)(() => ({
   height: 20,
   display: "flex",
   flexDirection: "row",
@@ -49,17 +41,21 @@ const SortByContainer = styled(Box)(({ theme }) => ({
   margin: 20,
 }));
 
-const VerticalLine = styled(Box)(({ theme }) => ({
+const VerticalLine = styled(Box)(() => ({
   borderLeft: "1px solid black",
   height: 25,
 }));
 
-const SortByText = styled(PrimarySubText)(({ theme }) => ({
+const SortByText = styled(PrimarySubText)(() => ({
   fontSize: 12,
 }));
 
 export const Content = () => {
   const isSmallScreen = useMediaQuery("(max-width:900px)");
+  const isVerySmallScreen = useMediaQuery("(max-width:450px)");
+
+  const [enquiryModal, setEnquiryModal] = useState(true);
+
   return (
     <MainContentContainer>
       {!isSmallScreen && (
@@ -125,7 +121,11 @@ export const Content = () => {
             }}
           />
         </div>
-        <EnquiryForm name="Hotel whatever from ShivajiNagar" />
+        {isVerySmallScreen ? (
+          <MobileEnquiryForm name="Hotel whatever from Shivajinagar" open={enquiryModal} setOpen={setEnquiryModal} />
+        ) : (
+          <WebEnquiryForm name="Hotel whatever from ShivajiNagar" />
+        )}
         <PackageDetails />
       </PartnerContainer>
     </MainContentContainer>
