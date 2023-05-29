@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Dialog, useMediaQuery } from "@mui/material";
 import { TabsComponent } from "../../components/common/tabs";
 import { PhotoTab } from "./photoTab";
 import { Team } from "./teamTab";
 import { TermsAndCondition } from "./termsAndConditionTab";
 import { AboutUS } from "./aboutUsTab";
+import { PackageInfo } from "./packageInfo";
 import { useState } from "react";
 
 const teamUrl = import.meta.env.VITE_APP_TEAM_PDF;
@@ -36,11 +37,7 @@ const headerData = {
     specialties: ["Ayurveda", "Yoga", "Meditation"],
     person: 1,
   },
-  awards: [
-    "https://picsum.photos/300/300",
-    "https://picsum.photos/300/300",
-    "https://picsum.photos/300/300",
-  ],
+  awards: ["https://picsum.photos/300/300", "https://picsum.photos/300/300", "https://picsum.photos/300/300"],
 };
 
 const descriptionData =
@@ -115,6 +112,7 @@ const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
 }));
 
 export const PackageDetails = () => {
+  const [modalOpen, setModal] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width:900px)");
   const [value, setValue] = useState(0);
   const tab = [
@@ -137,21 +135,20 @@ export const PackageDetails = () => {
     { label: "Photos", content: <PhotoTab images={images} /> },
     {
       label: "Terms & Conditions",
-      content: (
-        <TermsAndCondition
-          url={termsAndConditionUrl}
-          fileName={termsAndConditionFileName}
-        />
-      ),
+      content: <TermsAndCondition url={termsAndConditionUrl} fileName={termsAndConditionFileName} />,
     },
   ];
   return (
-    <PackageDetailsMainBox>
-      {!isSmallScreen && (
-        <>
+    <>
+      {!isSmallScreen ? (
+        <PackageDetailsMainBox>
           <TabsComponent tabs={tab} setValue={setValue} value={value} />
-        </>
+        </PackageDetailsMainBox>
+      ) : (
+        <Dialog fullScreen open={modalOpen} onClose={() => setModal((prev) => !prev)}>
+          <TabsComponent tabs={tab} setValue={setValue} value={value} />
+        </Dialog>
       )}
-    </PackageDetailsMainBox>
+    </>
   );
 };

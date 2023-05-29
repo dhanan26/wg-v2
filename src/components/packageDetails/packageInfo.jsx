@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled, useMediaQuery } from "@mui/material";
 import greenTick from "../../assets/icons/list-green-tick.svg";
 import grayTick from "../../assets/icons/list-gray-tick.svg";
 import { useRef, useState } from "react";
@@ -11,12 +11,11 @@ const Container = styled(Box)(() => ({
   flexDirection: "column",
 }));
 
-export const PackageInfo = ({ header, description, info, programList, specialties, amenities, bestPractices }) => {
+export const PackageInfo = ({ header, description, packageInfo, programList, specialties, amenities, bestPractices }) => {
   const [specialtiesLimit, setSpecialtiesLimit] = useState(LIMIT);
   const [amenitiesLimit, setAmenitiesLimit] = useState(LIMIT);
 
   const topBoxRef = useRef(null);
-  const bottomBoxRef = useRef(null);
 
   //   useEffect(() => {
   //     if (topBoxRef) {
@@ -33,7 +32,7 @@ export const PackageInfo = ({ header, description, info, programList, specialtie
   return (
     <Container>
       <Header header={header} />
-      <Description description={description} info={info} />
+      <Description description={description} info={packageInfo} />
       <SplitContainer ref={topBoxRef}>
         <FlexBox>
           <h3>Program Inclusion</h3>
@@ -49,28 +48,10 @@ export const PackageInfo = ({ header, description, info, programList, specialtie
           </ui>
         </FlexBox>
         <FlexBox>
-          <h3>Specialties</h3>
-          <div>
-            {specialties?.map((specialty, index) => {
-              if (index > specialtiesLimit) return;
-              return (
-                <span key={index}>
-                  <img src={specialty.imgSrc} height={25} width={25} />
-                  {specialty.name}
-                </span>
-              );
-            })}
-            {specialties?.length > specialtiesLimit ? (
-              <span style={{ color: "red" }} onClick={() => setSpecialtiesLimit(specialties?.length)}>
-                +{specialties?.length - specialtiesLimit - 1} more
-              </span>
-            ) : (
-              <span onClick={() => setSpecialtiesLimit(LIMIT)}>Show less</span>
-            )}
-          </div>
+          <SpecialtiesContainer specialties={specialties} specialtiesLimit={specialtiesLimit} setSpecialtiesLimit={setSpecialtiesLimit} />
         </FlexBox>
       </SplitContainer>
-      <SplitContainer backgroundColor={"#F2F2F2"} ref={bottomBoxRef}>
+      <SplitContainer backgroundColor={"#F2F2F2"} reverse>
         <FlexBox>
           <h3>Best Practices</h3>
           <ui>
@@ -83,42 +64,85 @@ export const PackageInfo = ({ header, description, info, programList, specialtie
           </ui>
         </FlexBox>
         <FlexBox>
-          <h3>Amenities</h3>
-          <div>
-            {amenities?.map((amenity, index) => {
-              if (index > amenitiesLimit) return;
-              return (
-                <span key={index}>
-                  <img src={amenity.imgSrc} height={25} width={25} />
-                  {amenity.name}
-                </span>
-              );
-            })}
-            {amenities?.length > amenitiesLimit ? (
-              <span style={{ color: "red" }} onClick={() => setAmenitiesLimit(amenities?.length)}>
-                +{amenities?.length - amenitiesLimit - 1} more
-              </span>
-            ) : (
-              <span onClick={() => setAmenitiesLimit(LIMIT)}>Show less</span>
-            )}
-          </div>
+          <AmenitiesContainer amenities={amenities} amenitiesLimit={amenitiesLimit} setAmenitiesLimit={setAmenitiesLimit} />
         </FlexBox>
       </SplitContainer>
     </Container>
   );
 };
 
+const SpecialtiesContainer = ({ specialties, specialtiesLimit, setSpecialtiesLimit }) => {
+  return (
+    <>
+      <h3>Specialties</h3>
+      <div>
+        {specialties?.map((specialty, index) => {
+          if (index > specialtiesLimit) return;
+          return (
+            <span key={index}>
+              <img src={specialty.imgSrc} height={25} width={25} />
+              {specialty.name}
+            </span>
+          );
+        })}
+        {specialties?.length > specialtiesLimit ? (
+          <span style={{ color: "red", cursor: "pointer" }} onClick={() => setSpecialtiesLimit(specialties?.length)}>
+            +{specialties?.length - specialtiesLimit - 1} more
+          </span>
+        ) : (
+          <span style={{ cursor: "pointer" }} onClick={() => setSpecialtiesLimit(LIMIT)}>
+            Show less
+          </span>
+        )}
+      </div>
+    </>
+  );
+};
+
+const AmenitiesContainer = ({ amenities, amenitiesLimit, setAmenitiesLimit }) => {
+  return (
+    <>
+      <h3>Amenities</h3>
+      <div>
+        {amenities?.map((amenity, index) => {
+          if (index > amenitiesLimit) return;
+          return (
+            <span key={index}>
+              <img src={amenity.imgSrc} height={25} width={25} />
+              {amenity.name}
+            </span>
+          );
+        })}
+        {amenities?.length > amenitiesLimit ? (
+          <span style={{ color: "red" }} onClick={() => setAmenitiesLimit(amenities?.length)}>
+            +{amenities?.length - amenitiesLimit - 1} more
+          </span>
+        ) : (
+          <span onClick={() => setAmenitiesLimit(LIMIT)}>Show less</span>
+        )}
+      </div>
+    </>
+  );
+};
+
 // header ---------------------------------------------
-const HeaderContainer = styled(Box)(() => ({
+const HeaderContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: "1rem",
-  padding: "0 1rem",
+  padding: "0.5rem 1rem",
   justifyContent: "space-between",
 
   div: {
     display: "flex",
     gap: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "flex-end",
+    },
   },
+}));
+
+const HeaderMainSection = styled(Box)(() => ({
+  display: "flex",
 }));
 
 const HeaderImage = styled(Box)(({ theme }) => ({
@@ -132,7 +156,7 @@ const HeaderImage = styled(Box)(({ theme }) => ({
 }));
 
 const HeaderInfo = styled(Box)(({ theme }) => ({
-  margin: "0.063rem 0.313rem",
+  padding: "0.5rem 1rem",
   fontFamily: theme.typography.secondaryText.fontFamily,
   display: "flex",
   flexDirection: "column",
@@ -151,11 +175,17 @@ const HeaderInfo = styled(Box)(({ theme }) => ({
     fontWeight: "700",
     margin: "unset",
     fontSize: "0.8rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.6rem",
+    },
   },
   h2: {
     fontWeight: "500",
     margin: "unset",
     fontSize: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
 }));
 
@@ -164,6 +194,10 @@ const SpecialtyBox = styled(Box)(({ theme }) => ({
   padding: "0.25rem 0.5rem",
   fontSize: "0.8rem",
   color: "white",
+
+  [theme.breakpoints.down("sm")]: {
+    padding: "0.1rem 0.25rem",
+  },
 }));
 
 const HeaderAwards = styled(Box)(() => ({
@@ -178,12 +212,56 @@ const HeaderAwards = styled(Box)(() => ({
 }));
 
 const Header = ({ header }) => {
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
   return (
-    <HeaderContainer>
-      <div>
-        <HeaderImage>
-          <img src={header?.logo} />
-        </HeaderImage>
+    <>
+      <HeaderContainer>
+        <HeaderMainSection>
+          <HeaderImage>
+            <img src={header?.logo} />
+          </HeaderImage>
+          {!isSmallScreen && (
+            <HeaderInfo>
+              <div>
+                <h4>{header?.info?.type}</h4>
+                {header?.info?.specialties?.map((specialty, index) => (
+                  <SpecialtyBox key={index}>{specialty}</SpecialtyBox>
+                ))}
+              </div>
+              <h2>
+                {header?.info?.name} ({header?.info?.sessionDuration} Mins)
+              </h2>
+              <div>
+                <p>
+                  Duration: <b>{header?.info?.duration} Days</b>
+                </p>
+                <b>|</b>
+                <p>
+                  Sessions: <b>{header?.info?.session}</b>
+                </p>
+                <b>|</b>
+                <p>
+                  Session Duration: <b>{header?.info?.sessionDuration} Mins</b>
+                </p>
+                <b>|</b>
+                <p>
+                  Valid For: <b>{header?.info?.validFor} Day</b>
+                </p>
+                <b>|</b>
+                <p>
+                  <b>{header?.info?.person}</b> Person
+                </p>
+              </div>
+            </HeaderInfo>
+          )}
+        </HeaderMainSection>
+        <HeaderAwards>
+          {header?.awards?.map((award, index) => (
+            <img key={index} src={award} />
+          ))}
+        </HeaderAwards>
+      </HeaderContainer>
+      {isSmallScreen && (
         <HeaderInfo>
           <div>
             <h4>{header?.info?.type}</h4>
@@ -200,6 +278,11 @@ const Header = ({ header }) => {
             </p>
             <b>|</b>
             <p>
+              <b>{header?.info?.person}</b> Person
+            </p>
+          </div>
+          <div>
+            <p>
               Sessions: <b>{header?.info?.session}</b>
             </p>
             <b>|</b>
@@ -210,27 +293,17 @@ const Header = ({ header }) => {
             <p>
               Valid For: <b>{header?.info?.validFor}Day</b>
             </p>
-            <b>|</b>
-            <p>
-              <b>{header?.info?.person}</b> Person
-            </p>
           </div>
         </HeaderInfo>
-      </div>
-      <HeaderAwards>
-        {header?.awards?.map((award, index) => (
-          <img key={index} src={award} />
-        ))}
-      </HeaderAwards>
-    </HeaderContainer>
+      )}
+    </>
   );
 };
 
 // description ---------------------------------------------
-
 const DescriptionContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.textPrimary.main,
-  padding: "0 1rem",
+  padding: "0.5rem 1rem",
   h3: {
     fontFamily: theme.typography.primaryTitle.fontFamily,
     fontWeight: 500,
@@ -246,7 +319,25 @@ const DescriptionContainer = styled(Box)(({ theme }) => ({
     fontFamily: theme.typography.secondaryText.fontFamily,
     fontSize: "0.8rem",
     display: "flex",
+    flexWrap: "wrap",
     gap: "0.8rem",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+
+    b: {
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+  },
+}));
+
+const GenderContainer = styled(Box)(() => ({
+  display: "flex",
+  flexDirection: "row !important",
+  b: {
+    display: "block !important",
   },
 }));
 
@@ -264,26 +355,30 @@ const Description = ({ description, info }) => {
           </span>
         ))}
         <b>|</b>
-        {info?.genders.map((gender, index) => (
-          <span key={index}>{gender}</span>
-        ))}
-        <b>|</b>
-
-        {info?.freeCancellation ? <span style={{ color: "red" }}>Free Cancellation</span> : <span>No Cancellation</span>}
+        <GenderContainer>
+          {info?.genders.map((gender, index) => (
+            <span key={index}>{gender}</span>
+          ))}
+          <b>|</b>
+          {info?.freeCancellation ? <span style={{ color: "red" }}>Free Cancellation</span> : <span>No Cancellation</span>}
+        </GenderContainer>
       </div>
     </DescriptionContainer>
   );
 };
 
-const SplitContainer = styled(Box)(({ backgroundColor }) => ({
+const SplitContainer = styled(Box)(({ theme, backgroundColor, reverse }) => ({
   backgroundColor: backgroundColor,
   display: "flex",
   justifyContent: "space-between",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: reverse ? "column" : "column-reverse",
+  },
 }));
 
 const FlexBox = styled(Box)(({ theme }) => ({
   flex: 1,
-  padding: "0 1rem",
+  padding: "0.5rem 1rem",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
@@ -292,6 +387,11 @@ const FlexBox = styled(Box)(({ theme }) => ({
     fontFamily: theme.typography.secondaryText.fontFamily,
     fontSize: "1rem",
     fontWeight: 500,
+    [theme.breakpoints.down("sm")]: {
+      fontWeight: 600,
+      margin: "unset",
+      marginBottom: "0.5rem",
+    },
   },
   ul: {
     gap: "1rem",
