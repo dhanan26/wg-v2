@@ -1,32 +1,60 @@
 .header_icon {
+  height: 15px;
+  width: 15.37px;
+}
+
+@media (max-width: 600px) {
+  .header_icon {
     height: 15px;
     width: 15.37px;
+  }
+}
+
+.wellness_garden_icon {
+  width: auto;
+  height: 45px;
 }
 
 @media (max-width: 600px) {
-    .header_icon {
-        height: 15px;
-        width: 15.37px;
-    }
+  .wellness_garden_icon {
+    width: auto;
+    height: 35px;
+  }
 }
 
-.wellness_garden_icon{
-    width:auto;
-    height: 45px;
+.timeIcon {
+  font-size: 7px;
 }
 
-@media (max-width: 600px) {
-    .wellness_garden_icon{
-        width:auto;
-        height:35px;
-    }
+.recommended_specialties_icon {
+  width: 42px;
+  height: 46px;
 }
 
-.timeIcon{
-    font-size: 7px;
+.heart_icon {
+  width: "auto";
+  height: 15px;
+  background-color: "red";
+}
+.styled_arrow_icon {
+  width: "auto";
+  height: 17px;
+}
+.menu_close_icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 50px;
+  margin-left: 80%;
 }
 
-.recommended_specialties_icon{
-    width: 42px;
-    height: 46px;
+.arrow-right_filled {
+  width: 12px;
+  height: 6px;
+}
+.how-it-works {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  right: 5%;
+  /* padding-top: 6px; */
 }

@@ -11,6 +11,7 @@ export const theme = createTheme({
     secondary: {
       main: "#00256D", //Cool Black
       darker: "rgba(0, 37, 109, 1)",
+
       purpleBaloon: "#5D5A88",
     },
     buttonPrimary: {
@@ -37,7 +38,9 @@ export const theme = createTheme({
     },
     textSecondary: {
       main: "#FFFFFF", //White
+
       contrast: "#757D8A",
+
     },
     cardActive: {
       main: "#E3EDFC",
@@ -53,6 +56,17 @@ export const theme = createTheme({
     expertColor: {
       main: "#ACE6CF",
     },
+
+    menuItem: {
+      main: "#55595C",
+    },
+    slider: {
+      main: "#D9D9D9",
+      pointer: "#627AA2",
+      labelBackground: "#E9E9E9",
+      labelText: "#112211",
+    },
+
     avatar: {
       borderColor: "#16BE48",
     },
@@ -64,6 +78,11 @@ export const theme = createTheme({
     tabSection: {
       background: "#F2F2F2",
     },
+
+    packageInfo: {
+      chipColor: "#16BE48",
+    },
+
   },
   typography: {
     primaryTitle: {
