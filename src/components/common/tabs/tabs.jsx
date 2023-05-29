@@ -17,7 +17,7 @@ const TabPanel = (props) => {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ paddingTop: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -38,9 +38,7 @@ function a11yProps(index) {
   };
 }
 
-export const TabsComponent = ({ tabs ,value, setValue }) => {
-
-  console.log("🚀 ~ file: tabs.jsx:46 ~ handleChange ~ setValue:", tabs)
+export const TabsComponent = ({ tabs, value, setValue }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

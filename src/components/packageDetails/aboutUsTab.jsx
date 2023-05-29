@@ -5,26 +5,22 @@ import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
 import React from "react";
 
-const photos = [
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-];
-
 const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
   //   backgroundColor: "yellow",
   top: 0,
 }));
 const AboutUsContainer = styled(Box)(({ theme }) => ({
-  //   display: "flex",
-  //   flexDirection: "column",
+  display: "flex",
+  flexDirection: "column",
 }));
 
 const AboutUsMainBox = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    rowGap: 40
+  },
 }));
 
 const ImageBox = styled(Box)(({ theme, imageUrl }) => ({
@@ -97,20 +93,20 @@ const ViewImageBox = styled(Box)(({ theme }) => ({
   width: "80%",
 }));
 
-export const AboutUS = ({ setValue }) => {
+export const AboutUS = ({ setValue, individualData }) => {
   const handleRedirect = () => {
     setValue(3);
   };
   return (
     <>
       <PackageDetailsMainBox>
-        <img src={imageConatainer} alt="image" width="100%" />
+        {/* <img src={imageConatainer} alt="image" width="100%" /> */}
         <AboutUsMainBox>
           <AboutUsContainer
             style={{
               marginTop: "-100px",
               marginLeft: "35px",
-              width: "100%",
+              width: "50%",
             }}
           >
             <ImageBox>
@@ -129,14 +125,14 @@ export const AboutUS = ({ setValue }) => {
 
             <AboutUsInfoBox>
               <h1>
-                Dr. Ramya
+                {individualData.name}
                 <br />
-                <span>12 Yr. of exp</span>
+                <span>{individualData.experience}</span>
               </h1>
 
-              <p>BDS MDS - Naturopathy and Ayurveda</p>
-              <p>Yeshwantpura, Bangalore</p>
-              <p>www.dr.ramya.com</p>
+              <p>{individualData.designation}</p>
+              <p>{individualData.address}</p>
+              <p>{individualData.link}</p>
 
               <p>
                 <span>
@@ -151,7 +147,7 @@ export const AboutUS = ({ setValue }) => {
                 Wednesday 9:30 am–6 pm
               </p>
               <ViewImageBox>
-                {photos.map((src, index) => (
+                {individualData.photos.map((src, index) => (
                   <img
                     src={src}
                     onClick={handleRedirect}
@@ -169,33 +165,82 @@ export const AboutUS = ({ setValue }) => {
 
           <AboutUsContainer
             style={{
-              marginTop: "-60px",
-              marginLeft: "148px",
+              marginTop: "-50px",
+              // marginLeft: "128px",
+              width: "100%",
             }}
           >
             <div className="card1">
-              <img src="https://picsum.photos/id/11/60" alt="image" />
+              {individualData.awards.map((src, index) => (
+                <img
+                  src={src}
+                  onClick={handleRedirect}
+                  key={`image ${index}`}
+                  alt={`image ${index + 1}`}
+                  style={{ margin: "0.5px 23px 0.5px 23px", cursor: "pointer" }}
+                  height={100}
+                  width={80}
+                />
+              ))}
 
-              <p>
-                Discover nature's way of healing with harmony at the Jiva Spa.
-                The wisdom gathered from centuries of studies on wellness. The
-                skilled hands of our trained therapists. This internationally
-                renowned centre for wellness soothes yet invigorates your mind,
-                body and soul.{" "}
-              </p>
+              <p>{individualData.description}</p>
 
               <p>
                 <b>Specialties</b>
               </p>
               <p style={{ margin: "10px" }}>
-                <img src="https://picsum.photos/id/15/60" alt="image" />
-                <img src="https://picsum.photos/id/15/60" alt="image" />
-                <img src="https://picsum.photos/id/15/60" alt="image" />
+                {individualData.Specialties.map((data, index) => (
+                  <img
+                    src={data.src}
+                    key={`image ${index}`}
+                    alt={`image ${index + 1}`}
+                    style={{ margin: "0.5px 8px 0.5px 8px" }}
+                    height={25}
+                    width={25}
+                  />
+                ))}
               </p>
-              <p>BDS MDS - Naturopathy and Ayurveda </p>
-              <p>www.dr.ramya.com</p>
-              <p>Locate other branches</p>
-              <p>Wednesday 9:30 am–6 pm</p>
+              <p>
+                <b>Amenities</b>
+              </p>
+              <Box
+                style={{
+                  flex: 1,
+                  padding: "0 1rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}
+                >
+                  {individualData.Amenities.map((data, index) => (
+                    <span
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-end",
+                        alignItems: "center",
+                      }}
+                      key={`Amenities ${index}`}
+                    >
+                      <img
+                        src={data.src}
+                        alt={`Amenities ${index + 1}`}
+                        style={{
+                          margin: "0.5px 8px 0.5px 8px",
+                          cursor: "pointer",
+                        }}
+                        height={25}
+                        width={25}
+                      />
+                      {data.name}
+                    </span>
+                  ))}
+                </div>
+              </Box>
             </div>
           </AboutUsContainer>
         </AboutUsMainBox>
