@@ -16,7 +16,7 @@ const MainContentContainer = styled((props) => <Grid container {...props} />)(({
     paddingLeft: 16,
     paddingRight: 16,
   },
-  minHeight: "100vh",
+
   paddingLeft: 80,
   paddingRight: 36,
 }));

@@ -38,9 +38,9 @@ function a11yProps(index) {
   };
 }
 
-export const TabsComponent = ({ tabs }) => {
-  const [value, setValue] = React.useState(0);
+export const TabsComponent = ({ tabs ,value, setValue }) => {
 
+  console.log("🚀 ~ file: tabs.jsx:46 ~ handleChange ~ setValue:", tabs)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
