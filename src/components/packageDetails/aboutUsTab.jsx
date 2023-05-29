@@ -1,9 +1,9 @@
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Box, Button, styled, Typography, useMediaQuery } from "@mui/material";
 import imageConatainer from "../../assets/images/Image Container.svg";
 import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
-import React from "react";
+import { useState } from "react";
 
 const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
   //   backgroundColor: "yellow",
@@ -12,21 +12,28 @@ const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
 const AboutUsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "-50px",
+    width: "auto",
+    marginLeft: "1.5rem",
+  },
+  marginTop: "-100px",
+  marginLeft: "35px",
+  width: "50%",
 }));
 
 const AboutUsMainBox = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     flexDirection: "column",
-    rowGap: 40
+    rowGap: 40,
   },
 }));
 
 const ImageBox = styled(Box)(({ theme, imageUrl }) => ({
   fontFamily: theme.typography.secondaryText.fontFamily,
   height: 141,
-  width: "100%",
   position: "relative",
   borderBottom: `5px solid #fff`,
   "& div": {
@@ -89,39 +96,90 @@ const AboutUsInfoBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+const AwardsBox = styled(Box)(({ theme }) => ({
+  textAlignLast: "right",
+  width: "100%",
+  marginRight: "10px",
+  marginTop: "20px",
+}));
+
 const ViewImageBox = styled(Box)(({ theme }) => ({
   width: "80%",
 }));
 
+const BadgesBox = styled(Box)(({ theme }) => ({
+  flex: 1,
+  padding: "0 1rem",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  "& div": {
+    display: "flex",
+    gap: "1rem",
+    flexWrap: "wrap",
+    "& span": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-end",
+      alignItems: "center",
+    },
+  },
+}));
+
 export const AboutUS = ({ setValue, individualData }) => {
+  const SpecialtiesLimit = individualData.Specialties.length - 2;
+  const AmenitiesLimit = 8;
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
+  const [specialtiesLimit, setSpecialtiesLimit] = useState(SpecialtiesLimit);
+  const [amenitiesLimit, setAmenitiesLimit] = useState(AmenitiesLimit);
+
   const handleRedirect = () => {
     setValue(3);
   };
   return (
     <>
       <PackageDetailsMainBox>
-        {/* <img src={imageConatainer} alt="image" width="100%" /> */}
+        <img src={imageConatainer} alt="image" width="100%" />
         <AboutUsMainBox>
-          <AboutUsContainer
-            style={{
-              marginTop: "-100px",
-              marginLeft: "35px",
-              width: "50%",
-            }}
-          >
-            <ImageBox>
-              <div>
-                <img
-                  src="https://picsum.photos/5000/3333"
-                  height={141}
-                  width={141}
-                  alt="person-img"
-                />
-                <span>
-                  <img src={verified} /> <p>Verified</p>
-                </span>
-              </div>
-            </ImageBox>
+          <AboutUsContainer>
+            <div
+              style={{
+                display: "flex",
+                displayDirection: "column",
+              }}
+            >
+              <ImageBox>
+                <div>
+                  <img
+                    src="https://picsum.photos/5000/3333"
+                    height={141}
+                    width={141}
+                    alt="person-img"
+                  />
+                  <span>
+                    <img src={verified} /> <p>Verified</p>
+                  </span>
+                </div>
+              </ImageBox>
+              {isSmallScreen ? (
+                <AwardsBox>
+                  {individualData.awards.map((src, index) => (
+                    <img
+                      src={src}
+                      onClick={handleRedirect}
+                      key={`image ${index}`}
+                      alt={`image ${index + 1}`}
+                      style={{ margin: "5px" }}
+                      height={64}
+                      width={50}
+                    />
+                  ))}
+                </AwardsBox>
+              ) : (
+                ""
+              )}
+            </div>
 
             <AboutUsInfoBox>
               <h1>
@@ -163,84 +221,125 @@ export const AboutUS = ({ setValue, individualData }) => {
             </AboutUsInfoBox>
           </AboutUsContainer>
 
-          <AboutUsContainer
-            style={{
-              marginTop: "-50px",
-              // marginLeft: "128px",
-              width: "100%",
-            }}
-          >
-            <div className="card1">
-              {individualData.awards.map((src, index) => (
-                <img
-                  src={src}
-                  onClick={handleRedirect}
-                  key={`image ${index}`}
-                  alt={`image ${index + 1}`}
-                  style={{ margin: "0.5px 23px 0.5px 23px", cursor: "pointer" }}
-                  height={100}
-                  width={80}
-                />
-              ))}
+          <AboutUsContainer>
+            <div style={{ marginTop: "40px" }}>
+              {!isSmallScreen ? (
+                <>
+                  {individualData.awards.map((src, index) => (
+                    <img
+                      src={src}
+                      key={`image ${index}`}
+                      alt={`image ${index + 1}`}
+                      style={{
+                        margin: "0.5px 23px 0.5px 23px",
+                      }}
+                      height={100}
+                      width={80}
+                    />
+                  ))}
+                </>
+              ) : (
+                ""
+              )}
 
               <p>{individualData.description}</p>
 
-              <p>
-                <b>Specialties</b>
-              </p>
-              <p style={{ margin: "10px" }}>
-                {individualData.Specialties.map((data, index) => (
-                  <img
-                    src={data.src}
-                    key={`image ${index}`}
-                    alt={`image ${index + 1}`}
-                    style={{ margin: "0.5px 8px 0.5px 8px" }}
-                    height={25}
-                    width={25}
-                  />
-                ))}
-              </p>
-              <p>
-                <b>Amenities</b>
-              </p>
-              <Box
-                style={{
-                  flex: 1,
-                  padding: "0 1rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "flex-start",
-                }}
-              >
-                <div
-                  style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}
-                >
-                  {individualData.Amenities.map((data, index) => (
+              <BadgesBox>
+                <p>
+                  <b>Specialties</b>
+                </p>
+                <div>
+                  {individualData.Specialties.map((data, index) => {
+                    if (index > specialtiesLimit) return;
+                    return (
+                      <span key={`Specialties ${index}`}>
+                        <img
+                          src={data.src}
+                          alt={`Specialties ${index + 1}`}
+                          height={25}
+                          width={25}
+                        />
+                        {data.name}
+                      </span>
+                    );
+                  })}
+
+                  {individualData.Specialties?.length > specialtiesLimit ? (
                     <span
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "flex-end",
-                        alignItems: "center",
+                        color: "red",
+                        cursor: "pointer",
                       }}
-                      key={`Amenities ${index}`}
+                      onClick={() =>
+                        setSpecialtiesLimit(individualData.Specialties?.length)
+                      }
                     >
-                      <img
-                        src={data.src}
-                        alt={`Amenities ${index + 1}`}
-                        style={{
-                          margin: "0.5px 8px 0.5px 8px",
-                          cursor: "pointer",
-                        }}
-                        height={25}
-                        width={25}
-                      />
-                      {data.name}
+                      +
+                      {individualData.Specialties?.length -
+                        specialtiesLimit -
+                        1}{" "}
+                      more
                     </span>
-                  ))}
+                  ) : (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setSpecialtiesLimit(SpecialtiesLimit)}
+                    >
+                      Show less
+                    </span>
+                  )}
                 </div>
-              </Box>
+              </BadgesBox>
+
+              <BadgesBox>
+                <p>
+                  <b>Amenities</b>
+                </p>
+                <div>
+                  {individualData.Amenities.map((data, index) => {
+                    if (index > amenitiesLimit) return;
+                    return (
+                      <span key={`Amenities ${index}`}>
+                        <img
+                          src={data.src}
+                          alt={`Amenities ${index + 1}`}
+                          height={25}
+                          width={25}
+                        />
+                        {data.name}
+                      </span>
+                    );
+                  })}
+
+                  {individualData.Amenities?.length > amenitiesLimit ? (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() =>
+                        setAmenitiesLimit(individualData.Amenities?.length)
+                      }
+                    >
+                      +{individualData.Amenities?.length - amenitiesLimit - 1}{" "}
+                      more
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setAmenitiesLimit(AmenitiesLimit)}
+                    >
+                      Show less
+                    </span>
+                  )}
+                </div>
+              </BadgesBox>
             </div>
           </AboutUsContainer>
         </AboutUsMainBox>

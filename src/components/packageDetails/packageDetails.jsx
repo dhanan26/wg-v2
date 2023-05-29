@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Dialog, useMediaQuery } from "@mui/material";
 import { TabsComponent } from "../../components/common/tabs";
 import { PhotoTab } from "./photoTab";
 import { Team } from "./teamTab";
 import { TermsAndCondition } from "./termsAndConditionTab";
 import { AboutUS } from "./aboutUsTab";
-import { useState } from "react";
 import { PackageInfo } from "./packageInfo";
+import { useState } from "react";
 
 const teamUrl = import.meta.env.VITE_APP_TEAM_PDF;
 const teamFileName = "Team";
@@ -54,6 +54,18 @@ const individualData = {
     { name: "Meditation", src: "https://picsum.photos/300/300" },
   ],
   Amenities: [
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
     { name: "Ayurveda", src: "https://picsum.photos/300/300" },
     { name: "Meditation", src: "https://picsum.photos/300/300" },
     { name: "Unani", src: "https://picsum.photos/300/300" },
@@ -159,7 +171,8 @@ const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
 }));
 
 export const PackageDetails = () => {
-  // const isSmallScreen = useMediaQuery("(max-width:900px)");
+  const [modalOpen, setModal] = useState(true);
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
   const [value, setValue] = useState(0);
   const tab = [
     {
@@ -193,12 +206,20 @@ export const PackageDetails = () => {
     },
   ];
   return (
-    <PackageDetailsMainBox>
-      {/* {!isSmallScreen && ( */}
-      <>
-        <TabsComponent tabs={tab} setValue={setValue} value={value} />
-      </>
-      {/* )} */}
-    </PackageDetailsMainBox>
+    <>
+      {!isSmallScreen ? (
+        <PackageDetailsMainBox>
+          <TabsComponent tabs={tab} setValue={setValue} value={value} />
+        </PackageDetailsMainBox>
+      ) : (
+        <Dialog
+          fullScreen
+          open={modalOpen}
+          onClose={() => setModal((prev) => !prev)}
+        >
+          <TabsComponent tabs={tab} setValue={setValue} value={value} />
+        </Dialog>
+      )}
+    </>
   );
 };
