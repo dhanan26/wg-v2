@@ -6,7 +6,6 @@ import location from "../../assets/icons/Mark.svg";
 import { useState } from "react";
 
 const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
-  //   backgroundColor: "yellow",
   top: 0,
 }));
 const AboutUsContainer = styled(Box)(({ theme }) => ({

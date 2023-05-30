@@ -12,11 +12,11 @@ const teamUrl = import.meta.env.VITE_APP_TEAM_PDF;
 const teamFileName = "Team";
 
 const images = [
-  "https://picsum.photos/id/15/400/200",
-  "https://picsum.photos/id/25/400/200",
+  "https://picsum.photos/id/15/800/700",
+  "https://picsum.photos/id/25/400/100",
   "https://picsum.photos/id/40/200/200",
   "https://picsum.photos/id/58/200/200",
-  "https://picsum.photos/id/41/400/200",
+  "https://picsum.photos/id/41/800/200",
   "https://picsum.photos/id/61/500/200",
   "https://picsum.photos/id/77/200/200",
   "https://picsum.photos/id/91/500/500",
