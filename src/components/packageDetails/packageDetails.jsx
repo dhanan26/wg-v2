@@ -145,9 +145,10 @@ export const PackageDetails = () => {
           <TabsComponent tabs={tab} setValue={setValue} value={value} />
         </PackageDetailsMainBox>
       ) : (
-        <Dialog fullScreen open={modalOpen} onClose={() => setModal((prev) => !prev)}>
-          <TabsComponent tabs={tab} setValue={setValue} value={value} />
-        </Dialog>
+        ""
+        // <Dialog fullScreen open={modalOpen} onClose={() => setModal((prev) => !prev)}>
+        //   <TabsComponent tabs={tab} setValue={setValue} value={value} />
+        // </Dialog>
       )}
     </>
   );

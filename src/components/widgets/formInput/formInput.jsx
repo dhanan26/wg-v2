@@ -16,7 +16,7 @@ const FormTextInput = styled(TextField)(() => ({
   "& MuiFormControl-root:": {},
 }));
 
-export const FormInput = ({ label, placeholder, multiline = false, value, onChange, minRows = 4 }) => {
+export const FormInput = ({ label, placeholder, multiline = false, value, onChange, minRows = 4, name }) => {
   return (
     <FormInputBox>
       <span>{label}</span>
@@ -33,6 +33,7 @@ export const FormInput = ({ label, placeholder, multiline = false, value, onChan
         fullWidth
         size="small"
         placeholder={placeholder}
+        name={name}
       />
     </FormInputBox>
   );

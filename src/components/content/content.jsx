@@ -123,8 +123,10 @@ export const Content = () => {
         </div>
         {isVerySmallScreen ? (
           <MobileEnquiryForm name="Hotel whatever from Shivajinagar" open={enquiryModal} setOpen={setEnquiryModal} />
-        ) : (
+        ) : open ? (
           <WebEnquiryForm name="Hotel whatever from ShivajiNagar" />
+        ) : (
+          <p>jhi</p>
         )}
         <PackageDetails />
       </PartnerContainer>

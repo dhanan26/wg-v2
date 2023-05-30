@@ -12,8 +12,8 @@ const FormButtonContainer = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const FormButton = ({ handleSubmit }) => (
-  <FormButtonContainer disableRipple disableElevation variant="contained" fullWidth onClick={handleSubmit}>
+export const FormButton = ({ type, disabled }) => (
+  <FormButtonContainer disableRipple disableElevation variant="contained" fullWidth type={type} disabled={disabled}>
     Submit
   </FormButtonContainer>
 );

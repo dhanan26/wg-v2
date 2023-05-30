@@ -3,6 +3,7 @@ import { Box, Button, Card, IconButton, styled } from "@mui/material";
 import verified from "../../../assets/icons/verified.svg";
 import thumbsUp from "../../../assets/icons/ThumbsUp.svg";
 import heart from "../../../assets/icons/Heart.svg";
+import { useState } from "react";
 
 const Container = styled(Card)(({ theme }) => ({
   margin: "2rem 0.5rem",
@@ -94,17 +95,29 @@ const ButtonContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const PackageCard = ({ isIndividual, individualData, packageData, type, cost, details }) => {
+  const [open, setOpen] = useState(false);
   // callback for heart click
   const handleHeartClick = () => {
     console.log("heart clicked");
+  };
+  const handleEnquiryClick = () => {
+    setOpen((current) => !current);
   };
 
   return (
     <Container>
       <div className="package-card-top">
-        {isIndividual ? <IndividualCardHero individualData={individualData} /> : <PackageCardHero packageData={packageData} />}
+        {isIndividual ? (
+          <IndividualCardHero individualData={individualData} />
+        ) : (
+          <PackageCardHero packageData={packageData} />
+        )}
         <span className="package-card-type">{type}</span>
-        {isIndividual ? <IndividualCardBody individualData={individualData} /> : <PackageCardBody packageData={packageData} />}
+        {isIndividual ? (
+          <IndividualCardBody individualData={individualData} />
+        ) : (
+          <PackageCardBody packageData={packageData} />
+        )}
         <CostSection cost={cost} />
         <DetailsContainer>
           {details.days} Days / {details.sessions} Sessions
@@ -122,7 +135,9 @@ export const PackageCard = ({ isIndividual, individualData, packageData, type, c
         </LikeContainer>
         <ButtonContainer>
           <Button disableRipple>Details</Button>
-          <Button disableRipple>+Enquiry</Button>
+          <Button disableRipple onClick={handleEnquiryClick}>
+            +Enquiry
+          </Button>
         </ButtonContainer>
       </div>
     </Container>
