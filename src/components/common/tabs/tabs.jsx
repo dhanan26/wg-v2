@@ -17,7 +17,7 @@ const TabPanel = (props) => {
       {...other}
     >
       {value === index && (
-        <Box>
+        <Box sx={{ pt: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -38,9 +38,7 @@ function a11yProps(index) {
   };
 }
 
-export const TabsComponent = ({ tabs ,value, setValue }) => {
-
-  console.log("🚀 ~ file: tabs.jsx:46 ~ handleChange ~ setValue:", tabs)
+export const TabsComponent = ({ tabs, value, setValue }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -50,6 +48,9 @@ export const TabsComponent = ({ tabs ,value, setValue }) => {
     fontFamily: theme.fontFamily.Inter,
     textTransform: "capitalize",
     padding: "5px 20px 5px 20px",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "1px",
+    },
     ...(index === 0 ? { marginRight: "50px" } : { marginRight: "1px" }),
     fontSize: "14px",
     fontWeight: 400,
@@ -65,6 +66,9 @@ export const TabsComponent = ({ tabs ,value, setValue }) => {
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
+        variant="scrollable"
+        scrollButtons
+        allowScrollButtonsMobile
       >
         {tabs.map((tab, index) => (
           <CustomTab

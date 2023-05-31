@@ -1,10 +1,9 @@
 import React, { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
 
-export const PhotoTab = ({images}) => {
+export const PhotoTab = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -23,7 +22,12 @@ export const PhotoTab = ({images}) => {
           src={src}
           onClick={() => openImageViewer(index)}
           key={index}
-          style={{ margin: "2.5px 5px 2.5px 5px", cursor: "pointer" }}
+          style={{
+            margin: "2.5px 5px 2.5px 5px",
+            cursor: "pointer",
+            height: "200px",
+            maxWidth: "350px",
+          }}
           alt={`image ${index}`}
         />
       ))}
