@@ -3,136 +3,24 @@ import imageConatainer from "../../assets/images/Image Container.svg";
 import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
-import { useState } from "react";
+import React from "react";
+import {
+  PackageDetailsMainBox,
+  AboutUsContainer,
+  AboutUsMainBox,
+  ImageBox,
+  AboutUsInfoBox,
+  ViewImageBox,
+} from "./aboutUsTab.styles";
+const photos = [
+  "https://picsum.photos/5000/3333",
+  "https://picsum.photos/5000/3333",
+  "https://picsum.photos/5000/3333",
+  "https://picsum.photos/5000/3333",
+  "https://picsum.photos/5000/3333",
+];
 
-const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
-  top: 0,
-}));
-const AboutUsContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  [theme.breakpoints.down("md")]: {
-    marginTop: "-50px",
-    width: "auto",
-    marginLeft: "1.5rem",
-  },
-  marginTop: "-100px",
-  marginLeft: "35px",
-  width: "50%",
-}));
-
-const AboutUsMainBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  width: "100%",
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
-    rowGap: 40,
-  },
-}));
-
-const ImageBox = styled(Box)(({ theme, imageUrl }) => ({
-  fontFamily: theme.typography.secondaryText.fontFamily,
-  height: 141,
-  position: "relative",
-  borderBottom: `5px solid #fff`,
-  "& div": {
-    top: -10,
-    borderRadius: "50%",
-    height: 141,
-    width: 141,
-    border: `3px solid ${theme.palette.avatar.borderColor}`,
-    boxShadow: `0px 4px 4px ${theme.palette.avatar.borderColor}80`,
-    flexDirection: "column",
-  },
-  "& img": {
-    borderRadius: "50%",
-    height: "100%",
-    width: "100",
-  },
-  "& span": {
-    "& img": {
-      marginTop: "-15px",
-      marginLeft: "40%",
-      height: 32.18,
-      width: 32.18,
-      border: "none",
-      boxShadow: "none",
-      borderRadius: "none",
-    },
-    "& p": {
-      marginTop: "-10px",
-      textAlign: "center",
-      color: theme.palette.secondary.main,
-      fontSize: "12px",
-    },
-  },
-}));
-
-const AboutUsInfoBox = styled(Box)(({ theme }) => ({
-  paddingTop: 30,
-
-  "& h1": {
-    color: theme.palette.secondary.purpleBaloon,
-    fontSize: 30,
-    fontWeight: 500,
-    fontFamily: theme?.fontFamily.primary,
-    textTransform: "uppercase",
-    lineHeight: 1,
-    "& span": {
-      fontSize: 16,
-      fontFamily: theme?.fontFamily.Rubik,
-      textTransform: "capitalize",
-    },
-  },
-
-  "& p": {
-    fontSize: 16,
-    fontWeight: 400,
-    fontFamily: theme?.fontFamily.Rubik,
-    "& span": {
-      marginRight: 10,
-    },
-  },
-}));
-
-const AwardsBox = styled(Box)(({ theme }) => ({
-  textAlignLast: "right",
-  width: "100%",
-  marginRight: "10px",
-  marginTop: "20px",
-}));
-
-const ViewImageBox = styled(Box)(({ theme }) => ({
-  width: "80%",
-}));
-
-const BadgesBox = styled(Box)(({ theme }) => ({
-  flex: 1,
-  padding: "0 1rem",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  "& div": {
-    display: "flex",
-    gap: "1rem",
-    flexWrap: "wrap",
-    "& span": {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-end",
-      alignItems: "center",
-    },
-  },
-}));
-
-export const AboutUS = ({ setValue, individualData }) => {
-  const SpecialtiesLimit = individualData.Specialties.length - 2;
-  const AmenitiesLimit = 8;
-  const isSmallScreen = useMediaQuery("(max-width:900px)");
-  const [specialtiesLimit, setSpecialtiesLimit] = useState(SpecialtiesLimit);
-  const [amenitiesLimit, setAmenitiesLimit] = useState(AmenitiesLimit);
-
+export const AboutUS = ({ setValue }) => {
   const handleRedirect = () => {
     setValue(3);
   };
@@ -141,44 +29,21 @@ export const AboutUS = ({ setValue, individualData }) => {
       <PackageDetailsMainBox>
         <img src={imageConatainer} alt="image" width="100%" />
         <AboutUsMainBox>
-          <AboutUsContainer>
-            <div
-              style={{
-                display: "flex",
-                displayDirection: "column",
-              }}
-            >
-              <ImageBox>
-                <div>
-                  <img
-                    src="https://picsum.photos/5000/3333"
-                    height={141}
-                    width={141}
-                    alt="person-img"
-                  />
-                  <span>
-                    <img src={verified} /> <p>Verified</p>
-                  </span>
-                </div>
-              </ImageBox>
-              {isSmallScreen ? (
-                <AwardsBox>
-                  {individualData.awards.map((src, index) => (
-                    <img
-                      src={src}
-                      onClick={handleRedirect}
-                      key={`image ${index}`}
-                      alt={`image ${index + 1}`}
-                      style={{ margin: "5px" }}
-                      height={64}
-                      width={50}
-                    />
-                  ))}
-                </AwardsBox>
-              ) : (
-                ""
-              )}
-            </div>
+          <AboutUsContainer
+            style={{
+              marginTop: "-100px",
+              marginLeft: "35px",
+              width: "100%",
+            }}
+          >
+            <ImageBox>
+              <div>
+                <img src="https://picsum.photos/5000/3333" height={141} width={141} alt="person-img" />
+                <span>
+                  <img src={verified} /> <p>Verified</p>
+                </span>
+              </div>
+            </ImageBox>
 
             <AboutUsInfoBox>
               <h1>
@@ -241,7 +106,11 @@ export const AboutUS = ({ setValue, individualData }) => {
                 ""
               )}
 
-              <p>{individualData.description}</p>
+              <p>
+                Discover nature's way of healing with harmony at the Jiva Spa. The wisdom gathered from centuries of
+                studies on wellness. The skilled hands of our trained therapists. This internationally renowned centre
+                for wellness soothes yet invigorates your mind, body and soul.{" "}
+              </p>
 
               <BadgesBox>
                 <p>
@@ -252,12 +121,7 @@ export const AboutUS = ({ setValue, individualData }) => {
                     if (index > specialtiesLimit) return;
                     return (
                       <span key={`Specialties ${index}`}>
-                        <img
-                          src={data.src}
-                          alt={`Specialties ${index + 1}`}
-                          height={25}
-                          width={25}
-                        />
+                        <img src={data.src} alt={`Specialties ${index + 1}`} height={25} width={25} />
                         {data.name}
                       </span>
                     );
@@ -269,15 +133,9 @@ export const AboutUS = ({ setValue, individualData }) => {
                         color: "red",
                         cursor: "pointer",
                       }}
-                      onClick={() =>
-                        setSpecialtiesLimit(individualData.Specialties?.length)
-                      }
+                      onClick={() => setSpecialtiesLimit(individualData.Specialties?.length)}
                     >
-                      +
-                      {individualData.Specialties?.length -
-                        specialtiesLimit -
-                        1}{" "}
-                      more
+                      +{individualData.Specialties?.length - specialtiesLimit - 1} more
                     </span>
                   ) : (
                     <span
@@ -302,12 +160,7 @@ export const AboutUS = ({ setValue, individualData }) => {
                     if (index > amenitiesLimit) return;
                     return (
                       <span key={`Amenities ${index}`}>
-                        <img
-                          src={data.src}
-                          alt={`Amenities ${index + 1}`}
-                          height={25}
-                          width={25}
-                        />
+                        <img src={data.src} alt={`Amenities ${index + 1}`} height={25} width={25} />
                         {data.name}
                       </span>
                     );
@@ -319,12 +172,9 @@ export const AboutUS = ({ setValue, individualData }) => {
                         color: "red",
                         cursor: "pointer",
                       }}
-                      onClick={() =>
-                        setAmenitiesLimit(individualData.Amenities?.length)
-                      }
+                      onClick={() => setAmenitiesLimit(individualData.Amenities?.length)}
                     >
-                      +{individualData.Amenities?.length - amenitiesLimit - 1}{" "}
-                      more
+                      +{individualData.Amenities?.length - amenitiesLimit - 1} more
                     </span>
                   ) : (
                     <span

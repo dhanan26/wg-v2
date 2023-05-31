@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { Box, Dialog, useMediaQuery } from "@mui/material";
 import { TabsComponent } from "../../components/common/tabs";
 import { PhotoTab } from "./photoTab";
@@ -7,7 +6,7 @@ import { TermsAndCondition } from "./termsAndConditionTab";
 import { AboutUS } from "./aboutUsTab";
 import { PackageInfo } from "./packageInfo";
 import { useState } from "react";
-
+import { PackageDetailsMainBox } from "./packageDetails.styles";
 const teamUrl = import.meta.env.VITE_APP_TEAM_PDF;
 const teamFileName = "Team";
 
@@ -40,11 +39,7 @@ const individualData = {
     "https://picsum.photos/5000/3333",
     "https://picsum.photos/5000/3333",
   ],
-  awards: [
-    "https://picsum.photos/300/300",
-    "https://picsum.photos/300/300",
-    "https://picsum.photos/300/300",
-  ],
+  awards: ["https://picsum.photos/300/300", "https://picsum.photos/300/300", "https://picsum.photos/300/300"],
   description:
     "Discover nature's way of healing with harmony at the Jiva Spa. The wisdom gathered from centuries of studies on wellness. The skilled hands of our trained therapists. This internationally renowned centre for wellness soothes yet invigorates your mind, body and soul.",
   Specialties: [
@@ -93,11 +88,7 @@ const headerData = {
     specialties: ["Ayurveda", "Yoga", "Meditation"],
     person: 1,
   },
-  awards: [
-    "https://picsum.photos/300/300",
-    "https://picsum.photos/300/300",
-    "https://picsum.photos/300/300",
-  ],
+  awards: ["https://picsum.photos/300/300", "https://picsum.photos/300/300", "https://picsum.photos/300/300"],
 };
 
 const descriptionData =
@@ -164,12 +155,6 @@ const amenitiesData = [
 const termsAndConditionUrl = import.meta.env.VITE_APP_TERM_AND_CONDITION_PDF;
 const termsAndConditionFileName = "Terms and Condition";
 
-const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
-  padding: "0px 0px 0px 0px",
-  backgroundColor: "white",
-  border: `2px solid ${theme.palette.primary.main}`,
-}));
-
 export const PackageDetails = () => {
   const [modalOpen, setModal] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width:900px)");
@@ -197,12 +182,7 @@ export const PackageDetails = () => {
     { label: "Photos", content: <PhotoTab images={images} /> },
     {
       label: "Terms & Conditions",
-      content: (
-        <TermsAndCondition
-          url={termsAndConditionUrl}
-          fileName={termsAndConditionFileName}
-        />
-      ),
+      content: <TermsAndCondition url={termsAndConditionUrl} fileName={termsAndConditionFileName} />,
     },
   ];
   return (
@@ -212,11 +192,7 @@ export const PackageDetails = () => {
           <TabsComponent tabs={tab} setValue={setValue} value={value} />
         </PackageDetailsMainBox>
       ) : (
-        <Dialog
-          fullScreen
-          open={modalOpen}
-          onClose={() => setModal((prev) => !prev)}
-        >
+        <Dialog fullScreen open={modalOpen} onClose={() => setModal((prev) => !prev)}>
           <TabsComponent tabs={tab} setValue={setValue} value={value} />
         </Dialog>
       )}
