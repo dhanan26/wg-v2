@@ -11,11 +11,11 @@ const teamUrl = import.meta.env.VITE_APP_TEAM_PDF;
 const teamFileName = "Team";
 
 const images = [
-  "https://picsum.photos/id/15/400/200",
-  "https://picsum.photos/id/25/400/200",
+  "https://picsum.photos/id/15/800/700",
+  "https://picsum.photos/id/25/400/100",
   "https://picsum.photos/id/40/200/200",
   "https://picsum.photos/id/58/200/200",
-  "https://picsum.photos/id/41/400/200",
+  "https://picsum.photos/id/41/800/200",
   "https://picsum.photos/id/61/500/200",
   "https://picsum.photos/id/77/200/200",
   "https://picsum.photos/id/91/500/500",
@@ -23,6 +23,58 @@ const images = [
   "https://picsum.photos/id/100/500/500",
   "https://picsum.photos/id/190/500/500",
 ];
+
+const individualData = {
+  name: "Dr. Ramya",
+  link: "www.dr.ramya.com",
+  experience: "12 Yr. of exp",
+  phone: "0123456789",
+  address: "Yeshwantpura, Bangalore",
+  image: "https://picsum.photos/id/100/200/200",
+  designation: "BDS MDS - Naturopathy and Ayurveda",
+  photos: [
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+  ],
+  awards: ["https://picsum.photos/300/300", "https://picsum.photos/300/300", "https://picsum.photos/300/300"],
+  description:
+    "Discover nature's way of healing with harmony at the Jiva Spa. The wisdom gathered from centuries of studies on wellness. The skilled hands of our trained therapists. This internationally renowned centre for wellness soothes yet invigorates your mind, body and soul.",
+  Specialties: [
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+  ],
+  Amenities: [
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Ayurveda", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+    { name: "Unani", src: "https://picsum.photos/300/300" },
+    { name: "Meditation", src: "https://picsum.photos/300/300" },
+  ],
+};
 
 const headerData = {
   logo: "https://picsum.photos/300/300",
@@ -122,7 +174,10 @@ export const PackageDetails = () => {
         />
       ),
     },
-    { label: "About Us", content: <AboutUS setValue={setValue} /> },
+    {
+      label: "About Us",
+      content: <AboutUS setValue={setValue} individualData={individualData} />,
+    },
     { label: "Team", content: <Team url={teamUrl} fileName={teamFileName} /> },
     { label: "Photos", content: <PhotoTab images={images} /> },
     {

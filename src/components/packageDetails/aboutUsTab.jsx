@@ -1,4 +1,4 @@
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Box, Button, styled, Typography, useMediaQuery } from "@mui/material";
 import imageConatainer from "../../assets/images/Image Container.svg";
 import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
@@ -47,14 +47,14 @@ export const AboutUS = ({ setValue }) => {
 
             <AboutUsInfoBox>
               <h1>
-                Dr. Ramya
+                {individualData.name}
                 <br />
-                <span>12 Yr. of exp</span>
+                <span>{individualData.experience}</span>
               </h1>
 
-              <p>BDS MDS - Naturopathy and Ayurveda</p>
-              <p>Yeshwantpura, Bangalore</p>
-              <p>www.dr.ramya.com</p>
+              <p>{individualData.designation}</p>
+              <p>{individualData.address}</p>
+              <p>{individualData.link}</p>
 
               <p>
                 <span>
@@ -69,7 +69,7 @@ export const AboutUS = ({ setValue }) => {
                 Wednesday 9:30 am–6 pm
               </p>
               <ViewImageBox>
-                {photos.map((src, index) => (
+                {individualData.photos.map((src, index) => (
                   <img
                     src={src}
                     onClick={handleRedirect}
@@ -85,14 +85,26 @@ export const AboutUS = ({ setValue }) => {
             </AboutUsInfoBox>
           </AboutUsContainer>
 
-          <AboutUsContainer
-            style={{
-              marginTop: "-60px",
-              marginLeft: "148px",
-            }}
-          >
-            <div className="card1">
-              <img src="https://picsum.photos/id/11/60" alt="image" />
+          <AboutUsContainer>
+            <div style={{ marginTop: "40px" }}>
+              {!isSmallScreen ? (
+                <>
+                  {individualData.awards.map((src, index) => (
+                    <img
+                      src={src}
+                      key={`image ${index}`}
+                      alt={`image ${index + 1}`}
+                      style={{
+                        margin: "0.5px 23px 0.5px 23px",
+                      }}
+                      height={100}
+                      width={80}
+                    />
+                  ))}
+                </>
+              ) : (
+                ""
+              )}
 
               <p>
                 Discover nature's way of healing with harmony at the Jiva Spa. The wisdom gathered from centuries of
@@ -100,18 +112,83 @@ export const AboutUS = ({ setValue }) => {
                 for wellness soothes yet invigorates your mind, body and soul.{" "}
               </p>
 
-              <p>
-                <b>Specialties</b>
-              </p>
-              <p style={{ margin: "10px" }}>
-                <img src="https://picsum.photos/id/15/60" alt="image" />
-                <img src="https://picsum.photos/id/15/60" alt="image" />
-                <img src="https://picsum.photos/id/15/60" alt="image" />
-              </p>
-              <p>BDS MDS - Naturopathy and Ayurveda </p>
-              <p>www.dr.ramya.com</p>
-              <p>Locate other branches</p>
-              <p>Wednesday 9:30 am–6 pm</p>
+              <BadgesBox>
+                <p>
+                  <b>Specialties</b>
+                </p>
+                <div>
+                  {individualData.Specialties.map((data, index) => {
+                    if (index > specialtiesLimit) return;
+                    return (
+                      <span key={`Specialties ${index}`}>
+                        <img src={data.src} alt={`Specialties ${index + 1}`} height={25} width={25} />
+                        {data.name}
+                      </span>
+                    );
+                  })}
+
+                  {individualData.Specialties?.length > specialtiesLimit ? (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setSpecialtiesLimit(individualData.Specialties?.length)}
+                    >
+                      +{individualData.Specialties?.length - specialtiesLimit - 1} more
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setSpecialtiesLimit(SpecialtiesLimit)}
+                    >
+                      Show less
+                    </span>
+                  )}
+                </div>
+              </BadgesBox>
+
+              <BadgesBox>
+                <p>
+                  <b>Amenities</b>
+                </p>
+                <div>
+                  {individualData.Amenities.map((data, index) => {
+                    if (index > amenitiesLimit) return;
+                    return (
+                      <span key={`Amenities ${index}`}>
+                        <img src={data.src} alt={`Amenities ${index + 1}`} height={25} width={25} />
+                        {data.name}
+                      </span>
+                    );
+                  })}
+
+                  {individualData.Amenities?.length > amenitiesLimit ? (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setAmenitiesLimit(individualData.Amenities?.length)}
+                    >
+                      +{individualData.Amenities?.length - amenitiesLimit - 1} more
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        color: "red",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setAmenitiesLimit(AmenitiesLimit)}
+                    >
+                      Show less
+                    </span>
+                  )}
+                </div>
+              </BadgesBox>
             </div>
           </AboutUsContainer>
         </AboutUsMainBox>
