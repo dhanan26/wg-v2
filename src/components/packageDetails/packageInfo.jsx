@@ -2,16 +2,30 @@ import { Box, styled, useMediaQuery } from "@mui/material";
 import greenTick from "../../assets/icons/list-green-tick.svg";
 import grayTick from "../../assets/icons/list-gray-tick.svg";
 import { useRef, useState } from "react";
-
+import {
+  Container,
+  HeaderContainer,
+  HeaderMainSection,
+  HeaderImage,
+  HeaderInfo,
+  SpecialtyBox,
+  HeaderAwards,
+  DescriptionContainer,
+  GenderContainer,
+  SplitContainer,
+  FlexBox,
+} from "./packageInfo.styles";
 const LIMIT = 8;
 
-const Container = styled(Box)(() => ({
-  display: "flex",
-  gap: "1rem",
-  flexDirection: "column",
-}));
-
-export const PackageInfo = ({ header, description, packageInfo, programList, specialties, amenities, bestPractices }) => {
+export const PackageInfo = ({
+  header,
+  description,
+  packageInfo,
+  programList,
+  specialties,
+  amenities,
+  bestPractices,
+}) => {
   const [specialtiesLimit, setSpecialtiesLimit] = useState(LIMIT);
   const [amenitiesLimit, setAmenitiesLimit] = useState(LIMIT);
 
@@ -48,7 +62,11 @@ export const PackageInfo = ({ header, description, packageInfo, programList, spe
           </ui>
         </FlexBox>
         <FlexBox>
-          <SpecialtiesContainer specialties={specialties} specialtiesLimit={specialtiesLimit} setSpecialtiesLimit={setSpecialtiesLimit} />
+          <SpecialtiesContainer
+            specialties={specialties}
+            specialtiesLimit={specialtiesLimit}
+            setSpecialtiesLimit={setSpecialtiesLimit}
+          />
         </FlexBox>
       </SplitContainer>
       <SplitContainer backgroundColor={"#F2F2F2"} reverse>
@@ -64,7 +82,11 @@ export const PackageInfo = ({ header, description, packageInfo, programList, spe
           </ui>
         </FlexBox>
         <FlexBox>
-          <AmenitiesContainer amenities={amenities} amenitiesLimit={amenitiesLimit} setAmenitiesLimit={setAmenitiesLimit} />
+          <AmenitiesContainer
+            amenities={amenities}
+            amenitiesLimit={amenitiesLimit}
+            setAmenitiesLimit={setAmenitiesLimit}
+          />
         </FlexBox>
       </SplitContainer>
     </Container>
@@ -124,92 +146,6 @@ const AmenitiesContainer = ({ amenities, amenitiesLimit, setAmenitiesLimit }) =>
     </>
   );
 };
-
-// header ---------------------------------------------
-const HeaderContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  gap: "1rem",
-  padding: "0.5rem 1rem",
-  justifyContent: "space-between",
-
-  div: {
-    display: "flex",
-    gap: "1rem",
-    [theme.breakpoints.down("sm")]: {
-      justifyContent: "flex-end",
-    },
-  },
-}));
-
-const HeaderMainSection = styled(Box)(() => ({
-  display: "flex",
-}));
-
-const HeaderImage = styled(Box)(({ theme }) => ({
-  img: {
-    height: "100px",
-    width: "100px",
-    borderRadius: "50%",
-    border: `3px solid ${theme.palette.primary.main}`,
-    boxShadow: "0px 4px 4px 0px rgba(0,0,0,0.25)",
-  },
-}));
-
-const HeaderInfo = styled(Box)(({ theme }) => ({
-  padding: "0.5rem 1rem",
-  fontFamily: theme.typography.secondaryText.fontFamily,
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.5rem",
-  div: {
-    display: "flex",
-    alignItems: "center",
-    flexWrap: "wrap",
-    gap: "0.5rem",
-    p: {
-      margin: "unset",
-      fontWeight: "500",
-    },
-  },
-  h4: {
-    fontWeight: "700",
-    margin: "unset",
-    fontSize: "0.8rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "0.6rem",
-    },
-  },
-  h2: {
-    fontWeight: "500",
-    margin: "unset",
-    fontSize: "1rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "0.8rem",
-    },
-  },
-}));
-
-const SpecialtyBox = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.packageInfo.chipColor,
-  padding: "0.25rem 0.5rem",
-  fontSize: "0.8rem",
-  color: "white",
-
-  [theme.breakpoints.down("sm")]: {
-    padding: "0.1rem 0.25rem",
-  },
-}));
-
-const HeaderAwards = styled(Box)(() => ({
-  display: "flex",
-  gap: "1rem",
-  flexWrap: "wrap",
-  minWidth: "calc(66px + 66px + 1rem)",
-  img: {
-    height: "88px",
-    width: "66px",
-  },
-}));
 
 const Header = ({ header }) => {
   const isSmallScreen = useMediaQuery("(max-width:600px)");
@@ -300,47 +236,6 @@ const Header = ({ header }) => {
   );
 };
 
-// description ---------------------------------------------
-const DescriptionContainer = styled(Box)(({ theme }) => ({
-  color: theme.palette.textPrimary.main,
-  padding: "0.5rem 1rem",
-  h3: {
-    fontFamily: theme.typography.primaryTitle.fontFamily,
-    fontWeight: 500,
-    fontSize: "1rem",
-    margin: "unset",
-  },
-  p: {
-    fontFamily: theme.typography.secondaryText.fontFamily,
-    fontWeight: 400,
-    fontSize: "0.8rem",
-  },
-  div: {
-    fontFamily: theme.typography.secondaryText.fontFamily,
-    fontSize: "0.8rem",
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "0.8rem",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
-
-    b: {
-      [theme.breakpoints.down("sm")]: {
-        display: "none",
-      },
-    },
-  },
-}));
-
-const GenderContainer = styled(Box)(() => ({
-  display: "flex",
-  flexDirection: "row !important",
-  b: {
-    display: "block !important",
-  },
-}));
-
 const Description = ({ description, info }) => {
   return (
     <DescriptionContainer>
@@ -360,67 +255,13 @@ const Description = ({ description, info }) => {
             <span key={index}>{gender}</span>
           ))}
           <b>|</b>
-          {info?.freeCancellation ? <span style={{ color: "red" }}>Free Cancellation</span> : <span>No Cancellation</span>}
+          {info?.freeCancellation ? (
+            <span style={{ color: "red" }}>Free Cancellation</span>
+          ) : (
+            <span>No Cancellation</span>
+          )}
         </GenderContainer>
       </div>
     </DescriptionContainer>
   );
 };
-
-const SplitContainer = styled(Box)(({ theme, backgroundColor, reverse }) => ({
-  backgroundColor: backgroundColor,
-  display: "flex",
-  justifyContent: "space-between",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: reverse ? "column" : "column-reverse",
-  },
-}));
-
-const FlexBox = styled(Box)(({ theme }) => ({
-  flex: 1,
-  padding: "0.5rem 1rem",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  h3: {
-    fontFamily: theme.typography.secondaryText.fontFamily,
-    fontSize: "1rem",
-    fontWeight: 500,
-    [theme.breakpoints.down("sm")]: {
-      fontWeight: 600,
-      margin: "unset",
-      marginBottom: "0.5rem",
-    },
-  },
-  ul: {
-    gap: "1rem",
-  },
-  li: {
-    listStyle: "none",
-    display: "flex",
-    gap: "0.4rem",
-    alignItems: "flex-start",
-    fontFamily: theme.typography.secondaryText.fontFamily,
-    fontSize: "0.9rem",
-    fontWeight: 400,
-    margin: "0 0 10px 0",
-  },
-  div: {
-    display: "flex",
-    gap: "0.5rem",
-    flexWrap: "wrap",
-  },
-  span: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    fontFamily: theme.typography.secondaryText.fontFamily,
-    fontSize: "0.9rem",
-    fontWeight: 400,
-    gap: "0.5rem",
-    margin: "0 0 10px 0",
-    minWidth: 60,
-  },
-}));

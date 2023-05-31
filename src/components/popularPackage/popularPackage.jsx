@@ -1,9 +1,12 @@
-import { styled, Box } from "@mui/material";
 import { StyledMainContainer } from "../common/box/box";
-import { PrimarySubText, PrimaryText } from "../common/typographies/typographies";
-import { TextCenterBox } from "../common/containers/containers";
 import { PopularPackageCard } from "../widgets/popularPackageCard";
-
+import {
+  PopularPackageBox,
+  PopularPackageTitleBox,
+  PopularPackageMainTitle,
+  PopularPackageSubTitle,
+  SwiperContainer,
+} from "./popularPackage.styles";
 //Swiper imports
 import SwiperCore, { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,62 +15,6 @@ SwiperCore.use([Navigation]);
 
 //custom style
 import "./popularPackage.css";
-
-const PopularPackageBox = styled(Box)(({ theme }) => ({
-  height: 498,
-  [theme.breakpoints.down("mlg")]: {
-    height: 426,
-  },
-}));
-
-const PopularPackageTitleBox = styled(TextCenterBox)(({ theme }) => ({
-  height: 117,
-  [theme.breakpoints.down("lg")]: {
-    height: 115,
-  },
-  flexDirection: "column",
-  textAlign: "center",
-  gap: 18,
-}));
-
-const PopularPackageMainTitle = styled(PrimaryText)(({ theme }) => ({
-  [theme.breakpoints.down("lg")]: {
-    fontSize: 30,
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: 20,
-  },
-}));
-
-const PopularPackageSubTitle = styled(PrimarySubText)(({ theme }) => ({
-  fontSize: 16,
-  [theme.breakpoints.down("lg")]: {
-    fontSize: 14,
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: 12,
-  },
-  fontWeight: 400,
-  fontFamily: theme?.fontFamily.Rubik,
-}));
-
-const SwiperContainer = styled(Box)(({ theme }) => ({
-  position: "relative",
-  width: "100%",
-
-  [theme.breakpoints.down("sm")]: {
-    width: "90%",
-    marginLeft: 20,
-  },
-  // width: "95%",
-  marginLeft: "auto",
-  marginRight: "auto",
-  "& .swiper-slide": {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-}));
 
 export const PopularPackage = () => {
   return (

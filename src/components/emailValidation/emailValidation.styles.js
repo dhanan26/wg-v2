@@ -1,5 +1,6 @@
 import { styled, Box, DialogContent, TextField } from "@mui/material";
-import { SecondaryButton, PrimarySubText } from "../common/buttons/button";
+import { SecondaryButton } from "../common/buttons/button";
+import { PrimarySubText } from "../common/typographies/typographies";
 export const HeaderBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",

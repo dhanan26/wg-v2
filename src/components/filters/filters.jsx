@@ -1,12 +1,5 @@
-import { Stack, styled, Box, useMediaQuery } from "@mui/material";
-import { TextCenterBox } from "../common/containers/containers";
-import { PrimaryText } from "../common/typographies/typographies";
 import { AccordionFilter } from "../widgets/accordionFilter";
-
-const FilterMainBox = styled(Box)(({ theme }) => ({
-  width: 253,
-  height: "100vh",
-}));
+import { FilterMainBox, WGTreasuresBox, Title, TitleBox } from "./filters.styles";
 
 export const Filter = () => {
   return (
@@ -17,21 +10,6 @@ export const Filter = () => {
 };
 
 const WGTreasures = () => {
-  const WGTreasuresBox = styled(Box)(({ theme }) => ({
-    width: "auto",
-    height: "100vh",
-    marginTop: 20,
-  }));
-
-  const Title = styled(PrimaryText)(({ theme }) => ({
-    fontWeight: 600,
-    fontSize: 16,
-  }));
-
-  const TitleBox = styled(TextCenterBox)(({ theme }) => ({
-    marginBottom: 20,
-  }));
-
   return (
     <WGTreasuresBox>
       <TitleBox>

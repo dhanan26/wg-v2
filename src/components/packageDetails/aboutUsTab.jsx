@@ -4,7 +4,14 @@ import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
 import React from "react";
-
+import {
+  PackageDetailsMainBox,
+  AboutUsContainer,
+  AboutUsMainBox,
+  ImageBox,
+  AboutUsInfoBox,
+  ViewImageBox,
+} from "./aboutUsTab.styles";
 const photos = [
   "https://picsum.photos/5000/3333",
   "https://picsum.photos/5000/3333",
@@ -12,90 +19,6 @@ const photos = [
   "https://picsum.photos/5000/3333",
   "https://picsum.photos/5000/3333",
 ];
-
-const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
-  //   backgroundColor: "yellow",
-  top: 0,
-}));
-const AboutUsContainer = styled(Box)(({ theme }) => ({
-  //   display: "flex",
-  //   flexDirection: "column",
-}));
-
-const AboutUsMainBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  width: "100%",
-}));
-
-const ImageBox = styled(Box)(({ theme, imageUrl }) => ({
-  fontFamily: theme.typography.secondaryText.fontFamily,
-  height: 141,
-  width: "100%",
-  position: "relative",
-  borderBottom: `5px solid #fff`,
-  "& div": {
-    top: -10,
-    borderRadius: "50%",
-    height: 141,
-    width: 141,
-    border: `3px solid ${theme.palette.avatar.borderColor}`,
-    boxShadow: `0px 4px 4px ${theme.palette.avatar.borderColor}80`,
-    flexDirection: "column",
-  },
-  "& img": {
-    borderRadius: "50%",
-    height: "100%",
-    width: "100",
-  },
-  "& span": {
-    "& img": {
-      marginTop: "-15px",
-      marginLeft: "40%",
-      height: 32.18,
-      width: 32.18,
-      border: "none",
-      boxShadow: "none",
-      borderRadius: "none",
-    },
-    "& p": {
-      marginTop: "-10px",
-      textAlign: "center",
-      color: theme.palette.secondary.main,
-      fontSize: "12px",
-    },
-  },
-}));
-
-const AboutUsInfoBox = styled(Box)(({ theme }) => ({
-  paddingTop: 30,
-
-  "& h1": {
-    color: theme.palette.secondary.purpleBaloon,
-    fontSize: 30,
-    fontWeight: 500,
-    fontFamily: theme?.fontFamily.primary,
-    textTransform: "uppercase",
-    lineHeight: 1,
-    "& span": {
-      fontSize: 16,
-      fontFamily: theme?.fontFamily.Rubik,
-      textTransform: "capitalize",
-    },
-  },
-
-  "& p": {
-    fontSize: 16,
-    fontWeight: 400,
-    fontFamily: theme?.fontFamily.Rubik,
-    "& span": {
-      marginRight: 10,
-    },
-  },
-}));
-
-const ViewImageBox = styled(Box)(({ theme }) => ({
-  width: "80%",
-}));
 
 export const AboutUS = ({ setValue }) => {
   const handleRedirect = () => {
@@ -115,12 +38,7 @@ export const AboutUS = ({ setValue }) => {
           >
             <ImageBox>
               <div>
-                <img
-                  src="https://picsum.photos/5000/3333"
-                  height={141}
-                  width={141}
-                  alt="person-img"
-                />
+                <img src="https://picsum.photos/5000/3333" height={141} width={141} alt="person-img" />
                 <span>
                   <img src={verified} /> <p>Verified</p>
                 </span>
@@ -177,11 +95,9 @@ export const AboutUS = ({ setValue }) => {
               <img src="https://picsum.photos/id/11/60" alt="image" />
 
               <p>
-                Discover nature's way of healing with harmony at the Jiva Spa.
-                The wisdom gathered from centuries of studies on wellness. The
-                skilled hands of our trained therapists. This internationally
-                renowned centre for wellness soothes yet invigorates your mind,
-                body and soul.{" "}
+                Discover nature's way of healing with harmony at the Jiva Spa. The wisdom gathered from centuries of
+                studies on wellness. The skilled hands of our trained therapists. This internationally renowned centre
+                for wellness soothes yet invigorates your mind, body and soul.{" "}
               </p>
 
               <p>

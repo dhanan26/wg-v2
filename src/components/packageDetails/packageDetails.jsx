@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { Box, Dialog, useMediaQuery } from "@mui/material";
 import { TabsComponent } from "../../components/common/tabs";
 import { PhotoTab } from "./photoTab";
@@ -7,7 +6,7 @@ import { TermsAndCondition } from "./termsAndConditionTab";
 import { AboutUS } from "./aboutUsTab";
 import { PackageInfo } from "./packageInfo";
 import { useState } from "react";
-
+import { PackageDetailsMainBox } from "./packageDetails.styles";
 const teamUrl = import.meta.env.VITE_APP_TEAM_PDF;
 const teamFileName = "Team";
 
@@ -104,13 +103,6 @@ const amenitiesData = [
 const termsAndConditionUrl = import.meta.env.VITE_APP_TERM_AND_CONDITION_PDF;
 const termsAndConditionFileName = "Terms and Condition";
 
-const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
-  padding: "0px 0px 0px 0px",
-  backgroundColor: "white",
-  border: `2px solid ${theme.palette.primary.main}`,
-  // height: 870
-}));
-
 export const PackageDetails = () => {
   const [modalOpen, setModal] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width:900px)");
@@ -145,10 +137,9 @@ export const PackageDetails = () => {
           <TabsComponent tabs={tab} setValue={setValue} value={value} />
         </PackageDetailsMainBox>
       ) : (
-        ""
-        // <Dialog fullScreen open={modalOpen} onClose={() => setModal((prev) => !prev)}>
-        //   <TabsComponent tabs={tab} setValue={setValue} value={value} />
-        // </Dialog>
+        <Dialog fullScreen open={modalOpen} onClose={() => setModal((prev) => !prev)}>
+          <TabsComponent tabs={tab} setValue={setValue} value={value} />
+        </Dialog>
       )}
     </>
   );

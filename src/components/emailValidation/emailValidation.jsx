@@ -5,7 +5,15 @@ import { PrimarySubText } from "../common/typographies/typographies";
 import CloseIcon from "../../assets/icons/Close.svg";
 import ArrowIcon from "../../assets/icons/StyledArrow.svg";
 import { Icon } from "../common/icon/icon";
-import { HeaderBox, SubHeaderBox, ContentBox, StyleedDialogContent } from "./emailValidation.styles";
+import {
+  HeaderBox,
+  SubHeaderBox,
+  ContentBox,
+  StyleedDialogContent,
+  SubTitle,
+  StyledTextField,
+  StyledButton,
+} from "./emailValidation.styles";
 
 export const SubContainerBox = () => {
   return (

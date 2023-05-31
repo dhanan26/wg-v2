@@ -4,32 +4,7 @@ import { FormInput } from "../../widgets/formInput";
 import { FormButton } from "../../widgets/formButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-const Container = styled(Box)(({ theme }) => ({
-  background: `linear-gradient(${theme.palette.primary.main}, ${theme.palette.primary.main}80)`,
-  paddingBottom: "2rem",
-  fontFamily: theme.fontFamily.primary,
-  padding: "1rem 2.063rem",
-
-  "& h2": {
-    fonSize: theme.typography.primaryText,
-    fontWeight: 900,
-    margin: "unset",
-  },
-  "& p": {
-    fontSize: 14,
-    fontWeight: 500,
-  },
-}));
-
-const FormContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  gap: "2rem",
-  flexWrap: "wrap",
-  marginBottom: "1rem",
-  [theme.breakpoints.down("xs")]: {
-    flexDirection: "column",
-  },
-}));
+import { Container, FormContainer } from "./enquiryFormWeb.styles";
 
 export const EnquiryForm = ({ name }) => {
   const phoneRegExp =

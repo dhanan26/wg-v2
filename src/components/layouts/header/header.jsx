@@ -1,5 +1,3 @@
-import { NavigationBox } from "../../common/box/box";
-
 import { Icon } from "../../common/icon/icon";
 import {
   Stack,
@@ -13,55 +11,24 @@ import {
   Drawer,
   Button,
 } from "@mui/material";
-import { NavigationContainer } from "../../common/containers/containers";
 import { PrimarySubText } from "../../common/typographies/typographies";
-import { GetInTouchButton } from "../../common/buttons/button";
 import { Banner } from "../../banner";
 import banner2Imag from "../../../assets/images/home_carousel_2.png.jpg";
-import { useState } from "react";
 import { Menu } from "../../menu";
 //icons
 import globIcon from "../../../assets/icons/Glob.svg";
 import wellnessLogo from "../../../assets/images/headerLogo.svg";
 import locationIcon from "../../../assets/icons/Location.svg";
 import headSetIconWhite from "../../../assets/icons/headSetWhite.svg";
-const MainNavigationBox = styled(NavigationBox)(({ theme, position }) => ({
-  height: 84,
-  backgroundColor: "white",
-  alignItems: "none",
-}));
 
-const TopNavigationBox = styled(NavigationBox)(({ theme, position }) => ({
-  "@media(max-width:600px)": {
-    height: 20,
-  },
-}));
-
-const MainNavigationContainer = styled(NavigationContainer)(({ theme, position }) => ({
-  justifyContent: "space-between",
-  alignItems: "center",
-  ".MuiContainer-root": {
-    paddingLeft: 0,
-  },
-}));
-
-const TopNavigationContainer = styled(NavigationContainer)(({ theme, position }) => ({
-  justifyContent: "flex-end",
-  "@media(max-width:1200px)": {
-    justifyContent: "center",
-  },
-}));
-
-const GetInTouchButtonHeader = styled(GetInTouchButton)(({ theme, position }) => ({
-  height: 54,
-  width: 160,
-}));
-
-const MainHeaderText = styled(Typography)(({ theme, position }) => ({
-  fontSize: 15,
-  cursor: "pointer",
-  fontFamily: theme.fontFamily.Rubik,
-}));
+import {
+  MainNavigationBox,
+  TopNavigationBox,
+  MainNavigationContainer,
+  TopNavigationContainer,
+  GetInTouchButtonHeader,
+  MainHeaderText,
+} from "./header.styles";
 
 export const Header = () => {
   return (
