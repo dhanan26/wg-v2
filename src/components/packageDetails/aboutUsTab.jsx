@@ -3,24 +3,25 @@ import imageConatainer from "../../assets/images/Image Container.svg";
 import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
-import React from "react";
+import { useState } from "react";
 import {
-  PackageDetailsMainBox,
-  AboutUsContainer,
-  AboutUsMainBox,
-  ImageBox,
-  AboutUsInfoBox,
+  BadgesBox,
+  AwardsBox,
   ViewImageBox,
+  AboutUsInfoBox,
+  ImageBox,
+  AboutUsMainBox,
+  AboutUsContainer,
+  PackageDetailsMainBox,
 } from "./aboutUsTab.styles";
-const photos = [
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-  "https://picsum.photos/5000/3333",
-];
 
-export const AboutUS = ({ setValue }) => {
+export const AboutUS = ({ setValue, individualData }) => {
+  const SpecialtiesLimit = individualData.Specialties.length - 2;
+  const AmenitiesLimit = 8;
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
+  const [specialtiesLimit, setSpecialtiesLimit] = useState(SpecialtiesLimit);
+  const [amenitiesLimit, setAmenitiesLimit] = useState(AmenitiesLimit);
+
   const handleRedirect = () => {
     setValue(3);
   };
@@ -29,21 +30,39 @@ export const AboutUS = ({ setValue }) => {
       <PackageDetailsMainBox>
         <img src={imageConatainer} alt="image" width="100%" />
         <AboutUsMainBox>
-          <AboutUsContainer
-            style={{
-              marginTop: "-100px",
-              marginLeft: "35px",
-              width: "100%",
-            }}
-          >
-            <ImageBox>
-              <div>
-                <img src="https://picsum.photos/5000/3333" height={141} width={141} alt="person-img" />
-                <span>
-                  <img src={verified} /> <p>Verified</p>
-                </span>
-              </div>
-            </ImageBox>
+          <AboutUsContainer>
+            <div
+              style={{
+                display: "flex",
+                displayDirection: "column",
+              }}
+            >
+              <ImageBox>
+                <div>
+                  <img src="https://picsum.photos/5000/3333" height={141} width={141} alt="person-img" />
+                  <span>
+                    <img src={verified} /> <p>Verified</p>
+                  </span>
+                </div>
+              </ImageBox>
+              {isSmallScreen ? (
+                <AwardsBox>
+                  {individualData.awards.map((src, index) => (
+                    <img
+                      src={src}
+                      onClick={handleRedirect}
+                      key={`image ${index}`}
+                      alt={`image ${index + 1}`}
+                      style={{ margin: "5px" }}
+                      height={64}
+                      width={50}
+                    />
+                  ))}
+                </AwardsBox>
+              ) : (
+                ""
+              )}
+            </div>
 
             <AboutUsInfoBox>
               <h1>
@@ -106,11 +125,7 @@ export const AboutUS = ({ setValue }) => {
                 ""
               )}
 
-              <p>
-                Discover nature's way of healing with harmony at the Jiva Spa. The wisdom gathered from centuries of
-                studies on wellness. The skilled hands of our trained therapists. This internationally renowned centre
-                for wellness soothes yet invigorates your mind, body and soul.{" "}
-              </p>
+              <p>{individualData.description}</p>
 
               <BadgesBox>
                 <p>
