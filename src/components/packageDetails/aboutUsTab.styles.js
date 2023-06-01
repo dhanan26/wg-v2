@@ -83,3 +83,30 @@ export const AboutUsInfoBox = styled(Box)(({ theme }) => ({
 export const ViewImageBox = styled(Box)(({ theme }) => ({
   width: "80%",
 }));
+
+export const AwardsBox = styled(Box)(({ theme }) => ({
+  textAlignLast: "right",
+  width: "100%",
+  marginRight: "10px",
+  marginTop: "20px",
+}));
+
+export const BadgesBox = styled(Box)(({ theme }) => ({
+  flex: 1,
+  padding: "0 1rem",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  "& div": {
+    display: "flex",
+    gap: "1rem",
+    flexWrap: "wrap",
+    "& span": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-end",
+      alignItems: "center",
+    },
+  },
+}));
