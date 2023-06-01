@@ -4,16 +4,128 @@ import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
 import { useState } from "react";
-import {
-  BadgesBox,
-  AwardsBox,
-  ViewImageBox,
-  AboutUsInfoBox,
-  ImageBox,
-  AboutUsMainBox,
-  AboutUsContainer,
-  PackageDetailsMainBox,
-} from "./aboutUsTab.styles";
+
+const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
+  //   backgroundColor: "yellow",
+  top: 0,
+}));
+const AboutUsContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "-50px",
+    width: "auto",
+    marginLeft: "1.5rem",
+  },
+  marginTop: "-100px",
+  marginLeft: "35px",
+  width: "50%",
+}));
+
+const AboutUsMainBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  width: "100%",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    rowGap: 40,
+  },
+}));
+
+const ImageBox = styled(Box)(({ theme, imageUrl }) => ({
+  fontFamily: theme.typography.secondaryText.fontFamily,
+  height: 141,
+  position: "relative",
+  borderBottom: `5px solid #fff`,
+  "& div": {
+    top: -10,
+    borderRadius: "50%",
+    height: 141,
+    width: 141,
+    border: `3px solid ${theme.palette.avatar.borderColor}`,
+    boxShadow: `0px 4px 4px ${theme.palette.avatar.borderColor}80`,
+    flexDirection: "column",
+  },
+  "& img": {
+    borderRadius: "50%",
+    height: "100%",
+    width: "100",
+  },
+  "& span": {
+    "& img": {
+      marginTop: "-15px",
+      marginLeft: "40%",
+      height: 32.18,
+      width: 32.18,
+      border: "none",
+      boxShadow: "none",
+      borderRadius: "none",
+    },
+    "& p": {
+      marginTop: "-10px",
+      textAlign: "center",
+      color: theme.palette.secondary.main,
+      fontSize: "12px",
+    },
+  },
+}));
+
+const AboutUsInfoBox = styled(Box)(({ theme }) => ({
+  paddingTop: 30,
+
+  "& h1": {
+    color: theme.palette.secondary.purpleBaloon,
+    fontSize: 30,
+    fontWeight: 500,
+    fontFamily: theme?.fontFamily.primary,
+    textTransform: "uppercase",
+    lineHeight: 1,
+    "& span": {
+      fontSize: 16,
+      fontFamily: theme?.fontFamily.Rubik,
+      textTransform: "capitalize",
+    },
+  },
+
+  "& p": {
+    fontSize: 16,
+    fontWeight: 400,
+    fontFamily: theme?.fontFamily.Rubik,
+    "& span": {
+      marginRight: 10,
+    },
+  },
+}));
+
+const AwardsBox = styled(Box)(({ theme }) => ({
+  textAlignLast: "right",
+  width: "100%",
+  marginRight: "10px",
+  marginTop: "20px",
+}));
+
+const ViewImageBox = styled(Box)(({ theme }) => ({
+  width: "80%",
+}));
+
+const BadgesBox = styled(Box)(({ theme }) => ({
+  flex: 1,
+  padding: "0 1rem",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  "& div": {
+    display: "flex",
+    gap: "1rem",
+    flexWrap: "wrap",
+    "& span": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-end",
+      alignItems: "center",
+    },
+  },
+}));
 
 export const AboutUS = ({ setValue, individualData }) => {
   const SpecialtiesLimit = individualData.Specialties.length - 2;
