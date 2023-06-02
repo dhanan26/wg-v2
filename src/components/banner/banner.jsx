@@ -69,11 +69,21 @@ export const Banner = () => {
 
   if (bannerDataDetails) {
     const programDetails = bannerDataDetails?.data?.programDetails;
+    console.log(
+      "🚀 ~ file: banner.jsx:72 ~ Banner ~ programDetails:",
+      programDetails
+    );
 
-    const programImage = data?.programImage;
-    programImage.map((programImageData) => {
-      bannerData = programImageData;
+    programDetails.map((data) => {
+      data.programImage.map((programImageData) => {
+        bannerData = programImageData;
+      });
     });
+
+    // const programImage = programDetails?.programImage;
+    // programImage.map((programImageData) => {
+    //   bannerData = programImageData;
+    // });
 
     programDetails.map((data) => {
       data?.subProgramId.map((subProgramData) => {
