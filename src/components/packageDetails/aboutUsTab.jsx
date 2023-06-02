@@ -31,7 +31,7 @@ const AboutUsMainBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-const ImageBox = styled(Box)(({ theme, imageUrl }) => ({
+const ImageBox = styled(Box)(({ theme }) => ({
   fontFamily: theme.typography.secondaryText.fontFamily,
   height: 141,
   position: "relative",
