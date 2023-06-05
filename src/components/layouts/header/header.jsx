@@ -39,7 +39,7 @@ export const Header = () => {
       <MainNavigationBox>
         <MainHeaderItems />
       </MainNavigationBox>
-      <Banner bannerData={banner2Imag} />
+      <Banner />
     </>
   );
 };
@@ -68,7 +68,6 @@ const TopHeaderItems = () => {
 const MainHeaderItems = () => {
   const isSmallScreen = useMediaQuery("(max-width:1200px)");
   const theme = useTheme();
-  console.log(theme, "theme");
 
   return (
     <MainNavigationContainer>
@@ -78,7 +77,12 @@ const MainHeaderItems = () => {
           <Menu />
         </>
       ) : (
-        <Stack direction={"row"} spacing={"48px"} display="flex" alignItems={"center"}>
+        <Stack
+          direction={"row"}
+          spacing={"48px"}
+          display="flex"
+          alignItems={"center"}
+        >
           <MainHeaderText>Pain Program</MainHeaderText>
           <MainHeaderText>Wellness Program</MainHeaderText>
           <MainHeaderText>Blog</MainHeaderText>
@@ -86,7 +90,9 @@ const MainHeaderItems = () => {
           <GetInTouchButtonHeader
             variant="contained"
             color="buttonPrimary"
-            startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />}
+            startIcon={
+              <Icon src={headSetIconWhite} className={"header_icon"} />
+            }
           >
             Get in touch{" "}
           </GetInTouchButtonHeader>
