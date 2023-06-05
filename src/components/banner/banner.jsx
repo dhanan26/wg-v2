@@ -67,30 +67,28 @@ export const Banner = () => {
     console.log(isError);
   }
 
-  if (bannerDataDetails) {
-    const programDetails = bannerDataDetails?.data?.programDetails;
-    console.log(
-      "🚀 ~ file: banner.jsx:72 ~ Banner ~ programDetails:",
-      programDetails
-    );
 
-    programDetails.map((data) => {
-      data.programImage.map((programImageData) => {
-        bannerData = programImageData;
-      });
-    });
+  // if (bannerDataDetails) {
+  //   const programDetails = bannerDataDetails?.data?.programDetails;
+   
+
+  //   programDetails?.map((data) => {
+  //     data.programImage?.map((programImageData) => {
+  //       bannerData = programImageData;
+  //     });
+  //   });
 
     // const programImage = programDetails?.programImage;
     // programImage.map((programImageData) => {
     //   bannerData = programImageData;
     // });
 
-    programDetails.map((data) => {
-      data?.subProgramId.map((subProgramData) => {
-        subPrograms.push(subProgramData);
-      });
-    });
-  }
+  //   programDetails?.map((data) => {
+  //     data?.subProgramId?.map((subProgramData) => {
+  //       subPrograms.push(subProgramData);
+  //     });
+  //   });
+  // }
 
   useEffect(() => {
     if (bannerData) {
@@ -116,7 +114,7 @@ export const Banner = () => {
         <BannerFooter>
           {isSmallScreen ? (
             <Box>
-              <ButtonDropdown items={subPrograms} defaultValue={"Upper Back"} />
+              <ButtonDropdown items={subPrograms.name} defaultValue={"Upper Back"} />
             </Box>
           ) : (
             <>
