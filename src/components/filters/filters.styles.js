@@ -15,8 +15,11 @@ export const WGTreasuresBox = styled(Box)(({ theme }) => ({
 export const Title = styled(PrimaryText)(({ theme }) => ({
   fontWeight: 600,
   fontSize: 16,
+  textAlign: "left",
 }));
 
-export const TitleBox = styled(TextCenterBox)(({ theme }) => ({
+export const TitleBox = styled(Box)(({ theme }) => ({
   marginBottom: 20,
+  marginLeft: 2,
+  textAlign: "left",
 }));

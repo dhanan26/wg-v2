@@ -38,6 +38,11 @@ const individualData = {
     "https://picsum.photos/5000/3333",
     "https://picsum.photos/5000/3333",
     "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
+    "https://picsum.photos/5000/3333",
   ],
   awards: ["https://picsum.photos/300/300", "https://picsum.photos/300/300", "https://picsum.photos/300/300"],
   description:

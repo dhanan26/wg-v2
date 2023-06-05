@@ -127,9 +127,19 @@ const BadgesBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+const BannerImageBox = styled(Box)(({ theme, image }) => ({
+  width: "auto",
+  height: 179,
+  backgroundImage: `url(${image})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+}));
+
 export const AboutUS = ({ setValue, individualData }) => {
   const SpecialtiesLimit = individualData.Specialties.length - 2;
   const AmenitiesLimit = 8;
+  const imageLimit = 2;
   const isSmallScreen = useMediaQuery("(max-width:900px)");
   const [specialtiesLimit, setSpecialtiesLimit] = useState(SpecialtiesLimit);
   const [amenitiesLimit, setAmenitiesLimit] = useState(AmenitiesLimit);
@@ -140,7 +150,7 @@ export const AboutUS = ({ setValue, individualData }) => {
   return (
     <>
       <PackageDetailsMainBox>
-        <img src={imageConatainer} alt="image" width="100%" />
+        <BannerImageBox image="https://picsum.photos/5000/3333" />
         <AboutUsMainBox>
           <AboutUsContainer>
             <div
@@ -151,7 +161,12 @@ export const AboutUS = ({ setValue, individualData }) => {
             >
               <ImageBox>
                 <div>
-                  <img src="https://picsum.photos/5000/3333" height={141} width={141} alt="person-img" />
+                  <img
+                    src="https://picsum.photos/5000/3333"
+                    height={141}
+                    width={141}
+                    alt="person-img"
+                  />
                   <span>
                     <img src={verified} /> <p>Verified</p>
                   </span>
@@ -200,17 +215,23 @@ export const AboutUS = ({ setValue, individualData }) => {
                 Wednesday 9:30 am–6 pm
               </p>
               <ViewImageBox>
-                {individualData.photos.map((src, index) => (
-                  <img
-                    src={src}
-                    onClick={handleRedirect}
-                    key={`image ${index}`}
-                    alt={`image ${index + 1}`}
-                    style={{ margin: "0.5px 8px 0.5px 8px", cursor: "pointer" }}
-                    height={60}
-                    width={60}
-                  />
-                ))}
+                {individualData.photos.map((src, index) => {
+                  if (index > imageLimit) return;
+                  return (
+                    <img
+                      src={src}
+                      onClick={handleRedirect}
+                      key={`image ${index}`}
+                      alt={`image ${index + 1}`}
+                      style={{
+                        margin: "0.5px 8px 0.5px 8px",
+                        cursor: "pointer",
+                      }}
+                      height={60}
+                      width={60}
+                    />
+                  );
+                })}
               </ViewImageBox>
               <Button onClick={handleRedirect}>View More</Button>
             </AboutUsInfoBox>
@@ -248,7 +269,12 @@ export const AboutUS = ({ setValue, individualData }) => {
                     if (index > specialtiesLimit) return;
                     return (
                       <span key={`Specialties ${index}`}>
-                        <img src={data.src} alt={`Specialties ${index + 1}`} height={25} width={25} />
+                        <img
+                          src={data.src}
+                          alt={`Specialties ${index + 1}`}
+                          height={25}
+                          width={25}
+                        />
                         {data.name}
                       </span>
                     );
@@ -260,9 +286,15 @@ export const AboutUS = ({ setValue, individualData }) => {
                         color: "red",
                         cursor: "pointer",
                       }}
-                      onClick={() => setSpecialtiesLimit(individualData.Specialties?.length)}
+                      onClick={() =>
+                        setSpecialtiesLimit(individualData.Specialties?.length)
+                      }
                     >
-                      +{individualData.Specialties?.length - specialtiesLimit - 1} more
+                      +
+                      {individualData.Specialties?.length -
+                        specialtiesLimit -
+                        1}{" "}
+                      more
                     </span>
                   ) : (
                     <span
@@ -287,7 +319,12 @@ export const AboutUS = ({ setValue, individualData }) => {
                     if (index > amenitiesLimit) return;
                     return (
                       <span key={`Amenities ${index}`}>
-                        <img src={data.src} alt={`Amenities ${index + 1}`} height={25} width={25} />
+                        <img
+                          src={data.src}
+                          alt={`Amenities ${index + 1}`}
+                          height={25}
+                          width={25}
+                        />
                         {data.name}
                       </span>
                     );
@@ -299,9 +336,12 @@ export const AboutUS = ({ setValue, individualData }) => {
                         color: "red",
                         cursor: "pointer",
                       }}
-                      onClick={() => setAmenitiesLimit(individualData.Amenities?.length)}
+                      onClick={() =>
+                        setAmenitiesLimit(individualData.Amenities?.length)
+                      }
                     >
-                      +{individualData.Amenities?.length - amenitiesLimit - 1} more
+                      +{individualData.Amenities?.length - amenitiesLimit - 1}{" "}
+                      more
                     </span>
                   ) : (
                     <span
