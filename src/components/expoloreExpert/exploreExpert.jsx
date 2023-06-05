@@ -1,9 +1,8 @@
-import { Stack, styled, Box } from "@mui/material";
+import { Stack, styled, Box, Button, Tabs, Tab } from "@mui/material";
 
 import { Icon } from "../common/icon/icon";
 import headSetIconWhite from "../../assets/icons/headSetWhite.svg";
 import { ExpertDropdown } from "../common/dropdowns/dropdowns";
-
 import {
   ExploreExpertBox,
   InputContainer,
@@ -14,7 +13,9 @@ import {
   SearchButton,
   DropDownTitleBox,
   DropDownTitle,
+  AlignedBox,
 } from "./exporeExpert.styles";
+import { ExploreExpertTab } from "../exploreExpertTab";
 
 const gender = ["male", "female", "others"];
 
@@ -36,22 +37,28 @@ export const ExploreExpert = () => {
         Explore Experts For Upper Back Treatment
       </Title>
       <MainContainer>
+        <AlignedBox>
+          <ExploreExpertTab />
+        </AlignedBox>
+
         <InputContainer>
           <ExploreDropdownBox placeholder={"select age"} label={"Age"} />
           <ExploreDropdownBox placeholder={"select age"} label={"Gender"} />
         </InputContainer>
-        <ButtonContainer>
-          <SearchButton variant="contained" color="buttonSecondary">
-            Search
-          </SearchButton>
-          <GetInTouchButtonExplore
-            variant="contained"
-            color="buttonPrimary"
-            startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />}
-          >
-            Get in touch
-          </GetInTouchButtonExplore>
-        </ButtonContainer>
+        <AlignedBox>
+          <ButtonContainer>
+            <SearchButton variant="contained" color="buttonSecondary">
+              Search
+            </SearchButton>
+            <GetInTouchButtonExplore
+              variant="contained"
+              color="buttonPrimary"
+              startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />}
+            >
+              Get in touch
+            </GetInTouchButtonExplore>
+          </ButtonContainer>
+        </AlignedBox>
       </MainContainer>
     </ExploreExpertBox>
   );
