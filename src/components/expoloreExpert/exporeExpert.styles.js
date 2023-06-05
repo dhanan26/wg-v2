@@ -1,6 +1,6 @@
 import { TextCenterBox } from "../common/containers/containers";
 import { PrimaryText, PrimarySubText } from "../common/typographies/typographies";
-import { styled, Box } from "@mui/material";
+import { styled, Box, Dialog, DialogContent } from "@mui/material";
 import { GetInTouchButton, SecondaryButton } from "../common/buttons/button";
 
 export const ExploreExpertBox = styled(TextCenterBox)(({ theme }) => ({
@@ -94,4 +94,9 @@ export const DropDownTitle = styled(PrimarySubText)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     marginBottom: 0,
   },
+}));
+
+export const AlignedBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "end",
 }));
