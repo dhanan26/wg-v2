@@ -6,7 +6,7 @@ import headSetIconWhite from "../../assets/icons/headSetWhite.svg";
 
 import { ContainerBox, StyledMenuDrawer, StyledMenuItem, GetInTouchButtonHeader } from "./menu.styles";
 
-export const Menu = ({}) => {
+export const MenuSection = ({}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const data = [
     {
