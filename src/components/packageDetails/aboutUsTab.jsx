@@ -136,7 +136,7 @@ const BannerImageBox = styled(Box)(({ theme, image }) => ({
   backgroundRepeat: "no-repeat",
 }));
 
-export const AboutUS = ({ setValue, individualData }) => {
+export const AboutUS = ({ setValue, individualData, photosRef }) => {
   const SpecialtiesLimit = individualData.Specialties.length - 2;
   const AmenitiesLimit = 8;
   const imageLimit = 2;
@@ -145,6 +145,9 @@ export const AboutUS = ({ setValue, individualData }) => {
   const [amenitiesLimit, setAmenitiesLimit] = useState(AmenitiesLimit);
 
   const handleRedirect = () => {
+    photosRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
     setValue(3);
   };
   return (
