@@ -1,4 +1,11 @@
-import { styled, Accordion, AccordionDetails, AccordionSummary, FormControlLabel, Box } from "@mui/material";
+import {
+  styled,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  FormControlLabel,
+  Box,
+} from "@mui/material";
 import { PrimarySubText } from "../../common/typographies/typographies";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -21,6 +28,7 @@ export const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
 
 export const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
   border: "1px solid black",
+  paddingRight: "0.3rem",
 }));
 
 export const CustomFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
