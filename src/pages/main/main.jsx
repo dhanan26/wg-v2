@@ -1,7 +1,7 @@
 
 import { Outlet } from "react-router-dom"
 import { Header } from "../../components/layouts/header"
-import { Footer } from "../../components/footer"
+import { Footer } from "../../components/layouts/footer"
 import { createContext } from "react"
 import { useRequestProcessor } from "../../services/requestProcessor"
 import { useSearchParams } from "react-router-dom"

@@ -1,7 +1,7 @@
 import { Content } from "../../components/content";
 import { ExploreExpert } from "../../components/expoloreExpert";
 import { FaqSection } from "../../components/faqSection";
-import { Footer } from "../../components/footer";
+import { Footer } from "../../components/layouts/footer";
 import { PopularPackage } from "../../components/popularPackage";
 import { SuccessStories } from "../../components/successStories/successStories";
 import { HappyCommunity } from "../../components/happyCommunity";
@@ -28,9 +28,9 @@ export const Home = () => {
       <ApprovedTreatment />
       <FaqSection />
 
-      <SliderContainer />
-      <EmailValidation />
-      <HowItWorks />
+      {/* <SliderContainer />
+      <EmailValidation /> */}
+      {/* <HowItWorks /> */}
     </>
   );
 };

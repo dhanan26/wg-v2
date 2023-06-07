@@ -10,8 +10,15 @@ import {
   ImageContainerBox,
 } from "./approvedTreatment.styles";
 
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
 export const ApprovedTreatment = () => {
   const isSmallScreen = useMediaQuery("(max-width:600px) ");
+  const {programData} = useContext(MainContext);
+
+  const programImageData = programData?.programFooterAndLogo
+  console.log("🚀 ~ file: approvedTreatment.jsx:21 ~ ApprovedTreatment ~ programImageData:", programImageData)
 
   return (
     <ApprovedTreatmentBox>
@@ -33,7 +40,7 @@ export const ApprovedTreatment = () => {
               </Grid>
             </Grid>
             <Grid item xs={8}>
-              <ImageBox3 />
+              <ImageBox3 image={programImageData?.webFooterUrl?.previewUrl} />
             </Grid>
           </Grid>
         )}
@@ -47,7 +54,7 @@ export const ApprovedTreatment = () => {
               <ImageBox2 />
             </Grid>
             <Grid item xs={12}>
-              <ImageBox3 />
+              <ImageBox3 image={programImageData?.mobileFooterUrl?.previewUrl} />
             </Grid>
           </Grid>
         )}
