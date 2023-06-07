@@ -3,9 +3,9 @@ import { PrimaryText, PrimarySubText } from "../common/typographies/typographies
 import { styled, Box, Dialog, DialogContent } from "@mui/material";
 import { GetInTouchButton, SecondaryButton } from "../common/buttons/button";
 
-export const ExploreExpertBox = styled(TextCenterBox)(({ theme }) => ({
+export const ExploreExpertBox = styled(TextCenterBox)(({ theme ,approchType }) => ({
   minHeight: 180,
-  backgroundColor: theme.palette.cardActive.main,
+  backgroundColor:approchType==="Pain"?theme.palette.cardActive.main:theme?.palette?.wellnessColor.main,
   flexDirection: "column",
   padding: "1rem 0 1rem 0",
   justifyContent: "space-evenly",

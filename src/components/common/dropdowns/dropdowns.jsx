@@ -6,13 +6,14 @@ import DownArrow from "../../../assets/icons/down-arrow-blue.svg";
 // import DownArrowGreen from '../../../assets/icons/down-arrow-green.svg'
 import { Icon } from "../icon/icon";
 const StyledDropDown = styled(Select)(({ theme, style }) => ({
+
   height: 39,
   width: 137,
 
   borderRadius: 2,
   textTransform: "none",
   boxShadow: "none",
-  backgroundColor: theme?.palette?.painColor?.main,
+  backgroundColor: approchType==="Pain"? theme?.palette.buttonSecondary.main:theme?.palette.wellnessColor.main,
   ".MuiSelect-icon": {
     color: theme.palette.textSecondary.main,
     fontSize: 30,
@@ -41,22 +42,23 @@ const StyledDropDown = styled(Select)(({ theme, style }) => ({
   },
 }));
 
-const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+const StyledMenuItem = styled(MenuItem)(({ theme,approchType }) => ({
   borderRadius: "none",
   fontSize: 14,
   fontFamily: theme.fontFamily.primary,
   justifyContent: "center",
   ":focus": {
-    backgroundColor: theme.palette.buttonSecondary.main,
+    backgroundColor: approchType==="Pain"? theme?.palette.buttonSecondary.main:theme?.palette.wellnessColor.main,
     color: theme.palette.textSecondary.main,
   },
 }));
 
-export const ButtonDropdown = ({ items, defaultValue }) => {
-  console.log("🚀 ~ file: dropdowns.jsx:51 ~ ButtonDropdown ~ items:", items)
+export const ButtonDropdown = ({ items, defaultValue ,approchType }) => {
+  console.log("🚀 ~ file: dropdowns.jsx:51 ~ ButtonDropdown ~ items:", approchType)
   return (
     <FormControl>
       <StyledDropDown
+       approchType={approchType}
         MenuProps={{
           PaperProps: {
             sx: {
@@ -66,9 +68,10 @@ export const ButtonDropdown = ({ items, defaultValue }) => {
         }}
         IconComponent={ExpandMoreIcon}
         defaultValue={defaultValue}
+      
       >
         {items?.map((item) => (
-          <StyledMenuItem key={item} value={item?._id}>
+          <StyledMenuItem key={item} value={item?._id} approchType={approchType}>
             {item?.name}
           </StyledMenuItem>
         ))}

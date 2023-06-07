@@ -3,10 +3,10 @@ import { TextCenterBox } from "../../common/containers/containers";
 import { PrimarySubText, PrimaryText } from "../../common/typographies/typographies";
 import Avatar from "@mui/material/Avatar";
 
-export const WhatToExpectContainer = styled(TextCenterBox)(({ theme }) => ({
+export const WhatToExpectContainer = styled(TextCenterBox)(({ theme,approchType }) => ({
   width: 278,
   minHeight: 144,
-  backgroundColor: theme.palette.cardActive.main,
+  backgroundColor:approchType === "Pain"? theme.palette.cardActive.main:theme.palette.wellnessColor.main,
   flexDirection: "column",
   justifyContent: "flex-start",
   [theme.breakpoints.down("md")]: {

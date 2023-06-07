@@ -4,9 +4,9 @@ import { GridBox } from "../common/containers/containers";
 import { styled, Box } from "@mui/material";
 // happy community main box/container styles
 
-export const HappyCommunityBox = styled(TextCenterBox)(({ theme }) => ({
+export const HappyCommunityBox = styled(TextCenterBox)(({ theme ,approchType }) => ({
   height: 626,
-  backgroundColor: theme.palette.cardActive.main,
+  backgroundColor:approchType==="Pain"?theme.palette.cardActive.main:theme?.palette?.wellnessColor.main,
   [theme.breakpoints.down(`smd`)]: {
     height: 448,
   },

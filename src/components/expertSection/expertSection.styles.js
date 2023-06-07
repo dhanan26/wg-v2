@@ -3,10 +3,10 @@ import { TextCenterBox } from "../common/containers/containers";
 import { PrimaryText, PrimarySubText } from "../common/typographies/typographies";
 import expertImage from "../../assets/images/expertsection.jpg";
 
-export const ExpertSectionMainBox = styled(TextCenterBox)(({ theme }) => ({
+export const ExpertSectionMainBox = styled(TextCenterBox)(({ theme ,approchType }) => ({
   height: "auto",
   width: "auto",
-  backgroundColor: theme.palette.expertColor.main,
+  backgroundColor: approchType==="Pain"? theme.palette.expertColor.main:theme.palette.cardActive.main,
   flexDirection: "column",
   paddingBottom: 40,
   [theme.breakpoints.down("sm")]: {
