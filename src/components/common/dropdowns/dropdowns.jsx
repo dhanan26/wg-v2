@@ -1,6 +1,12 @@
-import { Select, styled, FormControl, MenuItem, Stack } from "@mui/material";
+import { Select, styled, FormControl, MenuItem, Stack, InputLabel, Menu } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-const StyledDropDown = styled(Select)(({ theme,approchType}) => ({
+import { useState } from "react";
+import { MainHeaderText } from "../../layouts/header/header.styles";
+import DownArrow from "../../../assets/icons/down-arrow-blue.svg";
+// import DownArrowGreen from '../../../assets/icons/down-arrow-green.svg'
+import { Icon } from "../icon/icon";
+const StyledDropDown = styled(Select)(({ theme, style }) => ({
+
   height: 39,
   width: 137,
 
@@ -75,7 +81,7 @@ export const ButtonDropdown = ({ items, defaultValue ,approchType }) => {
 };
 
 const StyledExpertDropdown = styled(StyledDropDown)(({ theme }) => ({
-  width: 150,
+  width: 100,
   height: 42,
   backgroundColor: theme.palette.textSecondary.main,
   ".MuiSelect-icon": {
@@ -110,5 +116,33 @@ export const ExpertDropdown = ({ items, placeholder }) => {
         ))}
       </StyledExpertDropdown>
     </FormControl>
+  );
+};
+
+export const AboutUsDropDown = ({ label, items }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <>
+      <span onClick={handleClick}>
+        {label}
+        <Icon src={DownArrow} className={"down-arrow"} />
+      </span>
+      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+        {items.map((ele, index) => {
+          return (
+            <MenuItem key={index} onClick={handleClose}>
+              {ele}
+            </MenuItem>
+          );
+        })}
+      </Menu>
+    </>
   );
 };

@@ -58,3 +58,12 @@
   right: 5%;
   /* padding-top: 6px; */
 }
+.menu-arrow-right_filled {
+  width: 20px;
+  height: 15px;
+  padding-left: 5px;
+}
+.down-arrow {
+  height: 11px;
+  width: 20px;
+}

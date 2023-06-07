@@ -41,16 +41,14 @@ export const ExploreExpert = () => {
         Explore Experts For Upper Back Treatment
       </Title>
       <MainContainer>
-        <AlignedBox>
-          <ExploreExpertTab />
-        </AlignedBox>
-
         <InputContainer>
           <ExploreDropdownBox placeholder={"select age"} label={"Age"} />
           <ExploreDropdownBox placeholder={"select age"} label={"Gender"} />
         </InputContainer>
         <AlignedBox>
           <ButtonContainer>
+            <ExploreExpertTab />
+
             <SearchButton variant="contained" color="buttonSecondary">
               Search
             </SearchButton>
