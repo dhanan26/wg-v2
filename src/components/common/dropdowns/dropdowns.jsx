@@ -53,6 +53,7 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
 }));
 
 export const ButtonDropdown = ({ items, defaultValue }) => {
+  console.log("🚀 ~ file: dropdowns.jsx:51 ~ ButtonDropdown ~ items:", items)
   return (
     <FormControl>
       <StyledDropDown
@@ -67,8 +68,8 @@ export const ButtonDropdown = ({ items, defaultValue }) => {
         defaultValue={defaultValue}
       >
         {items?.map((item) => (
-          <StyledMenuItem key={item} value={item}>
-            {item}
+          <StyledMenuItem key={item} value={item?._id}>
+            {item?.name}
           </StyledMenuItem>
         ))}
       </StyledDropDown>

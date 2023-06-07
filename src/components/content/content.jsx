@@ -1,4 +1,4 @@
-import { styled, Box, useMediaQuery, Grid } from "@mui/material";
+import {  useMediaQuery, } from "@mui/material";
 
 import { StyledSwitch } from "../common/switch";
 import { PrimarySubText } from "../common/typographies/typographies";
@@ -11,44 +11,8 @@ import { PackageCard } from "../widgets/packageCard";
 import { PackageDetails } from "../packageDetails";
 import { useState } from "react";
 
-const MainContentContainer = styled((props) => <Grid container {...props} />)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
-
-  paddingLeft: 80,
-  paddingRight: 36,
-}));
-
-const FilterContainer = styled((props) => <Grid item {...props} md={2.5} sm={0} />)(({ theme }) => ({
-  paddingRight: 24,
-  [theme.breakpoints.down("md")]: {
-    paddingLeft: 10,
-  },
-}));
-
-const PartnerContainer = styled((props) => <Grid item {...props} md={9.5} sm={12} xs={12} />)(() => ({
-  // backgroundColor: "red",
-}));
-
-const SortByContainer = styled(Box)(() => ({
-  height: 20,
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "flex-end",
-  gap: 10,
-  margin: 20,
-}));
-
-const VerticalLine = styled(Box)(() => ({
-  borderLeft: "1px solid black",
-  height: 25,
-}));
-
-const SortByText = styled(PrimarySubText)(() => ({
-  fontSize: 12,
-}));
+//styles
+import{MainContentContainer,FilterContainer,PartnerContainer,SortByContainer,VerticalLine,SortByText} from "./content.styles"
 
 export const Content = () => {
   const isSmallScreen = useMediaQuery("(max-width:900px)");

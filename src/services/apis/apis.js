@@ -1,5 +1,6 @@
 import axiosClient from "./axiosClient"
 
-export const getAllUser = async () => {
-    return axiosClient.get('/posts').then((res) => res.data)
+
+export const getProgramDataById = async(programId,approchTypeId)=>{
+    return axiosClient.get(`/programs/${programId}`).then((res) => res.data)
 }

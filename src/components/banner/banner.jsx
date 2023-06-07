@@ -22,113 +22,55 @@ import {
   TalkToExpertButton,
   RecommendationBox,
 } from "./banner.styles";
-import { useRequestProcessor } from "../../services/requestProcessor";
-import axiosClient from "../../services/apis/axiosClient";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
 
 export const Banner = () => {
+  const {programValue} = useContext(MainContext);
+  console.log("🚀 ~ file: banner.jsx:33 ~ Banner ~ programData:", programValue)
   const isSmallScreen = useMediaQuery("(max-width:1300px)");
-  const { customUseQuery } = useRequestProcessor();
+  const bannerData =  programValue?.programImage[0]
 
   const [mainText, setMainText] = useState("");
   const [bannerImageUrl, setBannerImageUrl] = useState("");
   const [subText, setSubText] = useState("");
 
-  let bannerData = "";
   let subPrograms = [];
 
-  const {
-    data: bannerDataDetails,
-    isLoading,
-    isError,
-  } = customUseQuery(
-    "BannerDataDetails",
-    () =>
-      axiosClient
-        .post("/packages/filtersList", {
-          request: {
-            data: {
-              approachId: ["63c53d1c109d7e7dba9c010c"],
-              programId: "63da2d17f1623c6748db9c01",
-            },
-          },
-        })
-        .then((res) => res.data),
-    {
-      enabled: true,
-    }
-  );
 
-  if (isLoading) {
-    console.log("Loading...");
-  }
 
-  if (isError) {
-    console.log(isError);
-  }
-
-  if (bannerDataDetails) {
-    const programDetails = bannerDataDetails?.data?.programDetails;
-    console.log(
-      "🚀 ~ file: banner.jsx:72 ~ Banner ~ programDetails:",
-      programDetails
-    );
-
-    programDetails.map((data) => {
-      data.programImage.map((programImageData) => {
-        bannerData = programImageData;
-      });
-    });
-
-    // const programImage = programDetails?.programImage;
-    // programImage.map((programImageData) => {
-    //   bannerData = programImageData;
-    // });
-
-    programDetails.map((data) => {
-      data?.subProgramId.map((subProgramData) => {
-        subPrograms.push(subProgramData);
-      });
-    });
-  }
-
-  useEffect(() => {
-    if (bannerData) {
-      setMainText(bannerData.mainText);
-      setBannerImageUrl(bannerData.programImageUrl.previewUrl);
-      setSubText(bannerData.subText);
-    }
-  }, [bannerData]);
+ 
 
   return (
     <StyledMainContainer>
-      <BannerBox image={bannerImageUrl}>
+      <BannerBox image={bannerData?.programImageUrl?.previewUrl}>
         <TextCenterBox>
           <Stack spacing={1}>
             <BannerMainText variant="secondaryTitle" color="textSecondary">
-              {mainText}
+              {bannerData?.mainText}
             </BannerMainText>
             <BannerSubText variant="secondaryTitle" color="textSecondary">
-              {subText}
+              {bannerData?.subText}
             </BannerSubText>
           </Stack>
         </TextCenterBox>
         <BannerFooter>
           {isSmallScreen ? (
             <Box>
-              <ButtonDropdown items={subPrograms} defaultValue={"Upper Back"} />
+              <ButtonDropdown items={programValue?.subProgramId} defaultValue={programValue?.subProgramId[0]?.name} />
             </Box>
           ) : (
             <>
               <SubProgramBox>
-                {subPrograms?.map((subProgram, index) => {
+                {programValue?.subProgramId?.map((subProgram, index) => {
                   return (
                     <SubProgramButton
                       key={index}
                       variant="contained"
                       color="buttonSecondary"
                     >
-                      {subProgram.name}
+                      {subProgram?.name}
                     </SubProgramButton>
                   );
                 })}
