@@ -6,6 +6,8 @@ import arrowRight from "../../assets/icons/ArrowRight.svg";
 import { Box, Collapse, Typography, styled } from "@mui/material";
 import { PrimaryText, PrimarySubText, AnchorText } from "../common/typographies/typographies";
 import { useState } from "react";
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
 
 import {
   Container,
@@ -18,11 +20,11 @@ import {
   QuestionTitle,
   QuestionAnswer,
 } from "./faqSection.styles";
-
 export const FaqSection = () => {
   const [showMore, setShowMore] = useState(false);
+  const {approchType} = useContext(MainContext);
   return (
-    <Container>
+    <Container approchType={approchType}> 
       <TitleText>Frequently Asked Questions</TitleText>
       <SubtitleText color={"textPrimary"}>
         Questions from our users, specialists & health practitioners in the field

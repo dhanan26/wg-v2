@@ -1,12 +1,12 @@
 import { styled, Box } from "@mui/material";
 import { TextCenterBox } from "../common/containers/containers";
 import { PrimaryText, PrimarySubText } from "../common/typographies/typographies";
-export const WhatToExpectBox = styled(TextCenterBox)(({ theme }) => ({
+export const WhatToExpectBox = styled(TextCenterBox)(({ theme ,approchType}) => ({
   height: "auto",
   width: "auto",
   flexDirection: "column",
   fontWeight: 500,
-  backgroundColor: theme.palette.cardActive.main,
+  backgroundColor:approchType === "Pain"? theme.palette.cardActive.main:theme.palette.wellnessColor.main,
   paddingBottom: 40,
 }));
 

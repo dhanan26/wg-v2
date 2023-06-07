@@ -22,6 +22,14 @@ export const theme = createTheme({
       main: "#0187A4", //Pain color
       contrastText: "#FFFFFF",
     },
+    wellnessColor:{  //Welness color
+      main:"#C4E8DB",
+      contrastText:"#FFFFF"
+    },
+    wellnessColorDark:{  //Welness color
+      main:"##ACE6CF",
+      contrastText:"#FFFFF"
+    },
     headerButtonPrimary: {
       main: "#5E8BFF", //naplesYellow
     },

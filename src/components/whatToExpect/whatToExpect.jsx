@@ -1,28 +1,36 @@
 import { WhatToExpertCard } from "../widgets/whatToExpertCard/whatToExpertCard";
-import image1 from "../../assets/images/whatToExpect1.jpg";
+import beforeTheSessionImg from "../../assets/images/whatToExpect1.png";
+import afterTheSessionImg from "../../assets/images/whatToExpect2.png";
+import completionOftTheSessionImg from "../../assets/images/whatToExpect3.png";
 import { WhatToExpectBox, Title, SubText, WhatToExpectContainerBox } from "./whatToExpect.styles";
 
-const Expectdata = [
-  {
-    mainText: "Before the session",
-    subText: "Improved nutrition and immunity with supplements, healthier healthier healthierhealthierhealthierhea ",
-    avatar: `${image1}`,
-  },
-  {
-    mainText: "Before the session",
-    subText: "Improved nutrition and immunity with supplements, healthier scalp with regular conditioning. ",
-    avatar: `${image1}`,
-  },
-  {
-    mainText: "Before the session",
-    subText: "Improved nutrition and immunity with supplements, healthier scalp with regular conditioning. ",
-    avatar: `${image1}`,
-  },
-];
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
+
 
 export const WhatToExpect = () => {
+  const {approchType,programData} = useContext(MainContext);
+
+  const Expectdata = [
+    {
+      mainText: "Before the session",
+      subText: programData?.beforeTheSession,
+      avatar: `${beforeTheSessionImg}`,
+    },
+    {
+      mainText: "After the session",
+      subText:  programData?.afterTheSession,
+      avatar: `${afterTheSessionImg}`,
+    },
+    {
+      mainText: "Completion of the session",
+      subText:  programData?.completionOfTheSession,
+      avatar: `${completionOftTheSessionImg}`,
+    },
+  ];
   return (
-    <WhatToExpectBox>
+    <WhatToExpectBox approchType={approchType} >
       <Title variant="primaryTitle" color={"secondary"}>
         What to expect?
       </Title>
@@ -31,7 +39,7 @@ export const WhatToExpect = () => {
       </SubText>
       <WhatToExpectContainerBox>
         {Expectdata?.map((data, index) => {
-          return <WhatToExpertCard data={data} key={index} />;
+          return <WhatToExpertCard data={data} key={index} approchType={approchType} />;
         })}
       </WhatToExpectContainerBox>
     </WhatToExpectBox>

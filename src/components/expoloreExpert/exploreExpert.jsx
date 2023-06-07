@@ -17,6 +17,9 @@ import {
 } from "./exporeExpert.styles";
 import { ExploreExpertTab } from "../exploreExpertTab";
 
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
 const gender = ["male", "female", "others"];
 
 const ExploreDropdownBox = ({ placeholder, label }) => {
@@ -31,22 +34,21 @@ const ExploreDropdownBox = ({ placeholder, label }) => {
 };
 
 export const ExploreExpert = () => {
+  const {approchType} = useContext(MainContext);
   return (
-    <ExploreExpertBox>
+    <ExploreExpertBox approchType={approchType} >
       <Title variant="primaryTitle" color="secondary">
         Explore Experts For Upper Back Treatment
       </Title>
       <MainContainer>
-        <AlignedBox>
-          <ExploreExpertTab />
-        </AlignedBox>
-
         <InputContainer>
           <ExploreDropdownBox placeholder={"select age"} label={"Age"} />
           <ExploreDropdownBox placeholder={"select age"} label={"Gender"} />
         </InputContainer>
         <AlignedBox>
           <ButtonContainer>
+            <ExploreExpertTab />
+
             <SearchButton variant="contained" color="buttonSecondary">
               Search
             </SearchButton>

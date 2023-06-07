@@ -1,5 +1,5 @@
 import { styled, Box, Link } from "@mui/material";
-import Background from "../../assets/images/footer-image.jpg";
+import Background from "../../../assets/images/footer-image.jpg";
 export const Container = styled(Box)(() => ({
   fontFamily: "'Aquawax', Courier, monospace;",
   height: 300,

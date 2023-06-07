@@ -4,7 +4,7 @@ import verified from "../../assets/icons/verified.svg";
 import clock from "../../assets/icons/clock.svg";
 import location from "../../assets/icons/Mark.svg";
 import { useState } from "react";
-
+import { AboutUsDropDown } from "../common/dropdowns/dropdowns";
 const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
   //   backgroundColor: "yellow",
   top: 0,
@@ -150,6 +150,8 @@ export const AboutUS = ({ setValue, individualData, photosRef }) => {
     });
     setValue(3);
   };
+  const States = ["Bangalore", "Chennai", "Kolkata"];
+  const Timings = ["Monday 9:30 am–6 pm", "Tuesday 9:30 am–6 pm", "Wednesday 9:30 am–6 pm"];
   return (
     <>
       <PackageDetailsMainBox>
@@ -206,16 +208,16 @@ export const AboutUS = ({ setValue, individualData, photosRef }) => {
               <p>{individualData.link}</p>
 
               <p>
-                <span>
-                  <img src={location} height={15} width={15} alt="location" />
-                </span>
-                Locate other branches
+                {/* <span> */}
+                <img src={location} height={15} width={15} alt="location" />
+                {/* </span> */}
+                <AboutUsDropDown label={"Locate other branches"} items={States} />
               </p>
               <p>
-                <span>
-                  <img src={clock} height={15} width={15} alt="clock" />
-                </span>
-                Wednesday 9:30 am–6 pm
+                {/* <span> */}
+                <img src={clock} height={15} width={15} alt="clock" />
+                {/* </span> */}
+                <AboutUsDropDown label={"Wednesday 9:30 am–6 pm"} items={Timings}></AboutUsDropDown>
               </p>
               <ViewImageBox>
                 {individualData.photos.map((src, index) => {
