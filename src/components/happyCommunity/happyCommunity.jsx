@@ -13,6 +13,10 @@ import {
   HappyCommunitySubText,
 } from "./happyCommunity.styles";
 
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
+
 const Item = (props) => {
   const { sx, ...other } = props;
   return <ItemStyledBox sx={sx} {...other} />;
@@ -24,9 +28,10 @@ const FooterContainer = (props) => {
 };
 
 export const HappyCommunity = () => {
+  const {approchType} = useContext(MainContext);
   return (
     <>
-      <HappyCommunityBox>
+      <HappyCommunityBox approchType={approchType}>
         <HappyCommunityTitleBox>
           <HappyCommunityTitle variant="primaryTitle" color="secondary">
             Our Happy Community

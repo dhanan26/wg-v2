@@ -10,9 +10,13 @@ import {
   SubContainerBoxText,
 } from "./expertSection.styles";
 
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
 export const ExpertSection = () => {
+  const {approchType} = useContext(MainContext);
   return (
-    <ExpertSectionMainBox>
+    <ExpertSectionMainBox approchType={approchType} >
       <Title variant="primaryTitle" color={"secondary"}>
         Is this the best solution for me?
       </Title>

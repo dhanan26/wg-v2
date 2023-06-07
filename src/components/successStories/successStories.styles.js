@@ -47,13 +47,13 @@ export const SwiperButton = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const CardContainer = styled(Box)(({ theme }) => ({
+export const CardContainer = styled(Box)(({ theme,approchType }) => ({
   fontFamily: "'Aquawax', Courier, monospace;",
   minHeight: 300,
   width: "calc(100% - 2rem)",
   display: "flex",
   flexDirection: "column",
-  background: theme.palette.cardActive.main,
+  background: approchType==="Pain"? theme.palette.cardActive.main:"#ACE6CF",
   padding: "0 1rem 0 1rem",
   [theme.breakpoints.down("xs")]: {
     padding: "0 0.2rem 0 0.2rem",

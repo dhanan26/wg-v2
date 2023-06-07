@@ -24,7 +24,12 @@ import {
   CardBody,
 } from "./successStories.styles";
 
+
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
 export const SuccessStories = () => {
+  const {approchType} = useContext(MainContext);
   const [swiper, setSwiper] = useState();
   return (
     <Container>
@@ -59,7 +64,7 @@ export const SuccessStories = () => {
           {tempData.map((_each, _index) => {
             return (
               <SwiperSlide key={_index}>
-                <SuccessStoriesCard data={_each} />
+                <SuccessStoriesCard data={_each} approchType={approchType} />
               </SwiperSlide>
             );
           })}
@@ -78,9 +83,9 @@ export const SuccessStories = () => {
   );
 };
 
-const SuccessStoriesCard = ({ data }) => {
+const SuccessStoriesCard = ({ data,approchType }) => {
   return (
-    <CardContainer>
+    <CardContainer  approchType={approchType}>
       <CardHeroContainer>
         <CardHeroInfo>
           <CardInfoTitle>

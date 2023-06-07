@@ -7,6 +7,7 @@ import {
 import { TextCenterBox } from "../common/containers/containers";
 import { PrimaryButton, SecondaryButton } from "../common/buttons/button";
 import { ButtonDropdown } from "../common/dropdowns/dropdowns";
+import { getColor } from "../../utils/common";
 
 //icons
 import HeadPhoneIcon from "../../assets/icons/HeadPhoneIcon.svg";
@@ -27,20 +28,10 @@ import { useContext } from "react";
 import { MainContext } from "../../pages/main/main";
 
 export const Banner = () => {
-  const {programValue} = useContext(MainContext);
-  console.log("🚀 ~ file: banner.jsx:33 ~ Banner ~ programData:", programValue)
+  const {programData,approchType} = useContext(MainContext);
+  console.log("🚀 ~ file: banner.jsx:33 ~ Banner ~ programData:", programData)
   const isSmallScreen = useMediaQuery("(max-width:1300px)");
-  const bannerData =  programValue?.programImage[0]
-
-  const [mainText, setMainText] = useState("");
-  const [bannerImageUrl, setBannerImageUrl] = useState("");
-  const [subText, setSubText] = useState("");
-
-  let subPrograms = [];
-
-
-
- 
+  const bannerData =  programData?.programImage[0]
 
   return (
     <StyledMainContainer>
@@ -58,17 +49,17 @@ export const Banner = () => {
         <BannerFooter>
           {isSmallScreen ? (
             <Box>
-              <ButtonDropdown items={programValue?.subProgramId} defaultValue={programValue?.subProgramId[0]?.name} />
+              <ButtonDropdown items={programData?.subProgramId} defaultValue={programData?.subProgramId[0]?.name} approchType={approchType} />
             </Box>
           ) : (
             <>
               <SubProgramBox>
-                {programValue?.subProgramId?.map((subProgram, index) => {
+                {programData?.subProgramId?.map((subProgram, index) => {
                   return (
                     <SubProgramButton
                       key={index}
                       variant="contained"
-                      color="buttonSecondary"
+                      color={getColor(approchType)}
                     >
                       {subProgram?.name}
                     </SubProgramButton>

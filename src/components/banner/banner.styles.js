@@ -1,6 +1,7 @@
 import { styled, Box } from "@mui/material";
 import { PrimaryText, PrimarySubText } from "../common/typographies/typographies";
 import { PrimaryButton, SecondaryButton } from "../common/buttons/button";
+import { theme } from "../../utils/theme";
 export const BannerBox = styled(Box)(({ theme, image }) => ({
   backgroundColor: theme.palette.primary.main,
   width: "auto",
@@ -9,6 +10,11 @@ export const BannerBox = styled(Box)(({ theme, image }) => ({
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
+  boxShadow: "inset 0 0 0 1000px rgba(0,0,0,.5);",
+  // backgroundColor:"rgba(0, 0, 0, 0.5)",
+  ":after": {
+    backgroundColor: `rgba(0, 0, 0, 0.9)`,
+  },
   display: "flex",
   flexDirection: "column",
   [theme.breakpoints.down("sm")]: {
@@ -56,7 +62,9 @@ export const SubProgramBox = styled(Box)(() => ({
   alignItems: "center",
 }));
 
-export const SubProgramButton = styled(PrimaryButton)(() => ({}));
+export const SubProgramButton = styled(PrimaryButton)(({theme}) => ({
+  color:"white",
+}));
 
 export const RecommendationButton = styled(SecondaryButton)(({ theme }) => ({
   color: theme.palette.secondary.main,
