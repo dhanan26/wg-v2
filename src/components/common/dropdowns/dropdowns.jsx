@@ -5,7 +5,7 @@ import { MainHeaderText } from "../../layouts/header/header.styles";
 import DownArrow from "../../../assets/icons/down-arrow-blue.svg";
 // import DownArrowGreen from '../../../assets/icons/down-arrow-green.svg'
 import { Icon } from "../icon/icon";
-const StyledDropDown = styled(Select)(({ theme, style }) => ({
+const StyledDropDown = styled(Select)(({ theme, approchType }) => ({
 
   height: 39,
   width: 137,
