@@ -1,8 +1,8 @@
 import { styled, Box, Typography } from "@mui/material";
 import { PrimarySubText, PrimaryText } from "../common/typographies/typographies";
 
-export const Container = styled(Box)(({ theme }) => ({
-  background: theme.palette.faqSection.background,
+export const Container = styled(Box)(({ theme ,approchType}) => ({
+  background: approchType==="Pain"? theme.palette.cardActive.main:theme.palette.wellnessColor.main,
   paddingBottom: "2rem",
   fontFamily: "'Aquawax', Courier, monospace;",
 }));

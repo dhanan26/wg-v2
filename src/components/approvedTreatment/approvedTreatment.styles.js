@@ -57,8 +57,11 @@ export const ImageBox2 = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ImageBox3 = styled(Box)(({ theme }) => ({
-  backgroundColor: "green",
+export const ImageBox3 = styled(Box)(({ theme,image }) => ({
+  backgroundImage: `url(${image})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
 
   width: "auto",
   height: 485,
