@@ -10,6 +10,8 @@ import {
   LinearGradientBox,
   SwiperContainer,
 } from "./recommendedSpecialities.styles";
+import { MainContext } from "../../pages/main/main";
+import { useContext } from "react";
 SwiperCore.use([Navigation]);
 
 export const RecommendedSpecialties = () => {
@@ -26,9 +28,25 @@ export const RecommendedSpecialties = () => {
   );
 };
 
-const specialties = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+// const specialties = [
+//   "one",
+//   "two",
+//   "three",
+//   "four",
+//   "five",
+//   "six",
+//   "seven",
+//   "eight",
+//   "nine",
+//   "ten",
+// ];
 
 const SwiperCards = () => {
+  const { programData, approchType } = useContext(MainContext);
+
+  const specialties = programData?.selectRecommendations;
+  console.log("🚀 ~ file: recommendedSpecialties.jsx:48 ~ SwiperCards ~ specialties:", specialties)
+
   const breakpoints = {
     // when window width is >= 640px
     300: {
@@ -57,9 +75,9 @@ const SwiperCards = () => {
   return (
     <SwiperContainer>
       <Swiper breakpoints={breakpoints} loop={true}>
-        {specialties?.map((each, index) => (
+        {specialties?.map((specialtiesData, index) => (
           <SwiperSlide key={index}>
-            <RecommendedSpecialtiesCard />
+            <RecommendedSpecialtiesCard specialtiesData={specialtiesData} />
           </SwiperSlide>
         ))}
         {/* Previous and next arrow buttons */}

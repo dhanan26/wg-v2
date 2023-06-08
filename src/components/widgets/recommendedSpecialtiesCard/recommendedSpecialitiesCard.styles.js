@@ -2,6 +2,8 @@ import { styled, Box } from "@mui/material";
 import { TextCenterBox } from "../../common/containers/containers";
 import RecommendedSpecialtiesImg from "../../../assets/images/recommended_specialties.jpg";
 import { PrimarySubText } from "../../common/typographies/typographies";
+import Tooltip from "@mui/material/Tooltip";
+
 export const StyledSpecialtiesCard = styled(Box)(({ theme }) => ({
   height: 103,
   width: 251,
@@ -48,6 +50,7 @@ export const SpecialtiesSubText = styled(PrimarySubText)(({ theme }) => ({
   fontWeight: 400,
   fontFamily: theme.fontFamily.Rubik,
   textAlign: "left",
+  cursor: "pointer",
 }));
 
 export const SpecialtiesFooter = styled(Box)(({ theme }) => ({
@@ -62,4 +65,15 @@ export const SpecialtiesFooterText = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: 2,
+}));
+
+export const CustomTooltip = styled(Tooltip)(({ theme }) => ({
+  // Customize the background color
+  "& .MuiTooltip-tooltip": {
+    backgroundColor: "red",
+  },
+  // Customize the arrow color
+  "& .MuiTooltip-arrow": {
+    color: "red",
+  },
 }));

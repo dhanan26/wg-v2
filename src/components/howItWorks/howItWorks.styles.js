@@ -1,8 +1,15 @@
-import { styled, Dialog, DialogTitle, DialogContent } from "@mui/material";
-import { PrimarySubText, PrimaryText } from "../common/typographies/typographies";
+import { styled, Dialog, DialogTitle, DialogContent, Box } from "@mui/material";
+import {
+  PrimarySubText,
+  PrimaryText,
+} from "../common/typographies/typographies";
 export const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   height: "auto",
   width: "auto",
+}));
+
+export const MainBox = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
 }));
 
 export const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
@@ -38,9 +45,7 @@ export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
 export const SubText = styled(PrimarySubText)(({ theme }) => ({
   fontSize: 12,
   fontFamily: theme.fontFamily.Inter,
-  [theme.breakpoints.down("sm")]: {
-    paddingBottom: 13,
-  },
+  color: theme.palette.secondary.main,
 }));
 
 export const Title = styled(PrimaryText)(({ theme }) => ({
@@ -50,4 +55,5 @@ export const Title = styled(PrimaryText)(({ theme }) => ({
   textAlign: "start",
   paddingTop: 15,
   paddingBottom: 13,
+  color: theme.palette.secondary.main,
 }));
