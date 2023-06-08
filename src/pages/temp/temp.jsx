@@ -6,7 +6,7 @@ export const Temp = () => {
     <div style={{ margin: "2rem" }}>
       <h1>Most Popular packages</h1>
       <div style={{ display: "flex", flexWrap: "nowrap", gap: "1rem", overflowX: 'scroll' }}>
-        {programs.data?.map((each, index) => {
+        {programs?.map((each, index) => {
           return (
             <div
               onClick={() => {
@@ -35,7 +35,7 @@ export const Temp = () => {
       </div>
       <h1>Packages</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: 'space-evenly',  }}>
-        {programs.data?.map((each, index) => {
+        {programs?.map((each, index) => {
           return (
             <div
               onClick={() => {

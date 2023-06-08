@@ -14,7 +14,7 @@ import {
   CostContainer,
   HeroContainerIndividual,
 } from "./packageCard.styles";
-export const PackageCard = ({ isIndividual, individualData, packageData, type, cost, details }) => {
+export const PackageCard = ({ isIndividual, individualData, packageData, type, cost, details ,calulateRowIndex,index}) => {
   const [open, setOpen] = useState(false);
   // callback for heart click
   const handleHeartClick = () => {
@@ -24,7 +24,13 @@ export const PackageCard = ({ isIndividual, individualData, packageData, type, c
     setOpen((current) => !current);
   };
 
+  const handleClick = () => {
+       calulateRowIndex(index)
+  }
+
+
   return (
+    <>
     <Container>
       <div className="package-card-top">
         {isIndividual ? (
@@ -55,12 +61,13 @@ export const PackageCard = ({ isIndividual, individualData, packageData, type, c
         </LikeContainer>
         <ButtonContainer>
           <Button disableRipple>Details</Button>
-          <Button disableRipple onClick={handleEnquiryClick}>
+          <Button disableRipple onClick={()=>handleClick()}>
             +Enquiry
           </Button>
         </ButtonContainer>
       </div>
     </Container>
+    </>
   );
 };
 
