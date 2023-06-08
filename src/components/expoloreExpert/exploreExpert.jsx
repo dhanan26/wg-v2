@@ -14,6 +14,7 @@ import {
   DropDownTitleBox,
   DropDownTitle,
   AlignedBox,
+  SBox,
 } from "./exporeExpert.styles";
 import { ExploreExpertTab } from "../exploreExpertTab";
 
@@ -34,9 +35,9 @@ const ExploreDropdownBox = ({ placeholder, label }) => {
 };
 
 export const ExploreExpert = () => {
-  const {approchType} = useContext(MainContext);
+  const { approchType } = useContext(MainContext);
   return (
-    <ExploreExpertBox approchType={approchType} >
+    <ExploreExpertBox approchType={approchType}>
       <Title variant="primaryTitle" color="secondary">
         Explore Experts For Upper Back Treatment
       </Title>
@@ -45,10 +46,11 @@ export const ExploreExpert = () => {
           <ExploreDropdownBox placeholder={"select age"} label={"Age"} />
           <ExploreDropdownBox placeholder={"select age"} label={"Gender"} />
         </InputContainer>
+        <SBox>
+          <ExploreExpertTab />
+        </SBox>
         <AlignedBox>
           <ButtonContainer>
-            <ExploreExpertTab />
-
             <SearchButton variant="contained" color="buttonSecondary">
               Search
             </SearchButton>

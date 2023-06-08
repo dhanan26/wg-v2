@@ -6,14 +6,13 @@ import DownArrow from "../../../assets/icons/down-arrow-blue.svg";
 // import DownArrowGreen from '../../../assets/icons/down-arrow-green.svg'
 import { Icon } from "../icon/icon";
 const StyledDropDown = styled(Select)(({ theme, approchType }) => ({
-
   height: 39,
-  width: 137,
+  width: 207,
 
   borderRadius: 2,
   textTransform: "none",
   boxShadow: "none",
-  backgroundColor: approchType==="Pain"? theme?.palette.buttonSecondary.main:theme?.palette.wellnessColor.main,
+  backgroundColor: approchType === "Pain" ? theme?.palette.buttonSecondary.main : theme?.palette.wellnessColor.main,
   ".MuiSelect-icon": {
     color: theme.palette.textSecondary.main,
     fontSize: 30,
@@ -42,23 +41,23 @@ const StyledDropDown = styled(Select)(({ theme, approchType }) => ({
   },
 }));
 
-const StyledMenuItem = styled(MenuItem)(({ theme,approchType }) => ({
+const StyledMenuItem = styled(MenuItem)(({ theme, approchType }) => ({
   borderRadius: "none",
   fontSize: 14,
   fontFamily: theme.fontFamily.primary,
   justifyContent: "center",
   ":focus": {
-    backgroundColor: approchType==="Pain"? theme?.palette.buttonSecondary.main:theme?.palette.wellnessColor.main,
+    backgroundColor: approchType === "Pain" ? theme?.palette.buttonSecondary.main : theme?.palette.wellnessColor.main,
     color: theme.palette.textSecondary.main,
   },
 }));
 
-export const ButtonDropdown = ({ items, defaultValue ,approchType }) => {
-  console.log("🚀 ~ file: dropdowns.jsx:51 ~ ButtonDropdown ~ items:", approchType)
+export const ButtonDropdown = ({ items, defaultValue, approchType }) => {
+  console.log("🚀 ~ file: dropdowns.jsx:51 ~ ButtonDropdown ~ items:", approchType);
   return (
     <FormControl>
       <StyledDropDown
-       approchType={approchType}
+        approchType={approchType}
         MenuProps={{
           PaperProps: {
             sx: {
@@ -68,7 +67,6 @@ export const ButtonDropdown = ({ items, defaultValue ,approchType }) => {
         }}
         IconComponent={ExpandMoreIcon}
         defaultValue={defaultValue}
-      
       >
         {items?.map((item) => (
           <StyledMenuItem key={item} value={item?._id} approchType={approchType}>
@@ -81,7 +79,7 @@ export const ButtonDropdown = ({ items, defaultValue ,approchType }) => {
 };
 
 const StyledExpertDropdown = styled(StyledDropDown)(({ theme }) => ({
-  width: 100,
+  width: 207,
   height: 42,
   backgroundColor: theme.palette.textSecondary.main,
   ".MuiSelect-icon": {
@@ -108,6 +106,7 @@ export const ExpertDropdown = ({ items, placeholder }) => {
           },
         }}
         IconComponent={ExpandMoreIcon}
+        placeholder="hi"
       >
         {items?.map((item) => (
           <StyledMenuItem key={item} value={item}>

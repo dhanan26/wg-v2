@@ -1,28 +1,15 @@
-import { Button, Menu, MenuItem, ListItemIcon, Box, Paper, Popover, Typography } from "@mui/material";
+import { MenuItem, Box, Popover } from "@mui/material";
 import { useState } from "react";
-import { ExpandMore as ExpandMoreIcon, Login, TrendingUpOutlined } from "@mui/icons-material";
-import ExpandIcon from "../../../assets/icons/arrow-right_filled.svg";
+import ExpandIcon from "../../../assets/icons/down-arrow-thin.svg";
 import { Icon } from "../../common/icon/icon";
 import { MainHeaderText } from "./header.styles";
 import jsonData from "../../../pages/temp/programs.json";
-const menuItems = [
-  {
-    title: "Menu 1",
-    submenu: [{ title: "sachin" }, { title: "Submenu 1-2" }, { title: "Submenu 1-3" }],
-  },
-  {
-    title: "Menu 2",
-    submenu: [{ title: "ragul" }, { title: "Submenu 2-2" }],
-  },
-  {
-    title: "Menu 3",
-    submenu: [{ title: "Submenu" }, { title: "Submenu 3-2" }, { title: "Submenu 3-3" }, { title: "Submenu 3-4" }],
-  },
-];
+import { StyledMenu } from "./menuDropDown.styles";
 
 export const NestedMenu = ({ label, name }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorElSubMenu, setAnchorElSubMenu] = useState(null);
+
   const [show, setShow] = useState(false);
 
   const open = Boolean(anchorEl);
@@ -39,7 +26,6 @@ export const NestedMenu = ({ label, name }) => {
     setAnchorElSubMenu(null);
   };
   const handleSubMenu = (e, index) => {
-    console.log(index, "hi");
     setShow(true);
     setSelectedMenuItem(index);
 
@@ -47,15 +33,19 @@ export const NestedMenu = ({ label, name }) => {
   };
 
   const handleCloseSubMenu = () => {
+    setShow(true);
     setAnchorElSubMenu(null);
-    setSelectedMenuItem(null);
   };
 
   return (
     <Box>
-      <MainHeaderText onClick={handleClick}>{label}</MainHeaderText>
-
-      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+      <MainHeaderText onMouseEnter={handleClick}>{label}</MainHeaderText>
+      <StyledMenu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        MenuListProps={{ onMouseLeave: handleClose }}
+      >
         {jsonData.map((item, index) => {
           return (
             <div>
@@ -63,13 +53,27 @@ export const NestedMenu = ({ label, name }) => {
                 return (
                   <>
                     {label === "Wellness Program" && ele.name === "Wellness" && (
-                      <MenuItem key={index} onClick={(e) => handleSubMenu(e, index)}>
+                      <MenuItem key={index}>
                         {item.name}
+                        {item.subProgramId && (
+                          <Icon
+                            src={ExpandIcon}
+                            className={"menu-arrow-right_filled"}
+                            onClick={(e) => handleSubMenu(e, index)}
+                          ></Icon>
+                        )}
                       </MenuItem>
                     )}
                     {label === "Pain Program" && ele.name === "Pain" && (
-                      <MenuItem key={index} onClick={(e) => handleSubMenu(e, index)}>
+                      <MenuItem key={index}>
                         {item.name}
+                        {item.subProgramId && (
+                          <Icon
+                            src={ExpandIcon}
+                            className={"menu-arrow-right_filled"}
+                            onClick={(e) => handleSubMenu(e, index)}
+                          ></Icon>
+                        )}
                       </MenuItem>
                     )}
                   </>
@@ -84,6 +88,7 @@ export const NestedMenu = ({ label, name }) => {
                     vertical: "top",
                     horizontal: "right",
                   }}
+                  PaperProps={{ onMouseLeave: handleCloseSubMenu }}
                 >
                   {item.subProgramId.map((ele, index) => {
                     return <MenuItem key={index}>{ele.name}</MenuItem>;
@@ -93,7 +98,7 @@ export const NestedMenu = ({ label, name }) => {
             </div>
           );
         })}
-      </Menu>
+      </StyledMenu>
     </Box>
   );
 };
