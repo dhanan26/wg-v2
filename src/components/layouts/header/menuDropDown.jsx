@@ -1,16 +1,14 @@
 import { MenuItem, Box, Popover } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpandIcon from "../../../assets/icons/down-arrow-thin.svg";
 import { Icon } from "../../common/icon/icon";
 import { MainHeaderText } from "./header.styles";
 import jsonData from "../../../pages/temp/programs.json";
-import { StyledMenu } from "./menuDropDown.styles";
+import { StyledMenu, StyledMenuItem } from "./menuDropDown.styles";
 
 export const NestedMenu = ({ label, name }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorElSubMenu, setAnchorElSubMenu] = useState(null);
-
-  const [show, setShow] = useState(false);
 
   const open = Boolean(anchorEl);
 
@@ -25,16 +23,22 @@ export const NestedMenu = ({ label, name }) => {
     setAnchorEl(event.currentTarget);
     setAnchorElSubMenu(null);
   };
-  const handleSubMenu = (e, index) => {
-    setShow(true);
+  const handleSubMenu = (e, index, indexNo) => {
+    console.log(e, index, "enter");
     setSelectedMenuItem(index);
-
-    setAnchorElSubMenu(e.currentTarget);
+    const Temp = index;
+    if (index !== Temp) {
+      handleCloseSubMenu(index);
+      setAnchorElSubMenu(e.currentTarget);
+    } else {
+      setSelectedMenuItem();
+      setAnchorElSubMenu();
+    }
   };
 
-  const handleCloseSubMenu = () => {
-    setShow(true);
-    setAnchorElSubMenu(null);
+  const handleCloseSubMenu = (index) => {
+    console.log(index, "leave");
+    setSelectedMenuItem(null);
   };
 
   return (
@@ -53,16 +57,10 @@ export const NestedMenu = ({ label, name }) => {
                 return (
                   <>
                     {label === "Wellness Program" && ele.name === "Wellness" && (
-                      <MenuItem key={index}>
+                      <StyledMenuItem key={index} onMouseEnter={(e) => handleSubMenu(e, index)}>
                         {item.name}
-                        {item.subProgramId && (
-                          <Icon
-                            src={ExpandIcon}
-                            className={"menu-arrow-right_filled"}
-                            onClick={(e) => handleSubMenu(e, index)}
-                          ></Icon>
-                        )}
-                      </MenuItem>
+                        {item.subProgramId && <Icon src={ExpandIcon} className="menu-arrow-right_filled" />}
+                      </StyledMenuItem>
                     )}
                     {label === "Pain Program" && ele.name === "Pain" && (
                       <MenuItem key={index}>
@@ -89,6 +87,7 @@ export const NestedMenu = ({ label, name }) => {
                     horizontal: "right",
                   }}
                   PaperProps={{ onMouseLeave: handleCloseSubMenu }}
+                  onMouseLeave={handleCloseSubMenu}
                 >
                   {item.subProgramId.map((ele, index) => {
                     return <MenuItem key={index}>{ele.name}</MenuItem>;
