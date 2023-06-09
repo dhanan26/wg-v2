@@ -9,24 +9,13 @@ import { EnquiryForm as MobileEnquiryForm } from "../enquiryForm/mobile/";
 
 import { PackageCard } from "../widgets/packageCard";
 import { PackageDetails } from "../packageDetails";
-import { useState,useCallback, useRef,  } from "react";
+import { useState,useCallback, useRef,useEffect  } from "react";
 
 //styles
-import{MainContentContainer,FilterContainer,PartnerContainer,SortByContainer,VerticalLine,SortByText} from "./content.styles"
+import{MainContentContainer,FilterContainer,PartnerContainer,SortByContainer,VerticalLine,SortByText, CustomGrid} from "./content.styles"
 
 export const Content = () => {
   const isSmallScreen = useMediaQuery("(max-width:900px)");
-  const isVerySmallScreen = useMediaQuery("(max-width:450px)");
-
-   
-  
-
-  const [enquiryModal, setEnquiryModal] = useState(false);
-  const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
-
-
-
- 
 
   return (
     <MainContentContainer>
@@ -98,8 +87,6 @@ export const Content = () => {
 
         <PackageSection/>
 
-         {isVerySmallScreen ?<MobileEnquiryForm name="Hotel whatever from Shivajinagar" open={enquiryModalOpen} setOpen={setEnquiryModal} />:
-         <WebEnquiryForm name="Hotel whatever from ShivajiNagar" />}
 
         {/* <PackageDetails /> */}
       </PartnerContainer>
@@ -110,7 +97,10 @@ export const Content = () => {
 
 
 export const PackageSection = ()=>{
-  const [showDivider, setShowDivider] = useState(false);
+  const [showPackageDetails, setShowPackageDetails] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false);
+  const [packageDetailsModalOpen, setPackageDetailsModalOpen] = useState(false);
+  const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
 
   const [state, setState] = useState([
     { name: "card 1", height: 300, active: false },
@@ -125,30 +115,45 @@ export const PackageSection = ()=>{
     { name: "card 4", height: 300, active: false },
   ]);
   
-  const handleButtonClick = () => {
-    setShowDivider(true);
-  };
-  
   const cardsPerRow = 4
   const [currentRowIndex, setcurrentRowIndex] = useState(cardsPerRow);
 
   const calulateRowIndex = (index) => {
-    console.log("🚀 ~ file: content.jsx:136 ~ calulateRowIndex ~ index:", index)
     const rowIndex = Math.floor(index / cardsPerRow);
-    console.log("🚀 ~ file: content.jsx:138 ~ calulateRowIndex ~ rowIndex:", rowIndex)
-    setcurrentRowIndex(cardsPerRow*(rowIndex+1))
-    console.log("🚀 ~ file: content.jsx:139 ~ calulateRowIndex ~ cardsPerRow*rowIndex):", cardsPerRow*rowIndex+1)
+    const calulatedRowIndex = state?.length<cardsPerRow*(rowIndex+1)?state?.length:cardsPerRow*(rowIndex+1)
+    setcurrentRowIndex(calulatedRowIndex)
   }
 
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
+
+  useEffect(() => {
+    // Event listener for window resize
+    const handleResize = () => {
+      // Logic to handle window resize
+      console.log('Window resized');
+      setShowPackageDetails(false)
+      setShowEnquiry(false)
+      setPackageDetailsModalOpen(false)
+      setEnquiryModalOpen(false)
+    };
+
+    // Attach the event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
    return(
-    <Grid container>
+    <Grid container >
     {
       state?.map((each,index)=>{
        
         return(
           <>
-          <Grid item xs={6} sm={6} md={3} key={index}>
+          <CustomGrid item xs={6} sm={6} md={3} lg={3} key={index}>
           <PackageCard
             packageData={{
               imgUrl: "https://picsum.photos/300",
@@ -168,26 +173,37 @@ export const PackageSection = ()=>{
               days: 9,
             }}
             calulateRowIndex={calulateRowIndex}
+            setShowPackageDetails={setShowPackageDetails}
+            setPackageDetailsModalOpen={setPackageDetailsModalOpen}
+            setShowEnquiry={setShowEnquiry}
+            setEnquiryModalOpen={setEnquiryModalOpen}
             index={index}
           />
 
-        
-       
-
-          </Grid>
+          </CustomGrid>
             {/* Check if it's the last card in the first row */}
             {index === currentRowIndex - 1 && (
-              <div className="divider">
-                {/* Insert your content for the divider */}
-                <PackageDetails/>
-              </div>
+                showPackageDetails && <Grid item md={12} lg={12}  > 
+                <PackageDetails setPackageDetailsModalOpen={setPackageDetailsModalOpen} packageDetailsModalOpen={packageDetailsModalOpen}/>
+                </Grid> 
+            )} 
+
+             {/* Check if it's the last card in the first row */}
+             {index === currentRowIndex - 1 && showEnquiry &&(
+                 isSmallScreen? <MobileEnquiryForm setOpen={setEnquiryModalOpen} open={enquiryModalOpen} />  :<Grid item md={12} lg={12}  >  <WebEnquiryForm/></Grid>
+                // 
             )}
+
+
             </>
+
   
         )
 
       })
+      
     }
+    
 
     </Grid>
    )

@@ -1,4 +1,4 @@
-import { Box, Button, Card, IconButton, styled } from "@mui/material";
+import { Box, Button, Card, IconButton, styled,useMediaQuery } from "@mui/material";
 
 import verified from "../../../assets/icons/verified.svg";
 import thumbsUp from "../../../assets/icons/ThumbsUp.svg";
@@ -14,20 +14,38 @@ import {
   CostContainer,
   HeroContainerIndividual,
 } from "./packageCard.styles";
-export const PackageCard = ({ isIndividual, individualData, packageData, type, cost, details ,calulateRowIndex,index}) => {
+export const PackageCard = ({ isIndividual, individualData, packageData, type, cost, details ,calulateRowIndex,index,setShowPackageDetails,setShowEnquiry,setPackageDetailsModalOpen,setEnquiryModalOpen}) => {
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
   const [open, setOpen] = useState(false);
   // callback for heart click
   const handleHeartClick = () => {
     console.log("heart clicked");
   };
   const handleEnquiryClick = () => {
-    setOpen((current) => !current);
-  };
-
-  const handleClick = () => {
-       calulateRowIndex(index)
+    if(!isSmallScreen){
+    calulateRowIndex(index)
+    setShowEnquiry((prev)=>!prev)
+    setShowPackageDetails(false)
+  }else{
+    setShowEnquiry(true)
+    setEnquiryModalOpen(true)
   }
 
+    
+  };
+
+  const handleDetailsClick = () => {
+      if(!isSmallScreen){
+        calulateRowIndex(index)
+        setShowPackageDetails((prev)=>!prev)
+        setShowEnquiry(false)
+      }
+      else{
+        setShowPackageDetails(true)
+        setPackageDetailsModalOpen(true)
+      }
+       
+  }
 
   return (
     <>
@@ -60,8 +78,8 @@ export const PackageCard = ({ isIndividual, individualData, packageData, type, c
           </IconButton>
         </LikeContainer>
         <ButtonContainer>
-          <Button disableRipple>Details</Button>
-          <Button disableRipple onClick={()=>handleClick()}>
+          <Button disableRipple onClick={handleDetailsClick} >Details</Button>
+          <Button disableRipple onClick={handleEnquiryClick} >
             +Enquiry
           </Button>
         </ButtonContainer>

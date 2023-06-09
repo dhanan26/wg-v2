@@ -4,6 +4,7 @@ export const Container = styled(Box)(({ theme }) => ({
   paddingBottom: "2rem",
   fontFamily: theme.fontFamily.primary,
   padding: "1rem 2.063rem",
+  width:"57rem",
 
   "& h2": {
     fonSize: theme.typography.primaryText,

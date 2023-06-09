@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@mui/material";
+import { useMediaQuery ,Link} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import {
   ApprovedTreatmentBox,
@@ -8,6 +8,8 @@ import {
   ImageBox2,
   ImageBox3,
   ImageContainerBox,
+  LinkBox,
+  LinkText
 } from "./approvedTreatment.styles";
 
 import { useContext } from "react";
@@ -40,7 +42,14 @@ export const ApprovedTreatment = () => {
               </Grid>
             </Grid>
             <Grid item xs={8}>
-              <ImageBox3 image={programImageData?.webFooterUrl?.previewUrl} />
+              <ImageBox3 image={programImageData?.webFooterUrl?.previewUrl} >
+                <LinkBox component={Link}  href={`${programData?.blogTags[0]}`} target="_blank" rel="external" >
+                <LinkText>Read More<br/>
+                 About {programData?.name}
+                </LinkText>
+
+                </LinkBox>
+                </ImageBox3>
             </Grid>
           </Grid>
         )}
