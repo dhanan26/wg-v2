@@ -15,40 +15,40 @@ export const HowItWorks = ({ open, onClose, individualData }) => {
           {individualData?.specialty?.description}
         </SubText>
         <Title>How it works</Title>
-        {individualData?.howItWorks.lineOne && (
+        {individualData?.howItWorks?.lineOne && (
           <SubText variant={"primaryText"}>
             <Icon src={arrowRight} className={"arrow-right_filled"} />
-            {individualData?.howItWorks.lineOne}
+            {individualData?.howItWorks?.lineOne}
 
             <br />
             <br />
           </SubText>
         )}
 
-        {individualData?.howItWorks.lineTwo && (
+        {individualData?.howItWorks?.lineTwo && (
           <SubText variant={"primaryText"}>
             <Icon src={arrowRight} className={"arrow-right_filled"} />
-            {individualData?.howItWorks.lineTwo}
+            {individualData?.howItWorks?.lineTwo}
 
             <br />
             <br />
           </SubText>
         )}
 
-        {individualData?.howItWorks.lineThree && (
+        {individualData?.howItWorks?.lineThree && (
           <SubText variant={"primaryText"}>
             <Icon src={arrowRight} className={"arrow-right_filled"} />
-            {individualData?.howItWorks.lineThree}
+            {individualData?.howItWorks?.lineThree}
 
             <br />
             <br />
           </SubText>
         )}
 
-        {individualData?.howItWorks.lineFour && (
+        {individualData?.howItWorks?.lineFour && (
           <SubText variant={"primaryText"}>
             <Icon src={arrowRight} className={"arrow-right_filled"} />
-            {individualData?.howItWorks.lineFour}
+            {individualData?.howItWorks?.lineFour}
 
             <br />
             <br />

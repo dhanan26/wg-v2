@@ -1,5 +1,5 @@
 import { RecommendedSpecialtiesCard } from "../widgets/recommendedSpecialtiesCard";
-
+import arrow from "../../assets/icons/arrow-right-thin.svg";
 import SwiperCore, { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -11,8 +11,10 @@ import {
   SwiperContainer,
 } from "./recommendedSpecialities.styles";
 import { MainContext } from "../../pages/main/main";
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 SwiperCore.use([Navigation]);
+
+import { Box } from "@mui/material";
 
 export const RecommendedSpecialties = () => {
   return (
@@ -43,9 +45,18 @@ export const RecommendedSpecialties = () => {
 
 const SwiperCards = () => {
   const { programData, approchType } = useContext(MainContext);
-
   const specialties = programData?.selectRecommendations;
-  console.log("🚀 ~ file: recommendedSpecialties.jsx:48 ~ SwiperCards ~ specialties:", specialties)
+  const specialtiesCount = specialties?.length;
+  const [swiper, setSwiper] = useState();
+  const [cardCount, setCardCount] = useState(0);
+  const LIMIT = 3;
+  console.log(
+    "🚀 ~ file: recommendedSpecialties.jsx:52 ~ SwiperCards ~ cardCount:",
+    cardCount
+  );
+  useEffect(() => {
+    setCardCount(specialtiesCount);
+  }, [specialtiesCount]);
 
   const breakpoints = {
     // when window width is >= 640px
@@ -73,15 +84,66 @@ const SwiperCards = () => {
     },
   };
   return (
-    <SwiperContainer>
-      <Swiper breakpoints={breakpoints} loop={true}>
+    <>
+      <Swiper
+        breakpoints={breakpoints}
+        loop={true}
+        onSwiper={(swiper) => {
+          setSwiper(swiper);
+        }}
+        style={{ position: "relative" }}
+      >
+        {LIMIT < cardCount && (
+          <Box
+            sx={{
+              cursor: "pointer",
+              width: 50,
+              display: "flex",
+              position: "absolute",
+              zIndex: 99,
+              top: 25,
+              left: 0,
+            }}
+            id="success-stories-prev-button"
+            onClick={() => {
+              swiper.slidePrev();
+            }}
+          >
+            <img src={arrow} height={47} />
+          </Box>
+        )}
         {specialties?.map((specialtiesData, index) => (
-          <SwiperSlide key={index}>
-            <RecommendedSpecialtiesCard specialtiesData={specialtiesData} />
+          <SwiperSlide style={{ left: LIMIT < cardCount ? 50 : 0 }} key={index}>
+            <RecommendedSpecialtiesCard
+              specialtiesData={specialtiesData}
+              index={index}
+            />
           </SwiperSlide>
         ))}
-        {/* Previous and next arrow buttons */}
+        {LIMIT < cardCount && (
+          <Box
+            id="success-stories-next-button"
+            sx={{
+              right: 0,
+              top: 25,
+              cursor: "pointer",
+              width: 50,
+              display: "flex",
+              position: "absolute",
+              zIndex: 99,
+            }}
+            onClick={() => {
+              swiper.slideNext();
+            }}
+          >
+            <img
+              src={arrow}
+              height={47}
+              style={{ transform: "rotate(180deg)" }}
+            />
+          </Box>
+        )}
       </Swiper>
-    </SwiperContainer>
+    </>
   );
 };

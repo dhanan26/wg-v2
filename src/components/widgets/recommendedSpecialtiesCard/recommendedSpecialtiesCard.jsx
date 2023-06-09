@@ -16,11 +16,9 @@ import { useState, useContext } from "react";
 import { HowItWorks } from "../../howItWorks/howItWorks";
 import Tooltip from "@mui/material/Tooltip";
 
-export const RecommendedSpecialtiesCard = (data) => {
+export const RecommendedSpecialtiesCard = (data, index) => {
   const [isDialogOpen, setDialogOpen] = useState(false);
-
   const individualData = data?.specialtiesData;
-
 
   const openDialog = () => {
     setDialogOpen(true);
@@ -46,7 +44,7 @@ export const RecommendedSpecialtiesCard = (data) => {
             {individualData?.specialty?.name}
           </SpecialtiesMainText>
           <SpecialtiesSubText color="textPrimary">
-            {individualData?.specialty.specialtyType.name}
+            {individualData?.specialty?.specialtyType?.name}
           </SpecialtiesSubText>
         </SpecialtiesTextBox>
         <SpecialtiesFooter>
@@ -58,7 +56,7 @@ export const RecommendedSpecialtiesCard = (data) => {
             <SpecialtiesSubText color="textPrimary">mins</SpecialtiesSubText>
           </SpecialtiesFooterText>
           <SpecialtiesFooterText>
-            <Tooltip
+            <CustomTooltip
               title={
                 <HowItWorks
                   open={isDialogOpen}
@@ -72,7 +70,7 @@ export const RecommendedSpecialtiesCard = (data) => {
               <SpecialtiesSubText onMouseEnter={openDialog} color="textPrimary">
                 How it works
               </SpecialtiesSubText>
-            </Tooltip>
+            </CustomTooltip>
           </SpecialtiesFooterText>
         </SpecialtiesFooter>
       </SpecialtiesContent>
