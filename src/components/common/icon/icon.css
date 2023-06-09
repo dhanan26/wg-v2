@@ -60,8 +60,8 @@
 }
 .menu-arrow-right_filled {
   width: 20px;
-  height: 15px;
-  padding-left: 5px;
+  height: 10px;
+  rotate: -90deg;
 }
 .down-arrow {
   height: 11px;
