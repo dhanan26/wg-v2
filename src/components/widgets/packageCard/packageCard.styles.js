@@ -13,9 +13,11 @@ export const Container = styled(Card)(({ theme }) => ({
   gap: "0.5rem",
   justifyContent: "space-between",
   [theme.breakpoints.down("sm")]: {
-    minWidth: 200,
+    minWidth: 170,
     maxWidth: 200,
+    width:170
   },
+
 
   "& .package-card-top": {
     display: "flex",
@@ -28,8 +30,9 @@ export const Container = styled(Card)(({ theme }) => ({
     color: theme.palette.buttonSecondary.main,
     padding: " 0 0.688rem",
     fontSize: "1rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("mlg")]: {
       fontSize: "0.7rem",
+
     },
   },
 }));
@@ -42,7 +45,7 @@ export const DetailsContainer = styled(Box)(({ theme }) => ({
   fontSize: "0.85rem",
   fontWeight: 400,
   gap: "0.5rem",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("mlg")]: {
     fontSize: "0.6rem",
   },
 }));
@@ -73,18 +76,24 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
     fontSize: "0.875rem",
     padding: "0.1rem 1rem",
     margin: "unset",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("mlg")]: {
       fontSize: "0.6rem",
     },
   },
   "& button:first-child": {
     color: theme.palette.packageCard.button,
     outline: `1px solid ${theme.palette.packageCard.button}`,
+    [theme.breakpoints.down("sm")]: {
+      width: "53px",
+    },
   },
   "& button:last-child": {
     color: theme.palette.buttonPrimary.contrastText,
     background: theme.palette.buttonPrimary.main,
     outline: `1px solid ${theme.palette.buttonPrimary.main}`,
+    [theme.breakpoints.down("mlg")]: {
+      width: "62px",
+    },
   },
 }));
 
@@ -180,7 +189,7 @@ export const BodyContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("mlg")]: {
       fontSize: "1rem",
     },
 
@@ -188,7 +197,7 @@ export const BodyContainer = styled(Box)(({ theme }) => ({
       fontSize: "0.825rem",
       flexWrap: "wrap",
       color: theme.palette.packageCard.exp,
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("mlg")]: {
         fontSize: "0.6rem",
       },
     },
@@ -199,7 +208,7 @@ export const BodyContainer = styled(Box)(({ theme }) => ({
     fontFamily: theme.typography.secondaryText.fontFamily,
     color: theme.palette.textSecondary.contrast,
     fontSize: "0.825rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("mlg")]: {
       fontSize: "0.6rem",
     },
   },
@@ -217,7 +226,7 @@ export const CostContainer = styled(Box)(({ theme }) => ({
     margin: "unset !important",
     color: theme.palette.textPrimary.main,
     letterSpacing: "0.02rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("mlg")]: {
       fontSize: "0.8rem",
     },
   },
@@ -236,7 +245,7 @@ export const CostContainer = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("mlg")]: {
       fontSize: "0.6rem",
     },
   },

@@ -42,4 +42,13 @@ export   const PartnerContainer = styled((props) => <Grid item {...props} md={9.
   export const SortByText = styled(PrimarySubText)(() => ({
     fontSize: 12,
   }));
+
+  export const CustomGrid = styled(Grid)(({theme}) => ({
+    [theme.breakpoints.down('xxs')]: {
+      // Apply styles for screens smaller than 1280px
+      // gridTemplateColumns: 'repeat(2, 1fr)', // Adjust the number of columns as per your requirement
+      display:"flex",
+    
+    },
+  }));
   

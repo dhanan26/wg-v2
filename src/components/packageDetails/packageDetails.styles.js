@@ -5,4 +5,5 @@ export const PackageDetailsMainBox = styled(Box)(({ theme }) => ({
   backgroundColor: "white",
   border: `2px solid ${theme.palette.primary.main}`,
   // height: 870
+  width:"62rem",
 }));

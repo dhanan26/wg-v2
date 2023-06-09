@@ -41,8 +41,11 @@ const popularPackage = ["one", "two", "three", "four", "five", "six", "seven", "
 const SwiperCards = () => {
   const breakpoints = {
     // when window width is >= 640px
+    200:{
+      slidesPerView: 2,
+    },
     300: {
-      slidesPerView: 1,
+      slidesPerView: 2,
       // spaceBetween: 30
     },
     520: {

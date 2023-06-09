@@ -25,6 +25,9 @@ export const SubText = styled(PrimarySubText)(({ theme }) => ({
   },
 }));
 
+
+
+
 export const ImageBox = styled(Box)(({ theme }) => ({
   backgroundColor: "red",
 
@@ -74,6 +77,7 @@ export const ImageBox3 = styled(Box)(({ theme,image }) => ({
     height: 100,
     margin: 0,
   },
+  position: "relative"
 }));
 
 export const ImageContainerBox = styled(Box)(({ theme }) => ({
@@ -95,4 +99,16 @@ export const ImageContainerBox = styled(Box)(({ theme }) => ({
     margin: 0,
     // backgroundColor: "black",
   },
+}));
+
+export const LinkBox = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  bottom: 10,
+  right: 10,
+}));
+
+export const LinkText = styled(PrimarySubText)(({ theme }) => ({
+  textAlign: "left",
+  fontWeight:500,
+  color:"black"
 }));
