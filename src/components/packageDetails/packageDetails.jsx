@@ -169,7 +169,7 @@ const amenitiesData = [
 const termsAndConditionUrl = import.meta.env.VITE_APP_TERM_AND_CONDITION_PDF;
 const termsAndConditionFileName = "Terms and Condition";
 
-export const PackageDetails = () => {
+export const PackageDetails = ({left}) => {
   const photosRef = useRef(null);
   const [modalOpen, setModal] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width:900px)");
@@ -217,7 +217,7 @@ export const PackageDetails = () => {
   return (
     <>
       {!isSmallScreen ? (
-        <PackageDetailsMainBox ref={photosRef}>
+        <PackageDetailsMainBox ref={photosRef} left={left} >
           <TabsComponent tabs={tab} setValue={setValue} value={value} />
         </PackageDetailsMainBox>
       ) : (
