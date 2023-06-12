@@ -1,4 +1,4 @@
-import { Tab, Tabs, Box, Typography, Button, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import { Tab, Tabs, Box, Typography, Button, FormGroup, FormControlLabel, Checkbox ,useMediaQuery} from "@mui/material";
 import { useState } from "react";
 import {
   StyledDialog,
@@ -61,9 +61,13 @@ export const ExploreExpertTab = () => {
   };
 
   const handleCheckboxChange = (event) => {};
+  const isSmallScreen = useMediaQuery("(max-width:800px)");
+
   return (
     <>
-      <StyledTextField onClick={handleClickOpen} />
+     {!isSmallScreen ? (<StyledTextField onClick={handleClickOpen}  />):(
+      <StyledTextField onClick={handleClickOpen} fullWidth/>
+     )}
       <StyledDialog open={open} onClose={handleClose}>
         <StyledDialogContent>
           <Box sx={{ flexGrow: 1, display: "flex" }}>
