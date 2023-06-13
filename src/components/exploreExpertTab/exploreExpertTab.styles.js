@@ -19,7 +19,7 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
   "&.MuiTabs-root": {
     borderRight: 0,
     width: "auto",
-    // backgroundColor: "red",
+  
   },
   height: "auto",
   width: "auto",

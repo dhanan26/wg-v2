@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-images-viewer": "^1.7.1",
+    "react-multi-select-component": "^4.3.4",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.11.1",
     "react-simple-image-viewer": "^1.2.2",

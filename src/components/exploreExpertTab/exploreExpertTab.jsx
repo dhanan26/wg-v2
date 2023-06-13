@@ -1,5 +1,5 @@
-import { Tab, Tabs, Box, Typography, Button, FormGroup, FormControlLabel, Checkbox ,useMediaQuery} from "@mui/material";
-import { useState } from "react";
+import { Tab, Tabs, Box, Typography, Button, FormGroup, FormControlLabel, Checkbox ,useMediaQuery, ListItem, Popover} from "@mui/material";
+import { useState ,useRef} from "react";
 import {
   StyledDialog,
   StyledDialogContent,
@@ -39,13 +39,18 @@ const tabLabels = ["Item One", "Item Two", "Item Three"];
 const tabItems = ["Australia", "Bedarra Island", "Byron Bay", "Lord Howe Island", "Sydney"];
 export const ExploreExpertTab = () => {
   const [value, setValue] = useState(0);
+  const [show,setShow]=useState(false)
   const [selectedTab, setSelectedTab] = useState("");
-  const [selectedValues, setSelectedValues] = useState([]);
-  const [selectedCounts, setSelectedCounts] = useState({});
-
+ 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const spanRef = useRef();
+const [checked,setChecked]=useState(false)
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
+    setShow(true)
+    setAnchorEl(spanRef.current);
+
   };
 
   const handleClose = () => {
@@ -60,16 +65,30 @@ export const ExploreExpertTab = () => {
     }
   };
 
-  const handleCheckboxChange = (event) => {};
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+    console.log(item,"sd");
+  };
   const isSmallScreen = useMediaQuery("(max-width:800px)");
 
+  const onSubmit =(data => {
+    console.log("Submitted:", data);
+  }, []);
   return (
     <>
-     {!isSmallScreen ? (<StyledTextField onClick={handleClickOpen}  />):(
-      <StyledTextField onClick={handleClickOpen} fullWidth/>
+     {!isSmallScreen ? (<StyledTextField onClick={handleClickOpen}  ref={spanRef}  />):(
+      <StyledTextField onClick={handleClickOpen} fullWidth ref={spanRef} />
      )}
-      <StyledDialog open={open} onClose={handleClose}>
-        <StyledDialogContent>
+   {/* {show  && <Card >
+<CardContent> <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Word of the Day
+        </Typography></CardContent>
+    
+     </Card>} */}
+      <Popover open={open} onClose={handleClose} anchorEl={anchorEl}  anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left"
+        }}>
           <Box sx={{ flexGrow: 1, display: "flex" }}>
             <StyledTabs
               orientation="vertical"
@@ -77,25 +96,30 @@ export const ExploreExpertTab = () => {
               onChange={handleChange}
               aria-label="Vertical tabs example"
               indicatorColor="none"
-              sx={{ borderRight: 1, backgroundColor: "lightGrey" }}
+              sx={{ borderRight: 1, backgroundColor: "lightGrey" ,paddingTop:"10px"}}
             >
               {tabLabels.map((label, index) => {
                 return <StyledTab key={index} label={label} onClick={() => handleTab(index)}></StyledTab>;
               })}
             </StyledTabs>
-
+            {/* <form onSubmit={handleSubmit(onSubmit)}> */}
             <TabPanel value={value} index={0}>
+              {/* <FormControl> */}
               <FormGroup>
                 {tabItems.map((item, TabPanelIndex) => {
                   return (
                     <FormControlLabel
                       key={TabPanelIndex}
-                      control={<Checkbox value={item} onChange={handleCheckboxChange} color="primary" />}
+                      control={<Checkbox value={item}  checked={checked} onChange={handleCheckboxChange} color="primary" />}
                       label={item}
                     />
                   );
                 })}
               </FormGroup>
+              {/* </FormControl> */}
+             
+              
+          
             </TabPanel>
 
             <TabPanel value={value} index={1}>
@@ -112,11 +136,28 @@ export const ExploreExpertTab = () => {
               </FormGroup>
             </TabPanel>
             <TabPanel value={value} index={2}>
-              Item Three
+            <FormGroup>
+            {tabItems.map((item, TabPanelIndex) => {
+return(
+
+
+            <FormControlLabel
+                key={TabPanelIndex}
+                control={
+                  <input
+                    type="checkbox"
+                    value={item}
+                    name={`Item Three[${item}]`}
+                  />
+                }
+                label={item}
+              />
+         )   })}
+              </FormGroup>
             </TabPanel>
+{/* </form> */}
           </Box>
-        </StyledDialogContent>
-      </StyledDialog>
+      </Popover>
     </>
   );
 };
