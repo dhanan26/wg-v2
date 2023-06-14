@@ -103,16 +103,16 @@ export const PackageSection = ()=>{
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
 
   const [state, setState] = useState([
-    { name: "card 1", height: 300, active: false },
-    { name: "card 2", height: 300, active: false },
-    { name: "card 3", height: 300, active: false },
-    { name: "card 4", height: 300, active: false },
-    { name: "card 5", height: 300, active: false },
-    { name: "card 6", height: 300, active: false },
-    { name: "card 1", height: 300, active: false },
-    { name: "card 2", height: 300, active: false },
-    { name: "card 3", height: 300, active: false },
-    { name: "card 4", height: 300, active: false },
+    { name: "card 1", height: 300, isIndividual: false },
+    { name: "card 2", height: 300, isIndividual: true },
+    { name: "card 3", height: 300, isIndividual: false },
+    { name: "card 4", height: 300, isIndividual: false },
+    { name: "card 5", height: 300, isIndividual: true },
+    { name: "card 6", height: 300, isIndividual: false },
+    { name: "card 1", height: 300, isIndividual: false },
+    { name: "card 2", height: 300, isIndividual: true },
+    { name: "card 3", height: 300, isIndividual: false },
+    { name: "card 4", height: 300, isIndividual: false },
   ]);
   
   const cardsPerRow = 4
@@ -162,6 +162,7 @@ export const PackageSection = ()=>{
               name: "Taj Jiva Spa",
               description: "Hath yoga package",
             }}
+            isIndividual={each?.isIndividual}
             type={"Back pain"}
             cost={{
               basePrice: 10000,

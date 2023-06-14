@@ -58,7 +58,7 @@ export const PackageCard = ({ isIndividual, individualData, packageData, type, c
         )}
         <span className="package-card-type">{type}</span>
         {isIndividual ? (
-          <IndividualCardBody individualData={individualData} />
+          <IndividualCardBody individualData={packageData} />
         ) : (
           <PackageCardBody packageData={packageData} />
         )}
