@@ -6,6 +6,7 @@ import {
   PopularPackageMainTitle,
   PopularPackageSubTitle,
   SwiperContainer,
+  PopularPackageSkeleten
 } from "./popularPackage.styles";
 //Swiper imports
 import SwiperCore, { Navigation } from "swiper";
@@ -13,39 +14,44 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 SwiperCore.use([Navigation]);
 
+import { useContext, useState } from "react";
+import { MainContext } from "../../pages/main/main";
+
 //custom style
 import "./popularPackage.css";
+import { Skeleton } from "@mui/material";
 
 export const PopularPackage = () => {
+  const {programData,popularPackageData,programName} = useContext(MainContext);
   return (
     <StyledMainContainer>
       <PopularPackageBox>
         <PopularPackageTitleBox>
           <PopularPackageMainTitle variant="primaryTitle" color="primary">
-            Most Popular Back Pain Packages
+            Most Popular {programName===""?programData?.name:programName} Packages
           </PopularPackageMainTitle>
           <PopularPackageSubTitle variant="secondaryTitle" color="textPrimary">
             Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus{" "}
           </PopularPackageSubTitle>
         </PopularPackageTitleBox>
         <SwiperContainer>
-          <SwiperCards />
+          <SwiperCards popularPackageData={popularPackageData} />
         </SwiperContainer>
       </PopularPackageBox>
     </StyledMainContainer>
   );
 };
 
-const popularPackage = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 
-const SwiperCards = () => {
+const SwiperCards = ({popularPackageData=[]}) => {
+  console.log("🚀 ~ file: popularPackage.jsx:45 ~ SwiperCards ~ popularPackageData:", popularPackageData?.popularPackages)
   const breakpoints = {
     // when window width is >= 640px
     200:{
-      slidesPerView: 2,
+      slidesPerView: 1,
     },
     300: {
-      slidesPerView: 2,
+      slidesPerView: 1.5,
       // spaceBetween: 30
     },
     520: {
@@ -64,9 +70,17 @@ const SwiperCards = () => {
     },
     // when window width is >= 1024px
     1800: {
-      slidesPerView: 5,
+      slidesPerView: 4,
     },
-  };
+  }; 
+
+
+  // if(popularPackageData?.isPopularPackageLoading){
+  //   return <div>Loading...</div>
+  
+  // }
+
+
   return (
     <>
       <Swiper
@@ -76,12 +90,18 @@ const SwiperCards = () => {
         }}
         breakpoints={breakpoints}
         loop={true}
-        style={{ paddingRight: 0 }}
+        // style={{ paddingRight: 0 }}
       >
-        {popularPackage?.map((each, index) => (
-          <SwiperSlide key={index}>
-            <PopularPackageCard data={each} />
+        {
+         (popularPackageData?.isPopularPackageLoading?Array.from(new Array(4)) : popularPackageData?.popularPackages)?.map((each, index) => (
+          
+            <SwiperSlide key={index}>
+             { popularPackageData?.isPopularPackageLoading? <PopularPackageSkeleten variant="rectangular" />: 
+            <PopularPackageCard data={each} />}
           </SwiperSlide>
+
+          
+         
         ))}
         {/* Previous and next arrow buttons */}
       </Swiper>
