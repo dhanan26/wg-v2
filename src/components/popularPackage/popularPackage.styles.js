@@ -1,4 +1,4 @@
-import { styled, Box } from "@mui/material";
+import { styled, Box, Skeleton } from "@mui/material";
 import { TextCenterBox } from "../common/containers/containers";
 import { PrimaryText, PrimarySubText } from "../common/typographies/typographies";
 export const PopularPackageBox = styled(Box)(({ theme }) => ({
@@ -56,3 +56,19 @@ export const SwiperContainer = styled(Box)(({ theme }) => ({
     alignItems: "center",
   },
 }));
+
+
+export const PopularPackageSkeleten = styled(Skeleton)(({ theme }) => ({
+  height: 339,
+  width: 293,
+  borderRadius: 2,
+  boxShadow: "none",
+  // backgroundColor: active ? theme.palette.cardActive.main : "none",
+  cursor: "pointer",
+  [theme.breakpoints.down("mlg")]: {
+    height: 270,
+    width: 232,
+  },
+}));
+
+

@@ -20,17 +20,17 @@ export const PopularPackageCard = ({ active, data }) => {
       <StyledCardContent>
         <StyledTitleBox>
           <CardTitle variant="primaryTitle" color="textPrimary" uppercase={"true"}>
-            {data}
+            {data?.name}
           </CardTitle>
-          <CardTitle variant="primaryTitle" color="textPrimary" uppercase={"true"}>
+          {/* <CardTitle variant="primaryTitle" color="textPrimary" uppercase={"true"}>
             Back Pain{" "}
-          </CardTitle>
+          </CardTitle> */}
         </StyledTitleBox>
         <CardSubText variant="secondaryTitle" color="textPrimary">
-          Multiple Session based Packages
+          {data?.subTitle}
         </CardSubText>
       </StyledCardContent>
-      <StyledCardMedia image={cardImage}>
+      <StyledCardMedia image={data?.packageImage?.packageImageUrl?.previewUrl}>
         <StyledStack>
           <CardMediaSubText variant="secondaryTitle" color="textSecondary">
             99 Experts | Starting from ₹ 1000

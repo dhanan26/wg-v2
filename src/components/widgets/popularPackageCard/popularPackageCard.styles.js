@@ -21,6 +21,7 @@ export const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
   justifyContent: "flex-end",
   [theme.breakpoints.down("mlg")]: {
     height: 194,
+    width: 232,
   },
 }));
 
@@ -28,6 +29,7 @@ export const StyledCardContent = styled(CardContent)(({ theme }) => ({
   height: 100,
   [theme.breakpoints.down("mlg")]: {
     height: 76,
+    width: 232,
   },
 }));
 
@@ -42,6 +44,7 @@ export const CardTitle = styled(PrimaryText)(({ theme }) => ({
 export const CardSubText = styled(PrimarySubText)(({ theme }) => ({
   fontSize: 14,
   textAlign: "left",
+  fontFamily:theme?.fontFamily?.secondary,
   [theme.breakpoints.down("mlg")]: {
     fontSize: 10,
   },

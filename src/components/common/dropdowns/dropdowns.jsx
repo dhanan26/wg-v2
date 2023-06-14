@@ -66,7 +66,7 @@ const StyledMenuItem = styled(MenuItem)(({ theme, approchType }) => ({
   },
 }));
 
-export const ButtonDropdown = ({ items, defaultValue, approchType }) => {
+export const ButtonDropdown = ({ items, defaultValue, approchType,onClick }) => {
   console.log(
     "🚀 ~ file: dropdowns.jsx:51 ~ ButtonDropdown ~ items:",
     approchType
@@ -90,6 +90,7 @@ export const ButtonDropdown = ({ items, defaultValue, approchType }) => {
             key={item}
             value={item?._id}
             approchType={approchType}
+            onClick={() => onClick(item?._id,item?.name)}
           >
             {item?.name}
           </StyledMenuItem>

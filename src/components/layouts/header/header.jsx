@@ -34,7 +34,7 @@ import {
 } from "./header.styles";
 import { useState } from "react";
 
-export const Header = ({}) => {
+export const Header = ({getMostPopularPackage,setProgramName}) => {
   return (
     <>
       <TopNavigationBox>
@@ -43,7 +43,7 @@ export const Header = ({}) => {
       <MainNavigationBox>
         <MainHeaderItems />
       </MainNavigationBox>
-      <Banner />
+      <Banner getMostPopularPackage={getMostPopularPackage} setProgramName={setProgramName} />
     </>
   );
 };
