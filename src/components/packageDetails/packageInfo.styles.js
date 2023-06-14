@@ -1,5 +1,4 @@
-import { styled, Box } from "@mui/material";
-
+import { styled, Box, Typography } from "@mui/material";
 export const Container = styled(Box)(() => ({
   display: "flex",
   gap: "1rem",
@@ -56,7 +55,7 @@ export const HeaderInfo = styled(Box)(({ theme }) => ({
   h4: {
     fontWeight: "700",
     margin: "unset",
-    fontSize: "0.8rem",
+    fontSize: "0.875rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.6rem",
     },
@@ -96,7 +95,7 @@ export const HeaderAwards = styled(Box)(() => ({
 // description ---------------------------------------------
 export const DescriptionContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.textPrimary.main,
-  padding: "0.5rem 1rem",
+  padding: "0.5rem 1rem 0rem 1rem",
   h3: {
     fontFamily: theme.typography.primaryTitle.fontFamily,
     fontWeight: 500,
@@ -134,24 +133,26 @@ export const GenderContainer = styled(Box)(() => ({
   },
 }));
 
-export const SplitContainer = styled(Box)(({ theme, backgroundColor, reverse }) => ({
-  backgroundColor: backgroundColor,
-  display: "flex",
-  justifyContent: "space-between",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: reverse ? "column" : "column-reverse",
-  },
-}));
+export const SplitContainer = styled(Box)(
+  ({ theme, backgroundColor, reverse }) => ({
+    backgroundColor: backgroundColor,
+    display: "flex",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: reverse ? "column" : "column-reverse",
+    },
+  })
+);
 
 export const FlexBox = styled(Box)(({ theme }) => ({
   flex: 1,
-  padding: "0.5rem 1rem",
+  padding: "0rem 1rem",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
   alignItems: "flex-start",
   h3: {
-    fontFamily: theme.typography.secondaryText.fontFamily,
+    fontFamily: theme.typography.primaryTitle.fontFamily,
     fontSize: "1rem",
     fontWeight: 500,
     [theme.breakpoints.down("sm")]: {
@@ -169,7 +170,7 @@ export const FlexBox = styled(Box)(({ theme }) => ({
     gap: "0.4rem",
     alignItems: "flex-start",
     fontFamily: theme.typography.secondaryText.fontFamily,
-    fontSize: "0.9rem",
+    fontSize: "10px",
     fontWeight: 400,
     margin: "0 0 10px 0",
   },
@@ -189,5 +190,25 @@ export const FlexBox = styled(Box)(({ theme }) => ({
     gap: "0.5rem",
     margin: "0 0 10px 0",
     minWidth: 60,
+  },
+}));
+
+export const SpecialtyMainBox = styled(Box)(({ theme }) => ({
+  h3: {
+    fontFamily: theme.typography.primaryTitle.fontFamily,
+  },
+  span: {
+    fontFamily: theme.typography.secondaryText.fontFamily,
+    fontSize: "0.625rem",
+  },
+}));
+
+export const AmenityMainBox = styled(Box)(({ theme }) => ({
+  h3: {
+    fontFamily: theme.typography.primaryTitle.fontFamily,
+  },
+  span: {
+    fontFamily: theme.typography.secondaryText.fontFamily,
+    fontSize: "0.625rem",
   },
 }));

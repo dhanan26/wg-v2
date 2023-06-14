@@ -211,13 +211,13 @@ export const AboutUS = ({ setValue, individualData, photosRef }) => {
                 {/* <span> */}
                 <img src={location} height={15} width={15} alt="location" />
                 {/* </span> */}
-                <AboutUsDropDown label={"Locate other branches"} items={States} />
+                <AboutUsDropDown label={"Location"} items={States} />
               </p>
               <p>
                 {/* <span> */}
                 <img src={clock} height={15} width={15} alt="clock" />
                 {/* </span> */}
-                <AboutUsDropDown label={"Wednesday 9:30 am–6 pm"} items={Timings}></AboutUsDropDown>
+                <AboutUsDropDown label={"Timings"} items={Timings}></AboutUsDropDown>
               </p>
               <ViewImageBox>
                 {individualData.photos.map((src, index) => {

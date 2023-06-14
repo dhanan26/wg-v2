@@ -1,4 +1,4 @@
-import { Box, Dialog, useMediaQuery } from "@mui/material";
+import { Dialog, useMediaQuery } from "@mui/material";
 import { TabsComponent } from "../../components/common/tabs";
 import { PhotoTab } from "./photoTab";
 import { Team } from "./teamTab";
