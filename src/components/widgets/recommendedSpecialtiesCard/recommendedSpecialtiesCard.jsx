@@ -11,6 +11,7 @@ import {
   SpecialtiesFooter,
   SpecialtiesFooterText,
   CustomTooltip,
+  // StyledTooltip,
 } from "./recommendedSpecialitiesCard.styles";
 import { useState, useContext } from "react";
 import { HowItWorks } from "../../howItWorks/howItWorks";
@@ -56,7 +57,7 @@ export const RecommendedSpecialtiesCard = (data, index) => {
             <SpecialtiesSubText color="textPrimary">mins</SpecialtiesSubText>
           </SpecialtiesFooterText>
           <SpecialtiesFooterText>
-            <CustomTooltip
+            <Tooltip
               title={
                 <HowItWorks
                   open={isDialogOpen}
@@ -66,11 +67,21 @@ export const RecommendedSpecialtiesCard = (data, index) => {
               }
               placement="bottom-start"
               arrow
+              PopperProps={{
+                sx: {
+                  "& .MuiTooltip-tooltip": {
+                    backgroundColor: "#69C6AC",
+                  },
+                  "& .MuiTooltip-arrow": {
+                    color: "#69C6AC",
+                  },
+                },
+              }}
             >
               <SpecialtiesSubText onMouseEnter={openDialog} color="textPrimary">
                 How it works
               </SpecialtiesSubText>
-            </CustomTooltip>
+            </Tooltip>
           </SpecialtiesFooterText>
         </SpecialtiesFooter>
       </SpecialtiesContent>

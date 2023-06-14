@@ -14,6 +14,8 @@ import {
   GenderContainer,
   SplitContainer,
   FlexBox,
+  SpecialtyMainBox,
+  AmenityMainBox,
 } from "./packageInfo.styles";
 const LIMIT = 8;
 
@@ -93,9 +95,13 @@ export const PackageInfo = ({
   );
 };
 
-const SpecialtiesContainer = ({ specialties, specialtiesLimit, setSpecialtiesLimit }) => {
+const SpecialtiesContainer = ({
+  specialties,
+  specialtiesLimit,
+  setSpecialtiesLimit,
+}) => {
   return (
-    <>
+    <SpecialtyMainBox>
       <h3>Specialties</h3>
       <div>
         {specialties?.map((specialty, index) => {
@@ -108,22 +114,32 @@ const SpecialtiesContainer = ({ specialties, specialtiesLimit, setSpecialtiesLim
           );
         })}
         {specialties?.length > specialtiesLimit ? (
-          <span style={{ color: "red", cursor: "pointer" }} onClick={() => setSpecialtiesLimit(specialties?.length)}>
+          <span
+            style={{ color: "red", cursor: "pointer" }}
+            onClick={() => setSpecialtiesLimit(specialties?.length)}
+          >
             +{specialties?.length - specialtiesLimit - 1} more
           </span>
         ) : (
-          <span style={{ cursor: "pointer" }} onClick={() => setSpecialtiesLimit(LIMIT)}>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => setSpecialtiesLimit(LIMIT)}
+          >
             Show less
           </span>
         )}
       </div>
-    </>
+    </SpecialtyMainBox>
   );
 };
 
-const AmenitiesContainer = ({ amenities, amenitiesLimit, setAmenitiesLimit }) => {
+const AmenitiesContainer = ({
+  amenities,
+  amenitiesLimit,
+  setAmenitiesLimit,
+}) => {
   return (
-    <>
+    <AmenityMainBox>
       <h3>Amenities</h3>
       <div>
         {amenities?.map((amenity, index) => {
@@ -136,14 +152,17 @@ const AmenitiesContainer = ({ amenities, amenitiesLimit, setAmenitiesLimit }) =>
           );
         })}
         {amenities?.length > amenitiesLimit ? (
-          <span style={{ color: "red" }} onClick={() => setAmenitiesLimit(amenities?.length)}>
+          <span
+            style={{ color: "red" }}
+            onClick={() => setAmenitiesLimit(amenities?.length)}
+          >
             +{amenities?.length - amenitiesLimit - 1} more
           </span>
         ) : (
           <span onClick={() => setAmenitiesLimit(LIMIT)}>Show less</span>
         )}
       </div>
-    </>
+    </AmenityMainBox>
   );
 };
 
