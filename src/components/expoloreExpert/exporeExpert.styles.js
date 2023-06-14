@@ -49,13 +49,8 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
 
 export const SBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  flexDirection: "column",
-  [theme.breakpoints.down("smd")]: {
-    width: "auto",
-    display: "flex",
-
-    justifyContent: "space-between",
-  },
+  flexDirection: "row",
+  alignItems:"end"
 }));
 export const MainContainer = styled(Box)(({ theme }) => ({
   display: "flex",
