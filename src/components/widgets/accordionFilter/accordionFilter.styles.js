@@ -14,10 +14,11 @@ export const StyledAccordion = styled(Accordion)(({ theme }) => ({
   height: "auto",
   "&.MuiAccordion-root:before": {
     backgroundColor: "white",
+    maxHeight: 49,
   },
   "& .Mui-expanded": {
     border: "none",
-    maxHeight: 50,
+    maxHeight: 49,
     minHeight: 0,
   },
 }));

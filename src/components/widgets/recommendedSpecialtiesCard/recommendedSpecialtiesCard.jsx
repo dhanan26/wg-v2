@@ -10,10 +10,8 @@ import {
   SpecialtiesSubText,
   SpecialtiesFooter,
   SpecialtiesFooterText,
-  CustomTooltip,
-  // StyledTooltip,
 } from "./recommendedSpecialitiesCard.styles";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { HowItWorks } from "../../howItWorks/howItWorks";
 import Tooltip from "@mui/material/Tooltip";
 
