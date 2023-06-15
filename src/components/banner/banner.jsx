@@ -26,12 +26,21 @@ import {
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { MainContext } from "../../pages/main/main";
+import { useSearchParams } from "react-router-dom"
 
-export const Banner = () => {
+export const Banner = ({getMostPopularPackage,setProgramName}) => {
+  const [params]= useSearchParams()
   const {programData,approchType} = useContext(MainContext);
+  const programId = params.get("id");
+  const approachId = params.get("approach_id");
   console.log("🚀 ~ file: banner.jsx:33 ~ Banner ~ programData:", programData)
   const isSmallScreen = useMediaQuery("(max-width:1300px)");
   const bannerData =  programData?.programImage[0]
+
+  const handleSubProgramClick = (subProgramId,name) => {
+    setProgramName(name)
+    getMostPopularPackage({approachId:"63c53d1c109d7e7dba9c010c",programId:"63da2d17f1623c6748db9c01",subProgramId})
+  }
 
   return (
     <StyledMainContainer>
@@ -49,7 +58,7 @@ export const Banner = () => {
         <BannerFooter>
           {isSmallScreen ? (
             <Box>
-              <ButtonDropdown items={programData?.subProgramId} defaultValue={programData?.subProgramId[0]?.name} approchType={approchType} />
+              <ButtonDropdown items={programData?.subProgramId} defaultValue={programData?.subProgramId[0]?.name} approchType={approchType} onClick={(id,name)=>{handleSubProgramClick(id,name)}} />
             </Box>
           ) : (
             <>
@@ -60,6 +69,7 @@ export const Banner = () => {
                       key={index}
                       variant="contained"
                       color={getColor(approchType)}
+                      onClick={() => handleSubProgramClick(subProgram?._id,subProgram?.name)}
                     >
                       {subProgram?.name}
                     </SubProgramButton>

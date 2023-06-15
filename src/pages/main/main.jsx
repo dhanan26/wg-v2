@@ -1,3 +1,4 @@
+import { useState } from 'react'
 
 import { Outlet } from "react-router-dom"
 import { Header } from "../../components/layouts/header"
@@ -14,26 +15,41 @@ export const MainContext = createContext();
 export const Main = () => {
     const [params]= useSearchParams()
     const {customUseQuery,customUseMutate}=useRequestProcessor();
+
+    const [programName,setProgramName] = useState("")
    
     const programId = params.get("id");
-    const approchTypeId = params.get("approch_id");
+    const approachId = params.get("approach_id");
 
     const {data:programData,isLoading:isProgramLoading,isError:isProgramError,error:programError} = customUseQuery(['programDetails',programId], ()=>getProgramDataById(programId),{enabled:true, refetchOnWindowFocus: false })
     console.log("🚀 ~ file: main.jsx:22 ~ Main ~ programData:", programData)
     const approchType = programData?.approachType[0]?.name
 
-    const {data:packageData,isLoading:isPackageLoading,isError:isPackageError,error:packageError,mutate:mutatePackage}=customUseMutate('packageDetails',()=>getPackageDetails({approchId:approchTypeId,programId:programId}))
+    const {data:popularPackageData,isLoading:isPopularPackageLoading,isError:isPopularPackageError,error:populatPackageError,mutate:getMostPopularPackage}=customUseMutate('packageDetails',(data)=>getPackageDetails(data))
+    console.log("🚀 ~ file: main.jsx:27 ~ Main ~ popularPackageData:", popularPackageData)
+ 
 
-    //  mutatePackage({approchId:approchTypeId,programId:programId})
 
     useEffect(()=>{
-
+        getMostPopularPackage({approachId:"63c53d1c109d7e7dba9c010c",programId:"63da2d17f1623c6748db9c01",subProgramId:""})
     },[])
+
+
+    const commonData = {
+        programData,isProgramLoading,isProgramError,programError,approchType,
+        programName,
+        popularPackageData:{
+            popularPackages:popularPackageData?.packages,
+            isPopularPackageLoading,
+            isPopularPackageError,
+            populatPackageError
+        }
+    }
 
     return (
         <>  
-            <MainContext.Provider value={{programData,isProgramLoading,isProgramError,programError,approchType}}>
-            <Header />
+            <MainContext.Provider value={commonData}>
+            <Header getMostPopularPackage={getMostPopularPackage} setProgramName={setProgramName} />
             <Outlet />
             <Footer/>
             </MainContext.Provider>

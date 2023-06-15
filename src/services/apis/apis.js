@@ -12,6 +12,6 @@ export const getPackageDetails = async(data)=>{
             data
         }
     }
-    return axiosClient.post(`/programs/packages`,requestBody).then((res) => res.data.data)
+    return axiosClient.post(`/packagePartners/filtersList`,requestBody).then((res) => res.data.data)
 
 }
