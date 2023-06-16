@@ -22,13 +22,15 @@ export const theme = createTheme({
       main: "#0187A4", //Pain color
       contrastText: "#FFFFFF",
     },
-    wellnessColor:{  //Welness color
-      main:"#C4E8DB",
-      contrastText:"#FFFFF"
+    wellnessColor: {
+      //Welness color
+      main: "#C4E8DB",
+      contrastText: "#FFFFF",
     },
-    wellnessColorDark:{  //Welness color
-      main:"##ACE6CF",
-      contrastText:"#FFFFF"
+    wellnessColorDark: {
+      //Welness color
+      main: "##ACE6CF",
+      contrastText: "#FFFFF",
     },
     headerButtonPrimary: {
       main: "#5E8BFF", //naplesYellow
@@ -48,7 +50,6 @@ export const theme = createTheme({
       main: "#FFFFFF", //White
 
       contrast: "#757D8A",
-
     },
     cardActive: {
       main: "#E3EDFC",
@@ -90,7 +91,9 @@ export const theme = createTheme({
     packageInfo: {
       chipColor: "#16BE48",
     },
-
+    filterColor:{
+      color: "#1CB0A8"
+    }
   },
   typography: {
     primaryTitle: {
