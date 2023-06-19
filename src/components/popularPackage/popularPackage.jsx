@@ -22,7 +22,7 @@ import "./popularPackage.css";
 import { Skeleton } from "@mui/material";
 
 export const PopularPackage = () => {
-  const {programData,popularPackageData,programName} = useContext(MainContext);
+  const {programData,popularPackageData,programName,isProgramLoading} = useContext(MainContext);
   return (
     <StyledMainContainer>
       <PopularPackageBox>
@@ -35,7 +35,7 @@ export const PopularPackage = () => {
           </PopularPackageSubTitle>
         </PopularPackageTitleBox>
         <SwiperContainer>
-          <SwiperCards popularPackageData={popularPackageData} />
+          <SwiperCards popularPackageData={popularPackageData} isProgramLoading={isProgramLoading} />
         </SwiperContainer>
       </PopularPackageBox>
     </StyledMainContainer>
@@ -43,7 +43,7 @@ export const PopularPackage = () => {
 };
 
 
-const SwiperCards = ({popularPackageData=[]}) => {
+const SwiperCards = ({popularPackageData={},isProgramLoading}) => {
   console.log("🚀 ~ file: popularPackage.jsx:45 ~ SwiperCards ~ popularPackageData:", popularPackageData?.popularPackages)
   const breakpoints = {
     // when window width is >= 640px
@@ -90,13 +90,14 @@ const SwiperCards = ({popularPackageData=[]}) => {
         }}
         breakpoints={breakpoints}
         loop={true}
+        loopFillGroupWithBlank={false}
         // style={{ paddingRight: 0 }}
       >
         {
-         (popularPackageData?.isPopularPackageLoading?Array.from(new Array(4)) : popularPackageData?.popularPackages)?.map((each, index) => (
+         (isProgramLoading||popularPackageData?.isPopularPackageLoading?Array.from(new Array(4)) : popularPackageData?.popularPackages)?.map((each, index) => (
           
             <SwiperSlide key={index}>
-             { popularPackageData?.isPopularPackageLoading? <PopularPackageSkeleten variant="rectangular" />: 
+             { isProgramLoading||popularPackageData?.isPopularPackageLoading? <PopularPackageSkeleten variant="rectangular" />: 
             <PopularPackageCard data={each} />}
           </SwiperSlide>
 
