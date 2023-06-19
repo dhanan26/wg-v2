@@ -42,6 +42,7 @@ export const RatingBox = styled(Box)(({ theme }) => ({
   width: "auto",
   backgroundColor: "#E3EDFC",
   padding: "0px 5px 10px 5px",
+  marginBottom: "20px",
 }));
 
 export const RatingCriteriaBox = styled(Box)(({ theme }) => ({
@@ -55,7 +56,7 @@ export const RatingFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
   borderBottomStyle: "solid",
   borderBottomWidth: "thin",
   borderColor: "#D3D3D3",
-  padding: "10px 0px 10px 0px"
+  padding: "10px 0px 10px 0px",
 }));
 
 export const RatingLabelBox = styled(Box)(({ theme }) => ({

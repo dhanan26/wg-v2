@@ -1,6 +1,7 @@
 import {
   AccordionFilter,
   CommonAccordionFilter,
+  SliderAccordionFilter,
 } from "../widgets/accordionFilter";
 import {
   FilterMainBox,
@@ -23,19 +24,28 @@ import {
   Typography,
   Checkbox,
 } from "@mui/material";
+import { SliderContainer } from "../slider";
 export const Filter = () => {
   return (
     <FilterMainBox>
       <WGTreasures />
       <WGRating />
       <ConsultationFilter />
+      <LocationFilter />
+      <TypeOfCenterFilter />
+      <SelectByPartner />
+      <Condition />
+      <AgeFilter />
     </FilterMainBox>
   );
 };
 
 const WGTreasures = () => {
   const { popularPackageData } = useContext(MainContext);
-  console.log("🚀 ~ file: filters.jsx:38 ~ WGTreasures ~ popularPackageData:", popularPackageData)
+  console.log(
+    "🚀 ~ file: filters.jsx:38 ~ WGTreasures ~ popularPackageData:",
+    popularPackageData
+  );
   const specialties = popularPackageData?.specialties;
   return (
     <WGTreasuresBox>
@@ -116,21 +126,132 @@ const RatingLabel = (data) => {
 };
 
 const ConsultationFilter = () => {
-  const { popularPackageData } = useContext(MainContext);  
+  const { popularPackageData } = useContext(MainContext);
   const consultation = popularPackageData?.popularPackageData?.consultation;
-  const consultationOption = []
+  const consultationOption = [];
   {
-    consultation?.map((consultationData)=>{
-      consultationOption.push(consultationData?.value)
-    })
+    consultation?.map((consultationData) => {
+      consultationOption.push(consultationData?.value);
+    });
   }
 
   return (
     <>
       <Box>
         <CommonAccordionFilter
-          filterTitle="Consultation"
+          filterTitle="CONSULTATION"
           filterOptions={consultationOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const LocationFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const location = popularPackageData?.popularPackageData?.city;
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="LOCATION"
+          filterOptions={location}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const TypeOfCenterFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const center = popularPackageData?.popularPackageData?.partnerTypes;
+
+  const centerOption = [];
+
+  {
+    center?.map((centerData) => {
+      centerOption.push(centerData?.name);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="TYPE OF CENTER"
+          filterOptions={centerOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const SelectByPartner = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const partner = popularPackageData?.popularPackageData?.partners;
+
+  const partnerOption = [];
+
+  {
+    partner?.map((partnerData) => {
+      partnerOption.push(partnerData?.name);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="SELECT BY PARTNER"
+          filterOptions={partnerOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const Condition = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const condition = popularPackageData?.popularPackageData?.conditions;
+
+  const conditionOption = [];
+
+  {
+    condition?.map((conditionData) => {
+      conditionOption.push(conditionData?.name);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="CONDITION"
+          filterOptions={conditionOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const AgeFilter = () => {
+  return (
+    <>
+      <Box>
+        <SliderAccordionFilter
+          filterTitle="CONDITION"
+          filterOptions={<SliderContainer />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         />

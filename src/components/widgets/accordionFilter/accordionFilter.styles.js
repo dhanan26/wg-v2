@@ -59,6 +59,7 @@ export const FilterTitle = styled(PrimarySubText)(({ theme }) => ({
   textAlign: "left",
   fontFamily: theme.fontFamily.Inter,
   color: theme.palette.filterColor.color,
+  textTransform: "Capitalize",
 }));
 
 export const CustomExpandIcon = styled(ExpandMoreIcon)(({ theme }) => ({
@@ -70,14 +71,34 @@ export const CommonStyledAccordion = styled(Accordion)(({ theme }) => ({
   boxShadow: "none",
   height: "auto",
   border: "none !important",
+  margin: "10px",
+  "&.MuiAccordion-root": {
+    border: "none !important",
+  },
   "&.MuiAccordion-root:before": {
-    backgroundColor: "white",
+    backgroundColor: "red",
     maxHeight: 49,
     border: "none !important",
+    display: "none",
   },
   "& .Mui-expanded": {
     maxHeight: 49,
     minHeight: 0,
     border: "none",
   },
+}));
+
+export const CommonAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+  border: "none",
+  paddingRight: "0.3rem",
+}));
+
+export const CommonFilterTitle = styled(PrimarySubText)(({ theme }) => ({
+  fontSize: 16,
+  minWidth: 90,
+  textAlign: "left",
+  fontFamily: theme.fontFamily.Inter,
+  color: theme.palette.primary.black,
+  textTransform: "Capitalize",
+  fontWeight: 600,
 }));

@@ -7,6 +7,7 @@ export const theme = createTheme({
     primary: {
       main: "#69C6AC", // Medium Aquamarine
       contrastText: "#FFFFFF",
+      black: "#000000"
     },
     secondary: {
       main: "#00256D", //Cool Black

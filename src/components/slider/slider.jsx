@@ -34,6 +34,9 @@ export const SliderContainer = () => {
           getAriaValueText={valuetext}
           valueLabelDisplay="auto"
           marks={marks}
+          min={30}
+          max={99}
+
         />
       </Box>
       {/* <Autocomplete

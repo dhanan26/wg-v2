@@ -16,7 +16,9 @@ import {
   FilterOptionText,
   FilterTitle,
   CustomExpandIcon,
-  CommonStyledAccordion
+  CommonStyledAccordion,
+  CommonAccordionSummary,
+  CommonFilterTitle,
 } from "./accordionFilter.styles";
 import { useState } from "react";
 
@@ -77,7 +79,6 @@ export const AccordionFilter = ({
   );
 };
 
-
 export const CommonAccordionFilter = ({
   filterOptions = [],
   filterTitle,
@@ -92,11 +93,9 @@ export const CommonAccordionFilter = ({
   return (
     <Box>
       <CommonStyledAccordion>
-        <StyledAccordionSummary expandIcon={<CustomExpandIcon />} {...props}>
-          <FilterTitle color="textPrimary">
-            {filterTitle}
-          </FilterTitle>
-        </StyledAccordionSummary>
+        <CommonAccordionSummary expandIcon={<CustomExpandIcon />} {...props}>
+          <CommonFilterTitle>{filterTitle}</CommonFilterTitle>
+        </CommonAccordionSummary>
         <StyledAccordionDetails>
           {filterOptions?.map((filterOption) => {
             return (
@@ -121,6 +120,29 @@ export const CommonAccordionFilter = ({
           })}
         </StyledAccordionDetails>
       </CommonStyledAccordion>
+    </Box>
+  );
+};
+
+export const SliderAccordionFilter = ({
+  filterOptions,
+  filterTitle,
+  props,
+  count,
+}) => {
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+  return (
+    <Box>
+      <SliderAccordion>
+        <CommonAccordionSummary expandIcon={<CustomExpandIcon />} {...props}>
+          <CommonFilterTitle>{filterTitle}</CommonFilterTitle>
+        </CommonAccordionSummary>
+        <StyledAccordionDetails>{filterOptions}</StyledAccordionDetails>
+      </SliderAccordion>
     </Box>
   );
 };
