@@ -14,10 +14,11 @@ export const StyledAccordion = styled(Accordion)(({ theme }) => ({
   height: "auto",
   "&.MuiAccordion-root:before": {
     backgroundColor: "white",
+    maxHeight: 49,
   },
   "& .Mui-expanded": {
     border: "none",
-    maxHeight: 50,
+    maxHeight: 49,
     minHeight: 0,
   },
 }));
@@ -33,19 +34,20 @@ export const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
 
 export const CustomFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
   "& .MuiCheckbox-root": {
-    marginLeft: 90,
+    marginLeft: 30,
+    // marginRight: 10
   },
 }));
 
 export const FilterOptionBox = styled(Box)(({ theme }) => ({
   border: "1px solid black",
   height: "auto",
-  alignItems: "center",
+  textAlign: "left",
 }));
 
 export const FilterOptionText = styled(PrimarySubText)(({ theme }) => ({
   fontSize: 14,
-  minWidth: 90,
+  width: 150,
   textAlign: "left",
   marginLeft: 15,
   fontFamily: theme.fontFamily.Inter,
@@ -56,10 +58,47 @@ export const FilterTitle = styled(PrimarySubText)(({ theme }) => ({
   minWidth: 90,
   textAlign: "left",
   fontFamily: theme.fontFamily.Inter,
-  color: theme.palette.primary.main,
+  color: theme.palette.filterColor.color,
+  textTransform: "Capitalize",
 }));
 
 export const CustomExpandIcon = styled(ExpandMoreIcon)(({ theme }) => ({
   fontSize: 30,
-  color: theme.palette.primary.main,
+  color: theme.palette.filterColor.color,
+}));
+
+export const CommonStyledAccordion = styled(Accordion)(({ theme }) => ({
+  boxShadow: "none",
+  height: "auto",
+  border: "none !important",
+  margin: "10px",
+  "&.MuiAccordion-root": {
+    border: "none !important",
+  },
+  "&.MuiAccordion-root:before": {
+    backgroundColor: "red",
+    maxHeight: 49,
+    border: "none !important",
+    display: "none",
+  },
+  "& .Mui-expanded": {
+    maxHeight: 49,
+    minHeight: 0,
+    border: "none",
+  },
+}));
+
+export const CommonAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+  border: "none",
+  paddingRight: "0.3rem",
+}));
+
+export const CommonFilterTitle = styled(PrimarySubText)(({ theme }) => ({
+  fontSize: 16,
+  minWidth: 90,
+  textAlign: "left",
+  fontFamily: theme.fontFamily.Inter,
+  color: theme.palette.primary.black,
+  textTransform: "Capitalize",
+  fontWeight: 600,
 }));

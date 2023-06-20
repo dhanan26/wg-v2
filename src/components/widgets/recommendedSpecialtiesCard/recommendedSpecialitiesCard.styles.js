@@ -67,22 +67,6 @@ export const SpecialtiesFooterText = styled(Box)(({ theme }) => ({
   gap: 2,
 }));
 
-export const CustomTooltip = styled(Tooltip)(({ theme }) => ({
-  // Customize the background color
-  ".MuiTooltip-tooltip": {
-    backgroundColor: "red",
-  },
-  // Customize the arrow color
-  ".MuiTooltip-arrow": {
-    color: "red",
-  },
-}));
 
-// const StyledTooltip = styled(({ className, ...props }) => (
-//   <Tooltip {...props} classes={{ popper: className }} />
-// ))(({ theme }) => ({
-//   //...styling values
-//   "& .MuiTooltip-tooltip": {
-//     backgroundColor: "#f5f5f9",
-//   }
-// }));
+
+

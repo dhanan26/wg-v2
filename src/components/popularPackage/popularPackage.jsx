@@ -44,7 +44,7 @@ export const PopularPackage = () => {
 
 
 const SwiperCards = ({popularPackageData=[]}) => {
-  console.log("🚀 ~ file: popularPackage.jsx:45 ~ SwiperCards ~ popularPackageData:", popularPackageData?.popularPackages)
+  // console.log("🚀 ~ file: popularPackage.jsx:45 ~ SwiperCards ~ popularPackageData:", popularPackageData?.popularPackages)
   const breakpoints = {
     // when window width is >= 640px
     200:{

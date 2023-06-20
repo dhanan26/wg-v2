@@ -1,1 +1,5 @@
-export { AccordionFilter } from "./accordionFilter"
+export {
+  AccordionFilter,
+  CommonAccordionFilter,
+  SliderAccordionFilter,
+} from "./accordionFilter";

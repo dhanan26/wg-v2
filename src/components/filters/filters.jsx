@@ -1,15 +1,52 @@
-import { AccordionFilter } from "../widgets/accordionFilter";
-import { FilterMainBox, WGTreasuresBox, Title, TitleBox } from "./filters.styles";
-
+import {
+  AccordionFilter,
+  CommonAccordionFilter,
+  SliderAccordionFilter,
+} from "../widgets/accordionFilter";
+import {
+  FilterMainBox,
+  WGTreasuresBox,
+  Title,
+  TitleBox,
+  RatingTitleBox,
+  RatingTitle,
+  RatingBox,
+  RatingCriteriaBox,
+  RatingFormControlLabel,
+  RatingLabelBox,
+} from "./filters.styles";
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+import {
+  Box,
+  FormControlLabel,
+  FormGroup,
+  Typography,
+  Checkbox,
+} from "@mui/material";
+import { SliderContainer } from "../slider";
 export const Filter = () => {
   return (
     <FilterMainBox>
       <WGTreasures />
+      <WGRating />
+      <ConsultationFilter />
+      <LocationFilter />
+      <TypeOfCenterFilter />
+      <SelectByPartner />
+      <Condition />
+      <AgeFilter />
     </FilterMainBox>
   );
 };
 
 const WGTreasures = () => {
+  const { popularPackageData } = useContext(MainContext);
+  console.log(
+    "🚀 ~ file: filters.jsx:38 ~ WGTreasures ~ popularPackageData:",
+    popularPackageData
+  );
+  const specialties = popularPackageData?.specialties;
   return (
     <WGTreasuresBox>
       <TitleBox>
@@ -17,19 +54,208 @@ const WGTreasures = () => {
           WG Treasures
         </Title>
       </TitleBox>
-      <AccordionFilter
-        filterTitle={"Traditional Medicine1"}
-        filterOptions={["Acupuncture", "Ayurveda", "Acupuncture"]}
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      />
+      {specialties?.map((data) => {
+        const specialtyOption = data?.specialtyType?.specialty;
+        let option = [];
+        {
+          specialtyOption?.map((specialtyOptionData) => {
+            option.push(specialtyOptionData?.name);
+          });
+        }
+        const optionCount = specialtyOption?.length;
 
-      <AccordionFilter
-        filterTitle={"Traditional Medicine2"}
-        filterOptions={["Acupuncture", "Ayurveda", "Acupuncture"]}
-        aria-controls="panel2a-content"
-        id="panel2a-header"
-      />
+        return (
+          <AccordionFilter
+            filterTitle={data?.specialtyType?.name}
+            filterOptions={option}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            count={optionCount}
+          />
+        );
+      })}
     </WGTreasuresBox>
+  );
+};
+
+const WGRating = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const parameterIcons = popularPackageData?.parameterIcons;
+
+  return (
+    <>
+      <RatingBox>
+        <RatingTitleBox>
+          <RatingTitle variant="primaryText" color="textPrimary">
+            WG RATING CRITERIA
+          </RatingTitle>
+        </RatingTitleBox>
+        <RatingCriteriaBox>
+          <FormGroup>
+            {parameterIcons?.map((data) => (
+              <RatingFormControlLabel
+                key={data?.id}
+                control={<Checkbox size="medium" disableRipple />}
+                label={<RatingLabel data={data} />}
+                labelPlacement="start"
+              />
+            ))}
+          </FormGroup>
+        </RatingCriteriaBox>
+      </RatingBox>
+    </>
+  );
+};
+
+const RatingLabel = (data) => {
+  return (
+    <>
+      <RatingLabelBox>
+        <div>
+          <img
+            src={data?.data?.parameterImage?.parameterImageUrl.previewUrl}
+            alt="icon"
+            height={25}
+            width={25}
+          />
+          <span>{data?.data?.name}</span>
+        </div>
+      </RatingLabelBox>
+    </>
+  );
+};
+
+const ConsultationFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const consultation = popularPackageData?.popularPackageData?.consultation;
+  const consultationOption = [];
+  {
+    consultation?.map((consultationData) => {
+      consultationOption.push(consultationData?.value);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="CONSULTATION"
+          filterOptions={consultationOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const LocationFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const location = popularPackageData?.popularPackageData?.city;
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="LOCATION"
+          filterOptions={location}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const TypeOfCenterFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const center = popularPackageData?.popularPackageData?.partnerTypes;
+
+  const centerOption = [];
+
+  {
+    center?.map((centerData) => {
+      centerOption.push(centerData?.name);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="TYPE OF CENTER"
+          filterOptions={centerOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const SelectByPartner = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const partner = popularPackageData?.popularPackageData?.partners;
+
+  const partnerOption = [];
+
+  {
+    partner?.map((partnerData) => {
+      partnerOption.push(partnerData?.name);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="SELECT BY PARTNER"
+          filterOptions={partnerOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const Condition = () => {
+  const { popularPackageData } = useContext(MainContext);
+  const condition = popularPackageData?.popularPackageData?.conditions;
+
+  const conditionOption = [];
+
+  {
+    condition?.map((conditionData) => {
+      conditionOption.push(conditionData?.name);
+    });
+  }
+
+  return (
+    <>
+      <Box>
+        <CommonAccordionFilter
+          filterTitle="CONDITION"
+          filterOptions={conditionOption}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const AgeFilter = () => {
+  return (
+    <>
+      <Box>
+        <SliderAccordionFilter
+          filterTitle="CONDITION"
+          filterOptions={<SliderContainer />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
   );
 };
