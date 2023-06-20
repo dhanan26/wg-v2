@@ -21,6 +21,8 @@ import {
   CommonFilterTitle,
 } from "./accordionFilter.styles";
 import { useState } from "react";
+import { useContext } from "react";
+import { MainContext } from "../../../pages/main/main";
 
 const StyledCheckbox = styled((props) => (
   <Checkbox disableRipple size="medium" />
@@ -32,6 +34,8 @@ const StyledCheckbox = styled((props) => (
   },
 }));
 
+
+
 export const AccordionFilter = ({
   filterOptions = [],
   filterTitle,
@@ -39,10 +43,8 @@ export const AccordionFilter = ({
   count,
 }) => {
   const [checked, setChecked] = useState(true);
+  const {addIdtoFilterList} = useContext(MainContext);
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
   return (
     <Box>
       <StyledAccordion>
@@ -57,16 +59,17 @@ export const AccordionFilter = ({
               <FilterOptionBox>
                 <CustomFormControlLabel
                   labelPlacement="start"
+                  
                   label={
                     <FilterOptionText color={"textPrimary"}>
-                      {filterOption}
+                      {filterOption?.name}
                     </FilterOptionText>
                   }
+                  onClick={(e)=>{addIdtoFilterList(filterOption?.id,"specialties")}}
+                  name={"specialties"}
                   control={
                     <StyledCheckbox
-                      checked={true}
-                      name={filterOption}
-                      onChange={handleChange}
+                      checked={checked}
                     />
                   }
                 />
@@ -84,12 +87,11 @@ export const CommonAccordionFilter = ({
   filterTitle,
   props,
   count,
+  passId,
+  name
 }) => {
-  const [checked, setChecked] = useState(true);
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+  const {addIdtoFilterList} = useContext(MainContext);
+ 
   return (
     <Box>
       <CommonStyledAccordion>
@@ -104,14 +106,13 @@ export const CommonAccordionFilter = ({
                   labelPlacement="start"
                   label={
                     <FilterOptionText color={"textPrimary"}>
-                      {filterOption}
+                      {!passId?filterOption:filterOption?.name}
                     </FilterOptionText>
                   }
+                  onClick={(e) => addIdtoFilterList(!passId?filterOption:filterOption?._id,name)}
                   control={
                     <StyledCheckbox
                       checked={true}
-                      name={filterOption}
-                      onChange={handleChange}
                     />
                   }
                 />
@@ -137,12 +138,12 @@ export const SliderAccordionFilter = ({
   };
   return (
     <Box>
-      <SliderAccordion>
+      {/* <SliderAccordion> */}
         <CommonAccordionSummary expandIcon={<CustomExpandIcon />} {...props}>
           <CommonFilterTitle>{filterTitle}</CommonFilterTitle>
         </CommonAccordionSummary>
         <StyledAccordionDetails>{filterOptions}</StyledAccordionDetails>
-      </SliderAccordion>
+      {/* </SliderAccordion> */}
     </Box>
   );
 };

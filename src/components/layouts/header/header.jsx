@@ -41,7 +41,7 @@ export const Header = ({getMostPopularPackage,setProgramName}) => {
         <TopHeaderItems />
       </TopNavigationBox>
       <MainNavigationBox>
-        <MainHeaderItems />
+        <MainHeaderItems getMostPopularPackage={getMostPopularPackage} />
       </MainNavigationBox>
       <Banner getMostPopularPackage={getMostPopularPackage} setProgramName={setProgramName} />
     </>
@@ -69,7 +69,7 @@ const TopHeaderItems = () => {
   );
 };
 
-const MainHeaderItems = () => {
+const MainHeaderItems = ({getMostPopularPackage}) => {
   const isSmallScreen = useMediaQuery("(max-width:1200px)");
   const theme = useTheme();
   const mainItems = ["Pain Program", "Wellness Program", "Blog", "Our Story"];
@@ -83,8 +83,8 @@ const MainHeaderItems = () => {
         </>
       ) : (
         <Stack direction={"row"} spacing={"48px"} display="flex" alignItems={"center"}>
-          <NestedMenu label={"Pain Program"} name={"Pain"} />
-          <NestedMenu label={"Wellness Program"} name={"Wellness"} />
+          <NestedMenu getMostPopularPackage={getMostPopularPackage} label={"Pain Program"} name={"Pain"} />
+          <NestedMenu getMostPopularPackage={getMostPopularPackage} label={"Wellness Program"} name={"Wellness"} />
 
           <MainHeaderText>Blog</MainHeaderText>
           <MainHeaderText>Our Story</MainHeaderText>
