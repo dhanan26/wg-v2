@@ -15,7 +15,7 @@ import {
   RatingFormControlLabel,
   RatingLabelBox,
 } from "./filters.styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MainContext } from "../../pages/main/main";
 import {
   Box,
@@ -24,10 +24,10 @@ import {
   Typography,
   Checkbox,
 } from "@mui/material";
-import { SliderContainer } from "../slider";
+import { DurationSliderContainer, PriceSliderContainer } from "../slider";
 export const Filter = () => {
-  const { filterList,setFilterList } = useContext(MainContext);
- 
+  const { filterList, setFilterList } = useContext(MainContext);
+
   return (
     <FilterMainBox>
       <WGTreasures />
@@ -42,8 +42,6 @@ export const Filter = () => {
     </FilterMainBox>
   );
 };
-
-
 
 const WGTreasures = ({}) => {
   const { popularPackageData } = useContext(MainContext);
@@ -64,7 +62,10 @@ const WGTreasures = ({}) => {
         let option = [];
         {
           specialtyOption?.map((specialtyOptionData) => {
-            option.push({name:specialtyOptionData?.name,id:specialtyOptionData?._id});
+            option.push({
+              name: specialtyOptionData?.name,
+              id: specialtyOptionData?._id,
+            });
           });
         }
         const optionCount = specialtyOption?.length;
@@ -147,10 +148,10 @@ const ConsultationFilter = () => {
           filterTitle="CONSULTATION"
           filterOptions={consultationOption}
           aria-controls="panel1a-content"
-          id="panel1a-header"  
+          id="panel1a-header"
           passId={false}
           name="consultation"
-                />
+        />
       </Box>
     </>
   );
@@ -180,7 +181,6 @@ const TypeOfCenterFilter = () => {
   const { popularPackageData } = useContext(MainContext);
   const center = popularPackageData?.popularPackageData?.partnerTypes;
 
-
   return (
     <>
       <Box>
@@ -201,7 +201,6 @@ const SelectByPartner = () => {
   const { popularPackageData } = useContext(MainContext);
   const partner = popularPackageData?.popularPackageData?.partners;
 
- 
   return (
     <>
       <Box>
@@ -222,8 +221,6 @@ const Condition = () => {
   const { popularPackageData } = useContext(MainContext);
   const condition = popularPackageData?.popularPackageData?.conditions;
 
-
-
   return (
     <>
       <Box>
@@ -242,10 +239,6 @@ const Condition = () => {
 
 const DurationFilter = () => {
   const { popularPackageData } = useContext(MainContext);
-  console.log(
-    "🚀 ~ file: filters.jsx:250 ~ AgeFilter ~ popularPackageData:",
-    popularPackageData
-  );
   const duration = popularPackageData?.popularPackageData?.duration;
 
   return (
@@ -254,11 +247,7 @@ const DurationFilter = () => {
         <SliderAccordionFilter
           filterTitle="TREATMENT DURATION"
           filterOptions={
-            <SliderContainer
-              max={duration?.max}
-              min={duration?.min}
-              label="mins"
-            />
+            <DurationSliderContainer min={duration?.min} max={duration?.max} />
           }
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -270,10 +259,7 @@ const DurationFilter = () => {
 
 const PriceFilter = () => {
   const { popularPackageData } = useContext(MainContext);
-  console.log(
-    "🚀 ~ file: filters.jsx:250 ~ AgeFilter ~ popularPackageData:",
-    popularPackageData
-  );
+
   const price = popularPackageData?.popularPackageData?.price;
 
   return (
@@ -282,7 +268,7 @@ const PriceFilter = () => {
         <SliderAccordionFilter
           filterTitle="PRICE"
           filterOptions={
-            <SliderContainer max={price?.max} min={price?.min} />
+            <PriceSliderContainer max={price?.max} min={price?.min} />
           }
           aria-controls="panel1a-content"
           id="panel1a-header"

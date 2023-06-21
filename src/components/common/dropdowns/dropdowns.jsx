@@ -101,7 +101,7 @@ export const ButtonDropdown = ({ items, defaultValue, approchType,onClick }) => 
 };
 
 const StyledExpertDropdown = styled(StyledDropDown)(({ theme }) => ({
-  width: 207,
+  width: 120,
   height: 42,
   backgroundColor: theme.palette.textSecondary.main,
   ".MuiSelect-icon": {

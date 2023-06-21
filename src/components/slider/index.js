@@ -1,1 +1,1 @@
-export { SliderContainer } from "./slider";
+export { DurationSliderContainer, PriceSliderContainer } from "./slider";

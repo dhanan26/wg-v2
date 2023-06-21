@@ -1,15 +1,23 @@
 import { TextCenterBox } from "../common/containers/containers";
-import { PrimaryText, PrimarySubText } from "../common/typographies/typographies";
+import {
+  PrimaryText,
+  PrimarySubText,
+} from "../common/typographies/typographies";
 import { styled, Box, Dialog, DialogContent } from "@mui/material";
 import { GetInTouchButton, SecondaryButton } from "../common/buttons/button";
 
-export const ExploreExpertBox = styled(TextCenterBox)(({ theme, approchType }) => ({
-  minHeight: 180,
-  backgroundColor: approchType === "Pain" ? theme.palette.cardActive.main : theme?.palette?.wellnessColor.main,
-  flexDirection: "column",
-  padding: "1rem 0 1rem 0",
-  justifyContent: "space-evenly",
-}));
+export const ExploreExpertBox = styled(TextCenterBox)(
+  ({ theme, approchType }) => ({
+    minHeight: 180,
+    backgroundColor:
+      approchType === "Pain"
+        ? theme.palette.cardActive.main
+        : theme?.palette?.wellnessColor.main,
+    flexDirection: "column",
+    padding: "1rem 0 1rem 0",
+    justifyContent: "space-evenly",
+  })
+);
 
 export const Title = styled(PrimaryText)(({ theme }) => ({
   fontSize: 30,
@@ -50,7 +58,7 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
 export const SBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
-  alignItems:"end"
+  alignItems: "end",
 }));
 export const MainContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -61,16 +69,18 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const GetInTouchButtonExplore = styled(GetInTouchButton)(({ theme }) => ({
-  width: 176,
-  height: 42,
-  [theme.breakpoints.down("smd")]: {
-    width: 207,
-  },
-  [theme.breakpoints.down("sm")]: {
+export const GetInTouchButtonExplore = styled(GetInTouchButton)(
+  ({ theme }) => ({
     width: 176,
-  },
-}));
+    height: 42,
+    [theme.breakpoints.down("smd")]: {
+      width: 207,
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: 176,
+    },
+  })
+);
 
 export const SearchButton = styled(SecondaryButton)(({ theme }) => ({
   width: 114,
