@@ -110,7 +110,6 @@ export const Main = () => {
     }  
   }
 
-  console.log("🚀 ~ file: main.jsx:106 ~ addIdtoFilterList ~ filterList:", filterList)
 
 
   
