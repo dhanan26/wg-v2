@@ -90,7 +90,8 @@ export const CommonStyledAccordion = styled(Accordion)(({ theme }) => ({
 
 export const CommonAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
   border: "none",
-  paddingRight: "0.3rem",
+  paddingRight: "0.1rem",
+  paddingLeft: "0px"
 }));
 
 export const CommonFilterTitle = styled(PrimarySubText)(({ theme }) => ({

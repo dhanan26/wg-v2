@@ -4,20 +4,20 @@ import { useState } from "react";
 function valuetext(value) {
   return `${value}hrs`;
 }
-const marks = [
-  {
-    value: 0,
-    label: "30 mins",
-  },
 
-  {
-    value: 100,
-    label: "8 hrs",
-  },
-];
-
-export const SliderContainer = () => {
+export const SliderContainer = (value) => {
   const [chips, setChips] = useState([]);
+  const marks = [
+    {
+      value: value.min,
+      label: `${value.label ? "" : "₹"} ${value.min} ${value.label ? value.label : ""}`,
+    },
+
+    {
+      value: value.max,
+      label: `${value.label ? "" : "₹"} ${value.max} ${value.label ? value.label : ""}`,
+    },
+  ];
   const handleClick = (e) => {
     if (e.key === "Enter") {
       console.log(e.target.value, "enter key clicked");
@@ -27,16 +27,23 @@ export const SliderContainer = () => {
   };
   return (
     <>
-      <Box sx={{ width: 300, display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Box
+        sx={{
+          width: 250,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <TimeSlider
           aria-label="Custom marks"
-          defaultValue={20}
           getAriaValueText={valuetext}
           valueLabelDisplay="auto"
           marks={marks}
-          min={30}
-          max={99}
-
+          defaultValue={value?.min}
+          min={value?.min}
+          max={value?.max}
+          style={{ width: 200 }}
         />
       </Box>
       {/* <Autocomplete
