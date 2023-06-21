@@ -104,6 +104,7 @@ export const PackageSection = ()=>{
   const [cardsPerRow,setCardsPerRow] = useState(5)
   const [lgValue,setLgValue]= useState(3)
 
+
   const [state, setState] = useState([
     { name: "card 1", height: 300, isIndividual: false },
     { name: "card 2", height: 300, isIndividual: true },
@@ -126,6 +127,11 @@ export const PackageSection = ()=>{
   }
 
   const isSmallScreen = useMediaQuery("(max-width:900px)");
+  // const isbigScreen = useMediaQuery("(max-width:1800px)");
+  // if(isbigScreen){
+  //   setLgValue(2.3)
+  // }
+
 
   useEffect(() => {
     // Event listener for window resize
