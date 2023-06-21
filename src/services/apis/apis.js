@@ -24,5 +24,7 @@ export const getAllPackagesApi = async(data)=>{
             }
         }
     }
-    return axiosClient.post(`/packagePartners/filteredPackages`,requestBody).then((res) => res.data.data)
+    return await axiosClient.post(`/packagePartners/filteredPackages`,requestBody).then((res) => {
+        return res.data.data
+    })
 }

@@ -84,7 +84,7 @@ const WGTreasures = ({}) => {
 };
 
 const WGRating = () => {
-  const { popularPackageData } = useContext(MainContext);
+  const { popularPackageData ,addIdtoFilterList } = useContext(MainContext);
   const parameterIcons = popularPackageData?.parameterIcons;
 
   return (
@@ -99,7 +99,8 @@ const WGRating = () => {
           <FormGroup>
             {parameterIcons?.map((data) => (
               <RatingFormControlLabel
-                key={data?.id}
+                key={data?._id}
+                onClick={()=>addIdtoFilterList(data?._id,"parameterIcons")}
                 control={<Checkbox size="medium" disableRipple />}
                 label={<RatingLabel data={data} />}
                 labelPlacement="start"
@@ -179,6 +180,7 @@ const LocationFilter = () => {
 const TypeOfCenterFilter = () => {
   const { popularPackageData } = useContext(MainContext);
   const center = popularPackageData?.popularPackageData?.partnerTypes;
+  console.log("🚀 ~ file: filters.jsx:183 ~ TypeOfCenterFilter ~ center:", center)
 
 
   return (
