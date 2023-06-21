@@ -14,7 +14,7 @@ import {
   CostContainer,
   HeroContainerIndividual,
 } from "./packageCard.styles";
-export const PackageCard = ({ isIndividual, individualData, packageData, type, cost, details ,calulateRowIndex,index,setShowPackageDetails,setShowEnquiry,setPackageDetailsModalOpen,setEnquiryModalOpen}) => {
+export const PackageCard = ({ packageData,calulateRowIndex,index,setShowPackageDetails,setShowEnquiry,setPackageDetailsModalOpen,setEnquiryModalOpen}) => {
   const isSmallScreen = useMediaQuery("(max-width:900px)");
   const [open, setOpen] = useState(false);
   // callback for heart click
@@ -51,20 +51,24 @@ export const PackageCard = ({ isIndividual, individualData, packageData, type, c
     <>
     <Container>
       <div className="package-card-top">
-        {isIndividual ? (
-          <IndividualCardHero individualData={individualData} />
+        {packageData?.partnerId?.isIndividual ? (
+          <IndividualCardHero individualData={packageData} />
         ) : (
           <PackageCardHero packageData={packageData} />
         )}
-        <span className="package-card-type">{type}</span>
-        {isIndividual ? (
+        <span className="package-card-type">{packageData?.package?.name}</span>
+        {packageData?.partnerId?.isIndividual ? (
           <IndividualCardBody individualData={packageData} />
         ) : (
           <PackageCardBody packageData={packageData} />
         )}
-        <CostSection cost={cost} />
+        <CostSection cost={{
+          price:packageData?.finalPrice,
+          basePrice:packageData?.basePrice,
+          discount:packageData?.discountPrice,
+        }} />
         <DetailsContainer>
-          {details.days} Days / {details.sessions} Sessions
+          {packageData?.duration} Days / {packageData?.session} Sessions
         </DetailsContainer>
       </div>
       <div>
@@ -138,6 +142,7 @@ const IndividualCardBody = ({ individualData }) => {
 };
 
 const CostSection = ({ cost }) => {
+  console.log("🚀 ~ file: packageCard.jsx:145 ~ CostSection ~ cost:", cost)
   return (
     <CostContainer>
       {cost?.discount ? (

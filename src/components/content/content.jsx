@@ -9,7 +9,8 @@ import { EnquiryForm as MobileEnquiryForm } from "../enquiryForm/mobile/";
 
 import { PackageCard } from "../widgets/packageCard";
 import { PackageDetails } from "../packageDetails";
-import { useState,useCallback, useRef,useEffect  } from "react";
+import { useState,useCallback, useRef,useEffect,useContext  } from "react";
+import { MainContext } from "../../pages/main/main";
 
 //styles
 import{MainContentContainer,FilterContainer,PartnerContainer,SortByContainer,VerticalLine,SortByText, CustomGrid} from "./content.styles"
@@ -97,11 +98,13 @@ export const Content = () => {
 
 
 export const PackageSection = ()=>{
+  const { packagesData } = useContext(MainContext);
+  console.log("🚀 ~ file: content.jsx:102 ~ PackageSection ~ packageData:", packagesData)
   const [showPackageDetails, setShowPackageDetails] = useState(false);
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [packageDetailsModalOpen, setPackageDetailsModalOpen] = useState(false);
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
-  const [cardsPerRow,setCardsPerRow] = useState(5)
+  const [cardsPerRow,setCardsPerRow] = useState(4)
   const [lgValue,setLgValue]= useState(3)
 
 
@@ -156,30 +159,13 @@ export const PackageSection = ()=>{
    return(
     <Grid container >
     {
-      state?.map((each,index)=>{
+      packagesData?.packageData?.map((eachPackageData,index)=>{
        
         return(
           <>
           <CustomGrid item xs={6} sm={6} md={3} lg={lgValue} key={index}>
           <PackageCard
-            packageData={{
-              imgUrl: "https://picsum.photos/300",
-              logoUrl: "https://picsum.photos/200",
-              awards: ["https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200"],
-              name: "Taj Jiva Spa",
-              description: "Hath yoga package",
-            }}
-            isIndividual={each?.isIndividual}
-            type={"Back pain"}
-            cost={{
-              basePrice: 10000,
-              price: 1000,
-              discount: undefined,
-            }}
-            details={{
-              sessions: 20,
-              days: 9,
-            }}
+            packageData={eachPackageData}
             calulateRowIndex={calulateRowIndex}
             setShowPackageDetails={setShowPackageDetails}
             setPackageDetailsModalOpen={setPackageDetailsModalOpen}

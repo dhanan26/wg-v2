@@ -23,7 +23,7 @@ export const Main = () => {
 
   const [filterList, setFilterList] = useState({
     programName:[programId],
-    approchType:[approachId],
+    approachType:[approachId],
     specialties:[],
     gender:[],
     sessionDuration:[],
@@ -32,20 +32,16 @@ export const Main = () => {
     symptoms:[],
     healthGoals:[],
     parameterIcons:[],
-    price:{
-      min:0,
-      max:0
-    },
     city:[],
-    partnerId:"",
+    partnerId:[],
     partnerType:[],
     age:{
       min:0,
       max:100
     },
-    isFreeCancellation:false,
-    fullyRefundable:false,
-    cashlessInsurance:false,
+    // isFreeCancellation:false,
+    // fullyRefundable:false,
+    // cashlessInsurance:false,
   })
 
   const [programName, setProgramName] = useState("");
@@ -85,8 +81,9 @@ export const Main = () => {
     isError: isPackageError,
     error: packageError,
     mutate: getAllPackages,
-  } = customUseMutate("allPackages", (data) => getAllPackagesApi(data));
-    console.log("🚀 ~ file: main.jsx:46 ~ Main ~ packageData:", packageData)
+  } = customUseMutate("allPackages", async(data) => await getAllPackagesApi(data));
+
+    console.log("🚀 ~ file: main.jsx:46 ~ Main ~ packageData-1:", packageData)
   
 
   useEffect(() => {
@@ -99,7 +96,7 @@ export const Main = () => {
 
   useEffect(()=>{
     getAllPackages(filterList)
-  },[filterList])
+  },[filterList,params])
 
   const addIdtoFilterList = (id,state) => {
     if(filterList[state]?.includes(id)){
