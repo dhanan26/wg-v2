@@ -39,7 +39,7 @@ export const Banner = ({getMostPopularPackage,setProgramName}) => {
 
   const handleSubProgramClick = (subProgramId,name) => {
     setProgramName(name)
-    getMostPopularPackage({approachId:"63c53d1c109d7e7dba9c010c",programId:"63da2d17f1623c6748db9c01",subProgramId})
+    getMostPopularPackage({approachId:approachId,programId:programId,subProgramId})
   }
 
   return (

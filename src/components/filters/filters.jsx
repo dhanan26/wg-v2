@@ -26,6 +26,8 @@ import {
 } from "@mui/material";
 import { SliderContainer } from "../slider";
 export const Filter = () => {
+  const { filterList,setFilterList } = useContext(MainContext);
+ 
   return (
     <FilterMainBox>
       <WGTreasures />
@@ -41,7 +43,9 @@ export const Filter = () => {
   );
 };
 
-const WGTreasures = () => {
+
+
+const WGTreasures = ({}) => {
   const { popularPackageData } = useContext(MainContext);
   console.log(
     "🚀 ~ file: filters.jsx:38 ~ WGTreasures ~ popularPackageData:",
@@ -60,7 +64,7 @@ const WGTreasures = () => {
         let option = [];
         {
           specialtyOption?.map((specialtyOptionData) => {
-            option.push(specialtyOptionData?.name);
+            option.push({name:specialtyOptionData?.name,id:specialtyOptionData?._id});
           });
         }
         const optionCount = specialtyOption?.length;
@@ -143,8 +147,10 @@ const ConsultationFilter = () => {
           filterTitle="CONSULTATION"
           filterOptions={consultationOption}
           aria-controls="panel1a-content"
-          id="panel1a-header"
-        />
+          id="panel1a-header"  
+          passId={false}
+          name="consultation"
+                />
       </Box>
     </>
   );
@@ -162,6 +168,8 @@ const LocationFilter = () => {
           filterOptions={location}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          passId={false}
+          name="city"
         />
       </Box>
     </>
@@ -172,22 +180,17 @@ const TypeOfCenterFilter = () => {
   const { popularPackageData } = useContext(MainContext);
   const center = popularPackageData?.popularPackageData?.partnerTypes;
 
-  const centerOption = [];
-
-  {
-    center?.map((centerData) => {
-      centerOption.push(centerData?.name);
-    });
-  }
 
   return (
     <>
       <Box>
         <CommonAccordionFilter
           filterTitle="TYPE OF CENTER"
-          filterOptions={centerOption}
+          filterOptions={center}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          passId={true}
+          name="partnerType"
         />
       </Box>
     </>
@@ -198,22 +201,17 @@ const SelectByPartner = () => {
   const { popularPackageData } = useContext(MainContext);
   const partner = popularPackageData?.popularPackageData?.partners;
 
-  const partnerOption = [];
-
-  {
-    partner?.map((partnerData) => {
-      partnerOption.push(partnerData?.name);
-    });
-  }
-
+ 
   return (
     <>
       <Box>
         <CommonAccordionFilter
           filterTitle="SELECT BY PARTNER"
-          filterOptions={partnerOption}
+          filterOptions={partner}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          passId={true}
+          name="partnerId"
         />
       </Box>
     </>
@@ -224,22 +222,18 @@ const Condition = () => {
   const { popularPackageData } = useContext(MainContext);
   const condition = popularPackageData?.popularPackageData?.conditions;
 
-  const conditionOption = [];
 
-  {
-    condition?.map((conditionData) => {
-      conditionOption.push(conditionData?.name);
-    });
-  }
 
   return (
     <>
       <Box>
         <CommonAccordionFilter
           filterTitle="CONDITION"
-          filterOptions={conditionOption}
+          filterOptions={condition}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          passId={true}
+          name="conditions"
         />
       </Box>
     </>

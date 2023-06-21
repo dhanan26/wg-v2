@@ -10,24 +10,55 @@ import { useSearchParams } from "react-router-dom";
 import {
   getProgramDataById,
   getPackageDetails,
+  getAllPackagesApi
 } from "../../services/apis/apis";
 
 export const MainContext = createContext();
 
 export const Main = () => {
-  const [params] = useSearchParams();
+  const [params,setParams] = useSearchParams();
   const { customUseQuery, customUseMutate } = useRequestProcessor();
-
-  const [programName, setProgramName] = useState("");
-
   const programId = params.get("id");
   const approachId = params.get("approach_id");
 
+  const [filterList, setFilterList] = useState({
+    programName:[programId],
+    approchType:[approachId],
+    specialties:[],
+    gender:[],
+    sessionDuration:[],
+    conditions:[],
+    consultation:[],
+    symptoms:[],
+    healthGoals:[],
+    parameterIcons:[],
+    price:{
+      min:0,
+      max:0
+    },
+    city:[],
+    partnerId:"",
+    partnerType:[],
+    age:{
+      min:0,
+      max:100
+    },
+    isFreeCancellation:false,
+    fullyRefundable:false,
+    cashlessInsurance:false,
+  })
+
+  const [programName, setProgramName] = useState("");
+
+ 
+ 
+  //program api call
   const {
     data: programData,
     isLoading: isProgramLoading,
     isError: isProgramError,
     error: programError,
+    refetch:refetchProgramQuery
   } = customUseQuery(
     ["programDetails", programId],
     () => getProgramDataById(programId),
@@ -36,6 +67,7 @@ export const Main = () => {
   console.log("🚀 ~ file: main.jsx:22 ~ Main ~ programData:", programData);
   const approchType = programData?.approachType[0]?.name;
 
+  //popular package api call
   const {
     data: popularPackageData,
     isLoading: isPopularPackageLoading,
@@ -44,15 +76,43 @@ export const Main = () => {
     mutate: getMostPopularPackage,
   } = customUseMutate("packageDetails", (data) => getPackageDetails(data));
     console.log("🚀 ~ file: main.jsx:46 ~ Main ~ popularPackageData:", popularPackageData)
+
+
+  //package api call
+  const {
+    data: packageData,
+    isLoading: isPackageLoading,
+    isError: isPackageError,
+    error: packageError,
+    mutate: getAllPackages,
+  } = customUseMutate("allPackages", (data) => getAllPackagesApi(data));
+    console.log("🚀 ~ file: main.jsx:46 ~ Main ~ packageData:", packageData)
   
 
   useEffect(() => {
     getMostPopularPackage({
-      approachId: "63c53d1c109d7e7dba9c010c",
-      programId: "63da2d17f1623c6748db9c01",
+      approachId:approachId,
+      programId:programId,
       subProgramId: "",
     });
   }, []);
+
+  useEffect(()=>{
+    getAllPackages(filterList)
+  },[filterList])
+
+  const addIdtoFilterList = (id,state) => {
+    if(filterList[state]?.includes(id)){
+      setFilterList( (prev)=>({...prev,[state]:prev[state].filter((item)=>item!==id)}));
+    }
+    else{
+      setFilterList((prev)=>({...prev,[state]:[...prev[state],id]}));
+    }  
+  }
+
+
+
+  
 
   const commonData = {
     programData,
@@ -61,6 +121,11 @@ export const Main = () => {
     programError,
     approchType,
     programName,
+    refetchProgramQuery,
+    setParams,
+    setFilterList,
+    addIdtoFilterList,
+    filterList,
     popularPackageData: {
       popularPackageData,
       specialties: popularPackageData?.specialties,
@@ -70,6 +135,13 @@ export const Main = () => {
       isPopularPackageError,
       populatPackageError,
     },
+    packagesData:{
+      getAllPackages,
+      packageData,
+      isPackageLoading,
+      isPackageError,
+      packageError,
+    }
   };
 
   return (

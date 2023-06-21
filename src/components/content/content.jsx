@@ -101,6 +101,9 @@ export const PackageSection = ()=>{
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [packageDetailsModalOpen, setPackageDetailsModalOpen] = useState(false);
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
+  const [cardsPerRow,setCardsPerRow] = useState(5)
+  const [lgValue,setLgValue]= useState(3)
+
 
   const [state, setState] = useState([
     { name: "card 1", height: 300, isIndividual: false },
@@ -115,7 +118,6 @@ export const PackageSection = ()=>{
     { name: "card 4", height: 300, isIndividual: false },
   ]);
   
-  const cardsPerRow = 4
   const [currentRowIndex, setcurrentRowIndex] = useState(cardsPerRow);
 
   const calulateRowIndex = (index) => {
@@ -125,6 +127,11 @@ export const PackageSection = ()=>{
   }
 
   const isSmallScreen = useMediaQuery("(max-width:900px)");
+  // const isbigScreen = useMediaQuery("(max-width:1800px)");
+  // if(isbigScreen){
+  //   setLgValue(2.3)
+  // }
+
 
   useEffect(() => {
     // Event listener for window resize
@@ -153,7 +160,7 @@ export const PackageSection = ()=>{
        
         return(
           <>
-          <CustomGrid item xs={6} sm={6} md={3} lg={3} key={index}>
+          <CustomGrid item xs={6} sm={6} md={3} lg={lgValue} key={index}>
           <PackageCard
             packageData={{
               imgUrl: "https://picsum.photos/300",
