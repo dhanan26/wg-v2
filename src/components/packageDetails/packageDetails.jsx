@@ -169,7 +169,7 @@ const amenitiesData = [
 const termsAndConditionUrl = import.meta.env.VITE_APP_TERM_AND_CONDITION_PDF;
 const termsAndConditionFileName = "Terms and Condition";
 
-export const PackageDetails = ({setPackageDetailsModalOpen,packageDetailsModalOpen}) => {
+export const PackageDetails = ({setPackageDetailsModalOpen,packageDetailsModalOpen, packageData}) => {
   const photosRef = useRef(null);
   const isSmallScreen = useMediaQuery("(max-width:900px)");
   const [value, setValue] = useState(0);

@@ -19,6 +19,7 @@ export const MainContentContainer = styled((props) => <Grid container {...props}
     [theme.breakpoints.down("md")]: {
       paddingLeft: 10,
     },
+    height:"auto"
   }));
   
 export   const PartnerContainer = styled((props) => <Grid item {...props} md={9.5} sm={12} xs={12} />)(() => ({
