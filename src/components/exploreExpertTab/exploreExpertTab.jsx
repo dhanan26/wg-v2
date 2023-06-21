@@ -10,6 +10,7 @@ import {
   useMediaQuery,
   Popover,
   FormControl,
+  InputLabel,
 } from "@mui/material";
 import { useState, useRef } from "react";
 import {
@@ -19,6 +20,7 @@ import {
   StyledTabs,
   StyledTextField,
   StyledBox,
+  StyledInputLabel,
 } from "./exploreExpertTab.styles";
 import PropTypes from "prop-types";
 
@@ -104,9 +106,16 @@ export const ExploreExpertTab = () => {
   return (
     <>
       {!isSmallScreen ? (
-        <StyledTextField onClick={handleClickOpen} ref={spanRef} />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <StyledInputLabel sx={{ textAlign: "center" }}>
+            Condition / Symptom / Health Goal
+          </StyledInputLabel>
+          <StyledTextField onClick={handleClickOpen} ref={spanRef} />
+        </Box>
       ) : (
-        <StyledTextField onClick={handleClickOpen} fullWidth ref={spanRef} />
+        <>
+          <StyledTextField onClick={handleClickOpen} fullWidth ref={spanRef} />
+        </>
       )}
       <Popover
         open={open}

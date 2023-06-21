@@ -1,5 +1,5 @@
 import { styled, Slider } from "@mui/material";
-export const TimeSlider = styled(Slider)(({ theme }) => ({
+export const StyledSlider = styled(Slider)(({ theme }) => ({
   color: theme.palette.slider.main,
   "& .MuiSlider-thumb": {
     height: 21,

@@ -1,4 +1,12 @@
-import { Stack, styled, Box, Button, Tabs, Tab } from "@mui/material";
+import {
+  Stack,
+  styled,
+  Box,
+  Button,
+  Tabs,
+  Tab,
+  Typography,
+} from "@mui/material";
 
 import { Icon } from "../common/icon/icon";
 import headSetIconWhite from "../../assets/icons/headSetWhite.svg";
@@ -44,7 +52,7 @@ export const ExploreExpert = () => {
       <MainContainer>
         <InputContainer>
           <ExploreDropdownBox placeholder={"select age"} label={"Age"} />
-          <ExploreDropdownBox placeholder={"select age"} label={"Gender"} />
+          <ExploreDropdownBox placeholder={"select Gender"} label={"Gender"} />
         </InputContainer>
         <SBox>
           <ExploreExpertTab />
@@ -57,7 +65,9 @@ export const ExploreExpert = () => {
             <GetInTouchButtonExplore
               variant="contained"
               color="buttonPrimary"
-              startIcon={<Icon src={headSetIconWhite} className={"header_icon"} />}
+              startIcon={
+                <Icon src={headSetIconWhite} className={"header_icon"} />
+              }
             >
               Get in touch
             </GetInTouchButtonExplore>

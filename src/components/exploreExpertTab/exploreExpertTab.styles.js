@@ -1,4 +1,14 @@
-import { styled, Box, Dialog, DialogContent, Tab, tabClasses, Tabs, OutlinedInput } from "@mui/material";
+import {
+  styled,
+  Box,
+  Dialog,
+  DialogContent,
+  Tab,
+  tabClasses,
+  Tabs,
+  OutlinedInput,
+  InputLabel,
+} from "@mui/material";
 
 export const StyledDialog = styled(Dialog)(({ theme }) => ({}));
 export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
@@ -31,12 +41,23 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 export const StyledTextField = styled(OutlinedInput)(({ theme }) => ({
   "&.MuiOutlinedInput-root": {
     height: 42,
-    width: 207,
+    width: 307,
 
     [theme.breakpoints.down("sm")]: {
-      width:365
+      width: 365,
+    },
+  },
+}));
 
-    }
+export const StyledInputLabel = styled(InputLabel)(({ theme }) => ({
+  textAlign: "center",
+  marginBottom: 10,
+  color: theme.palette.textPrimary.main,
+  fontFamily: theme.fontFamily.secondary,
+  fontWeight: 400,
+  fontSize: 14,
+  [theme.breakpoints.down("sm")]: {
+    marginBottom: 0,
   },
 }));
 

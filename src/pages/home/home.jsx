@@ -11,7 +11,7 @@ import { ExpertSection } from "../../components/expertSection";
 import { WhatToExpect } from "../../components/whatToExpect";
 import { ApprovedTreatment } from "../../components/approvedTreatment";
 
-import { SliderContainer } from "../../components/slider";
+// import { SliderContainer } from "../../components/slider";
 import { EmailValidation } from "../../components/emailValidation";
 import { HowItWorks } from "../../components/howItWorks";
 export const Home = () => {
