@@ -138,12 +138,13 @@ export const SliderAccordionFilter = ({
   };
   return (
     <Box>
-      {/* <SliderAccordion> */}
+
+      <CommonStyledAccordion>
         <CommonAccordionSummary expandIcon={<CustomExpandIcon />} {...props}>
           <CommonFilterTitle>{filterTitle}</CommonFilterTitle>
         </CommonAccordionSummary>
         <StyledAccordionDetails>{filterOptions}</StyledAccordionDetails>
-      {/* </SliderAccordion> */}
+      </CommonStyledAccordion>
     </Box>
   );
 };

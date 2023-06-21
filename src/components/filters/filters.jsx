@@ -32,12 +32,13 @@ export const Filter = () => {
     <FilterMainBox>
       <WGTreasures />
       <WGRating />
-      <ConsultationFilter  />
-      <LocationFilter  />
-      <TypeOfCenterFilter  />
-      <SelectByPartner  />
-      <Condition  />
-      <AgeFilter />
+      <ConsultationFilter />
+      <LocationFilter />
+      <TypeOfCenterFilter />
+      <SelectByPartner />
+      <Condition />
+      <DurationFilter />
+      <PriceFilter />
     </FilterMainBox>
   );
 };
@@ -239,13 +240,50 @@ const Condition = () => {
   );
 };
 
-const AgeFilter = () => {
+const DurationFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  console.log(
+    "🚀 ~ file: filters.jsx:250 ~ AgeFilter ~ popularPackageData:",
+    popularPackageData
+  );
+  const duration = popularPackageData?.popularPackageData?.duration;
+
   return (
     <>
       <Box>
         <SliderAccordionFilter
-          filterTitle="CONDITION"
-          filterOptions={<SliderContainer />}
+          filterTitle="TREATMENT DURATION"
+          filterOptions={
+            <SliderContainer
+              max={duration?.max}
+              min={duration?.min}
+              label="mins"
+            />
+          }
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        />
+      </Box>
+    </>
+  );
+};
+
+const PriceFilter = () => {
+  const { popularPackageData } = useContext(MainContext);
+  console.log(
+    "🚀 ~ file: filters.jsx:250 ~ AgeFilter ~ popularPackageData:",
+    popularPackageData
+  );
+  const price = popularPackageData?.popularPackageData?.price;
+
+  return (
+    <>
+      <Box>
+        <SliderAccordionFilter
+          filterTitle="PRICE"
+          filterOptions={
+            <SliderContainer max={price?.max} min={price?.min} />
+          }
           aria-controls="panel1a-content"
           id="panel1a-header"
         />
