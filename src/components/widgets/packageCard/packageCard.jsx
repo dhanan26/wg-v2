@@ -95,22 +95,23 @@ export const PackageCard = ({ packageData,calulateRowIndex,index,setShowPackageD
 
 const PackageCardHero = ({ packageData }) => {
   return (
-    <HeroContainerPackage imageUrl={packageData?.imgUrl}>
+    <HeroContainerPackage imageUrl={packageData?.partnerImage?.partnerImageUrl?.previewUrl}>
       <div>
         {packageData?.awards?.map((award, index) => {
           return <img key={index} src={award} height="45px" width="45px" />;
         })}
       </div>
-      <img src={packageData?.logoUrl}></img>
+      <img src={packageData?.url?.previewUrl}></img>
     </HeroContainerPackage>
   );
 };
 
 const IndividualCardHero = ({ individualData }) => {
+  
   return (
     <HeroContainerIndividual>
       <div>
-        <img src={individualData?.imgUrl} height={108} width={108}></img>
+        <img src={individualData?.url?.previewUrl} height={108} width={108}></img>
         {individualData?.isVerified && (
           <span>
             <img src={verified} /> <p>Verified</p>
