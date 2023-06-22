@@ -5,8 +5,19 @@ function valuetext(value) {
   return `${value}hrs`;
 }
 
+import { useContext } from "react";
+import { MainContext } from "../../pages/main/main";
+
 export const DurationSliderContainer = (value) => {
+  const { setFilterList } = useContext(MainContext);
   const [chips, setChips] = useState([]);
+  const handleSliderChange = (e,newValue) => {
+    setFilterList((prev) =>({...prev,duration:{
+      min:value?.min,
+      max:newValue
+    }}))
+    
+  }
 
   function valueLabelFormat(value) {
    
@@ -62,6 +73,7 @@ export const DurationSliderContainer = (value) => {
           style={{ width: 200 }}
           getAriaValueText={valueLabelFormat}
           valueLabelFormat={valueLabelFormat}
+          onChangeCommitted={(e,newValue)=>handleSliderChange(e,newValue)}
         />
       </Box>
       {/* <Autocomplete
@@ -78,6 +90,16 @@ export const DurationSliderContainer = (value) => {
 
 export const PriceSliderContainer = (value) => {
   const [chips, setChips] = useState([]);
+  const { setFilterList } = useContext(MainContext);
+
+
+  const handleSliderChange = (e,newValue) => {
+    setFilterList((prev) =>({...prev,price:{
+      min:value?.min,
+      max:newValue
+    }}))
+    
+  }
 
   function valueLabelFormat(value) {
     return `₹ ${value}`;
@@ -121,6 +143,7 @@ export const PriceSliderContainer = (value) => {
           style={{ width: 200 }}
           getAriaValueText={valueLabelFormat}
           valueLabelFormat={valueLabelFormat}
+          onChangeCommitted={(e,newValue)=>handleSliderChange(e,newValue)}
         />
       </Box>
       {/* <Autocomplete

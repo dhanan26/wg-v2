@@ -242,14 +242,14 @@ const Condition = () => {
 const DurationFilter = () => {
   const { popularPackageData } = useContext(MainContext);
   const duration = popularPackageData?.popularPackageData?.duration;
-
+  
   return (
     <>
       <Box>
         <SliderAccordionFilter
           filterTitle="TREATMENT DURATION"
           filterOptions={
-            <DurationSliderContainer min={duration?.min} max={duration?.max} />
+            <DurationSliderContainer min={duration?.min} max={duration?.max}  />
           }
           aria-controls="panel1a-content"
           id="panel1a-header"
