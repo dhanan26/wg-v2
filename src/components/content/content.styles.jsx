@@ -1,4 +1,4 @@
-import { styled, Box, DialogContent, TextField,Grid } from "@mui/material";
+import { styled, Box, DialogContent, TextField, Grid } from "@mui/material";
 
 import { PrimarySubText } from "../common/typographies/typographies";
 
@@ -44,12 +44,10 @@ export   const PartnerContainer = styled((props) => <Grid item {...props} md={9.
     fontSize: 12,
   }));
 
-  export const CustomGrid = styled(Grid)(({theme}) => ({
-    [theme.breakpoints.down('xxs')]: {
-      // Apply styles for screens smaller than 1280px
-      // gridTemplateColumns: 'repeat(2, 1fr)', // Adjust the number of columns as per your requirement
-      display:"flex",
-    
-    },
-  }));
-  
+export const CustomGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.down("xxs")]: {
+    // Apply styles for screens smaller than 1280px
+    // gridTemplateColumns: 'repeat(2, 1fr)', // Adjust the number of columns as per your requirement
+    display: "flex",
+  },
+}));

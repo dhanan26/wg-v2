@@ -113,9 +113,12 @@ export const ExploreExpertTab = () => {
           <StyledTextField onClick={handleClickOpen} ref={spanRef} />
         </Box>
       ) : (
-        <>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <StyledInputLabel sx={{ textAlign: "center" }}>
+            Condition / Symptom / Health Goal
+          </StyledInputLabel>
           <StyledTextField onClick={handleClickOpen} fullWidth ref={spanRef} />
-        </>
+        </Box>
       )}
       <Popover
         open={open}
