@@ -62,6 +62,7 @@ export const Main = () => {
   );
   console.log("🚀 ~ file: main.jsx:22 ~ Main ~ programData:", programData);
   const approchType = programData?.approachType[0]?.name;
+  //program api call end
 
   //popular package api call
   const {
@@ -72,6 +73,7 @@ export const Main = () => {
     mutate: getMostPopularPackage,
   } = customUseMutate("packageDetails", (data) => getPackageDetails(data));
     console.log("🚀 ~ file: main.jsx:46 ~ Main ~ popularPackageData:", popularPackageData)
+  //popular package api call end
 
 
   //package api call
@@ -84,6 +86,7 @@ export const Main = () => {
   } = customUseMutate("allPackages", async(data) => await getAllPackagesApi(data));
 
     console.log("🚀 ~ file: main.jsx:46 ~ Main ~ packageData-1:", packageData)
+  //package api call end   
   
 
   useEffect(() => {
@@ -98,6 +101,8 @@ export const Main = () => {
     getAllPackages(filterList)
   },[filterList,params])
 
+
+ // adding ids to the filter list state
   const addIdtoFilterList = (id,state) => {
     if(filterList[state]?.includes(id)){
       setFilterList( (prev)=>({...prev,[state]:prev[state].filter((item)=>item!==id)}));
@@ -106,6 +111,7 @@ export const Main = () => {
       setFilterList((prev)=>({...prev,[state]:[...prev[state],id]}));
     }  
   }
+  //////
 
 
 

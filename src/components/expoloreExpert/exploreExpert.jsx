@@ -29,18 +29,20 @@ import { ExploreExpertTab } from "../exploreExpertTab";
 import { useContext } from "react";
 import { MainContext } from "../../pages/main/main";
 
-const gender = ["male", "female", "others"];
 
-const ExploreDropdownBox = ({ placeholder, label }) => {
+const ExploreDropdownBox = ({ placeholder, label ,options }) => {
   return (
     <Stack>
       <DropDownTitleBox>
         <DropDownTitle>{label}</DropDownTitle>
       </DropDownTitleBox>
-      <ExpertDropdown items={gender} placeholder={placeholder} />
+      <ExpertDropdown items={options} placeholder={placeholder} label={label} />
     </Stack>
   );
 };
+
+const ageOptions = ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60","60-70","70-80","80-90","90-100"]
+const genderOptions = ["Male", "Female", "Other"]
 
 export const ExploreExpert = () => {
   const { approchType } = useContext(MainContext);
@@ -51,8 +53,8 @@ export const ExploreExpert = () => {
       </Title>
       <MainContainer>
         <InputContainer>
-          <ExploreDropdownBox placeholder={"select age"} label={"Age"} />
-          <ExploreDropdownBox placeholder={"select Gender"} label={"Gender"} />
+          <ExploreDropdownBox placeholder={"select age"} options={ageOptions} label={"Age"} />
+          <ExploreDropdownBox placeholder={"select Gender"} options={genderOptions} label={"Gender"} />
         </InputContainer>
         <SBox>
           <ExploreExpertTab />

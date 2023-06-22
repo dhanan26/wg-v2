@@ -52,10 +52,10 @@ const StyledDropDown = styled(Select)(({ theme, approchType }) => ({
   },
 }));
 
-const StyledMenuItem = styled(MenuItem)(({ theme, approchType }) => ({
+const StyledMenuItem = styled(MenuItem)(({ theme, approchType , label }) => ({
   borderRadius: "none",
   fontSize: 14,
-  fontFamily: theme.fontFamily.primary,
+  fontFamily: label=="Age"?"none": theme.fontFamily.primary,
   justifyContent: "center",
   ":focus": {
     backgroundColor:
@@ -116,7 +116,7 @@ const StyledExpertDropdown = styled(StyledDropDown)(({ theme }) => ({
   },
 }));
 
-export const ExpertDropdown = ({ items, placeholder }) => {
+export const ExpertDropdown = ({ items, placeholder ,label }) => {
   return (
     <FormControl>
       <StyledExpertDropdown
@@ -131,7 +131,7 @@ export const ExpertDropdown = ({ items, placeholder }) => {
         placeholder="hi"
       >
         {items?.map((item) => (
-          <StyledMenuItem key={item} value={item}>
+          <StyledMenuItem key={item} value={item} label={label} >
             {item}
           </StyledMenuItem>
         ))}
