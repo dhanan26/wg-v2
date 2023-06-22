@@ -3,7 +3,6 @@ import { PrimaryText } from "../common/typographies/typographies";
 import { TextCenterBox } from "../common/containers/containers";
 export const FilterMainBox = styled(Box)(({ theme }) => ({
   width: 253,
-  height: "100vh",
 }));
 
 export const WGTreasuresBox = styled(Box)(({ theme }) => ({
